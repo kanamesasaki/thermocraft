@@ -1,0 +1,2 @@
+# Redirect default Netlify/Cloudflare domain to custom domain
+https://craftbook-blog.pages.dev/* https://craftbook.thermocraft.space/:splat 301!

@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { formatDate } from '../utils/date';
+
+const posts = (await getCollection('articles')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Layout title="Craftbook" description="A collection of ideas, notes, and tutorials">
+  <header class="mb-12">
+    <h1 class="text-4xl font-bold mb-4">Craftbook</h1>
+    <p class="text-xl text-gray-700 dark:text-gray-300">
+      A collection of ideas, notes, and tutorials
+    </p>
+  </header>
+
+  <section>
+    <h2 class="text-2xl font-bold mb-6">Recent Posts</h2>
+    <ul class="space-y-8">
+      {
+        posts.map((post) => (
+          <li class="border-b border-gray-200 dark:border-gray-700 pb-6">
+            <a 
+              href={`/articles/${post.slug}`}
+              class="group block hover:no-underline"
+            >
+              <h3 class="text-xl font-semibold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                {post.data.title}
+              </h3>
+              <time
+                datetime={post.data.pubDate.toISOString()}
+                class="text-gray-500 dark:text-gray-400 text-sm"
+              >
+                {formatDate(post.data.pubDate)}
+              </time>
+              <p class="mt-2 text-gray-700 dark:text-gray-300">
+                {post.data.description}
+              </p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>

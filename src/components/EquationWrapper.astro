@@ -1,0 +1,40 @@
+---
+// A specialized component for displaying equation environments without horizontal scrollbars
+---
+
+<style>
+  .equation-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: 1.5rem 0;
+  }
+
+  .equation-wrapper {
+    width: calc(100% - 3rem);
+    overflow-x: auto;
+    margin-right: 0;
+  }
+
+  .equation-wrapper :global(.katex-display) {
+    margin: 0;
+    padding: 0;
+    overflow: visible !important;
+  }
+
+  .equation-wrapper :global(.katex) {
+    max-width: none;
+  }
+
+  .equation-wrapper :global(.katex .tag) {
+    position: absolute;
+    right: 0;
+    padding-right: 0.5rem;
+  }
+</style>
+
+<div class="equation-container">
+  <div class="equation-wrapper">
+    <slot />
+  </div>
+</div>

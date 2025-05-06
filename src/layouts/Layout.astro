@@ -1,0 +1,39 @@
+---
+import '../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
+import Navigation from '../components/Navigation.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const { 
+  title, 
+  description, 
+  image = '/images/blog-placeholder.jpg'
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ViewTransitions />
+    
+    <!-- KaTeX CSS for math equation rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+  </head>
+  <body class="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-50">
+    <div class="max-w-4xl mx-auto px-4 py-8">
+      <Navigation />
+      <slot />
+    </div>
+  </body>
+</html>

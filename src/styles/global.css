@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset and completely override KaTeX display equations styles */
+.katex-display {
+  /* Critical overrides for equation display */
+  display: block !important;
+  overflow: visible !important;
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+  width: 100% !important;
+  margin: 1.2em 0 !important;
+  padding: 0 !important;
+  /* Fixes for equation container */
+  white-space: normal !important;
+  text-align: center !important;
+}
+
+/* Main equation container sizing fix */
+.katex-display > .katex {
+  display: inline-block !important;
+  width: 90% !important; /* Leave room for equation numbers */
+  margin: 0 !important;
+  max-width: none !important;
+  text-align: left !important;
+}
+
+/* Equation number positioning */
+.katex .tag {
+  position: absolute !important;
+  right: 0 !important;
+  float: right !important;
+  width: 10% !important;
+  padding-right: 0.5em !important;
+  text-align: right !important;
+}
+
+/* Base content styles */
+.prose {
+  @apply max-w-none;
+}
+
+.prose img {
+  @apply mx-auto rounded-lg;
+}
+
+.prose code {
+  @apply px-1 py-0.5 rounded;
+}
+
+/* Dark mode adjustments */
+.dark .prose pre {
+  @apply bg-slate-800;
+}
+
+.dark .prose code {
+  @apply bg-slate-800 text-slate-200;
+}
