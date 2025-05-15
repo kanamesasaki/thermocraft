@@ -31,3 +31,19 @@ pnpm-debug.log*
 
 # Astro
 .astro/
+
+# Rust related
+# Build artifacts
+target/
+**/*.rs.bk
+Cargo.lock
+
+# rustfmt and clippy caches
+.rustfmt.toml
+*.rustfmt.cfg
+.clippy.toml
+
+# Generated files
+*.pdb
+*.rlib
+*.rmeta
