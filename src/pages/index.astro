@@ -6,6 +6,11 @@ import { formatDate } from '../utils/date';
 const posts = (await getCollection('articles')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+
+// Extract all unique tags from posts
+const allTags = [...new Set(
+  posts.flatMap(post => post.data.tags || [])
+)].sort();
 ---
 
 <Layout title="Craftbook" description="A collection of ideas, notes, and tutorials">
@@ -16,12 +21,46 @@ const posts = (await getCollection('articles')).sort(
     </p>
   </header>
 
-  <section>
-    <h2 class="text-2xl font-bold mb-6">Recent Posts</h2>
+  <section class="mb-8">
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-2xl font-bold">Posts</h2>
+      <div class="text-sm">
+        <button id="tag-filter-toggle" class="flex items-center text-blue-600 dark:text-blue-400 hover:underline">
+          <span>Filter by tags</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="tag-filter" class="hidden mb-6 py-2 px-4 bg-slate-100 dark:bg-slate-800 rounded-lg">
+      <div class="mb-2 text-sm font-medium">Filter by tags:</div>
+      <div class="flex flex-wrap gap-2">
+        <button 
+          class="tag-button active py-1 px-3 text-xs rounded-full bg-blue-600 text-white dark:bg-blue-700"
+          data-tag="all"
+        >
+          All
+        </button>
+        {allTags.map(tag => (
+          <button 
+            class="tag-button py-1 px-3 text-xs rounded-full bg-slate-200 dark:bg-slate-700"
+            data-tag={tag}
+          >
+            {tag}
+          </button>
+        ))}
+      </div>
+    </div>
+
     <ul class="space-y-8">
       {
         posts.map((post) => (
-          <li class="border-b border-gray-200 dark:border-gray-700 pb-6">
+          <li 
+            class="post-item border-b border-gray-200 dark:border-gray-700 pb-6"
+            data-tags={post.data.tags?.join(',') || ''}
+          >
             <a 
               href={`/articles/${post.slug}`}
               class="group block hover:no-underline"
@@ -29,12 +68,23 @@ const posts = (await getCollection('articles')).sort(
               <h3 class="text-xl font-semibold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400">
                 {post.data.title}
               </h3>
-              <time
-                datetime={post.data.pubDate.toISOString()}
-                class="text-gray-500 dark:text-gray-400 text-sm"
-              >
-                {formatDate(post.data.pubDate)}
-              </time>
+              <div class="flex items-center gap-2">
+                <time
+                  datetime={post.data.pubDate.toISOString()}
+                  class="text-gray-500 dark:text-gray-400 text-sm"
+                >
+                  {formatDate(post.data.pubDate)}
+                </time>
+                {post.data.tags && post.data.tags.length > 0 && (
+                  <div class="flex flex-wrap gap-1">
+                    {post.data.tags.map(tag => (
+                      <span class="text-xs py-0.5 px-2 bg-slate-100 dark:bg-slate-800 rounded-full">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
               <p class="mt-2 text-gray-700 dark:text-gray-300">
                 {post.data.description}
               </p>
@@ -44,4 +94,46 @@ const posts = (await getCollection('articles')).sort(
       }
     </ul>
   </section>
+
+  <script>
+    // Client-side JavaScript for tag filtering
+    document.addEventListener('DOMContentLoaded', () => {
+      const tagFilterToggle = document.getElementById('tag-filter-toggle');
+      const tagFilter = document.getElementById('tag-filter');
+      const tagButtons = document.querySelectorAll('.tag-button');
+      const postItems = document.querySelectorAll('.post-item');
+
+      // Toggle tag filter visibility
+      tagFilterToggle?.addEventListener('click', () => {
+        tagFilter?.classList.toggle('hidden');
+      });
+
+      // Handle tag filtering
+      tagButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Update button styles
+          tagButtons.forEach(btn => {
+            btn.classList.remove('active', 'bg-blue-600', 'dark:bg-blue-700', 'text-white');
+            btn.classList.add('bg-slate-200', 'dark:bg-slate-700');
+          });
+          
+          button.classList.add('active', 'bg-blue-600', 'dark:bg-blue-700', 'text-white');
+          button.classList.remove('bg-slate-200', 'dark:bg-slate-700');
+
+          const selectedTag = button.getAttribute('data-tag');
+          
+          // Filter posts
+          postItems.forEach(post => {
+            const postTags = post.getAttribute('data-tags')?.split(',') || [];
+            
+            if (selectedTag === 'all' || (selectedTag && postTags.includes(selectedTag))) {
+              post.classList.remove('hidden');
+            } else {
+              post.classList.add('hidden');
+            }
+          });
+        });
+      });
+    });
+  </script>
 </Layout>

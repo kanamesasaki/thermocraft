@@ -14,7 +14,9 @@
         "bradlc.vscode-tailwindcss",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
-        "formulahendry.auto-rename-tag"
+        "github.copilot",
+        "davidanson.vscode-markdownlint",
+        "streetsidesoftware.code-spell-checker"
       ],
       "settings": {
         "editor.formatOnSave": true,

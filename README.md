@@ -57,7 +57,3 @@ This site is configured for deployment on Cloudflare Pages:
    - Build command: `npm run build`
    - Build output directory: `dist`
 3. Set up your custom domain in the Cloudflare Pages dashboard
-
-## License
-
-MIT
