@@ -42,6 +42,7 @@ For typical floating point formats in 16, 32, 64, or 128 bits, the corresponding
 
 To handle real numbers in a computer, the given number has to be converted to a floating point number.
 In IEEE 754-2019 [[1]](#reference), the following five types of rounding attributes are defined for the conversion.
+For the binary floating point numbers, the default rounding method is roundTiesToEven.
 
 | Rounding Attribute  | Rounding to ...                                                                                                                                |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -50,8 +51,6 @@ In IEEE 754-2019 [[1]](#reference), the following five types of rounding attribu
 | roundTowardPositive | the floating point number closest to and no less than the given number.                                                                        |
 | roundTowardNegative | the floating point number closest to and no greater then the given number.                                                                     |
 | roundTowardZero     | the floating point number closest to and no greater in magnitude than the given number.                                                        |
-
-For the binary floating point numbers, the default rounding method is roundTiesToEven.
 
 ## Error Estimation
 
@@ -142,8 +141,43 @@ n-th order inner product can be described by
 
 $$
 \begin{align}
-\hat{s}_n &= x_1 y_1 (1 \pm \delta)^n + x_2 y_2 (1 \pm \delta)^n + x_3 y_3 (1 \pm \delta)^{n-1} + \cdots + x_n y_n (1 \pm \delta)^2  \\
-&=
+\hat{s}_n &= fl(\hat{s}_{n-1} + x_n y_n) = (\hat{s}_{n-1} + x_n y_n(1 + \delta_{2n-2}))(1 + \delta_{2n-1}) \notag \\
+&= x_1y_1 (1 + \delta_1)(1 + \delta_3) \cdots (1 + \delta_{2n-1}) \notag \\
+&\hspace{11pt}+ x_2y_2 (1 + \delta_2)(1 + \delta_3) \cdots (1 + \delta_{2n-1}) \notag \\
+&\hspace{11pt}+ x_3y_3 (1 + \delta_4)(1 + \delta_5) \cdots (1 + \delta_{2n-1}) \notag \\
+&\hspace{51pt}\vdots \notag \\
+&\hspace{11pt}+ x_ny_n (1 + \delta_{2n-2})(1 + \delta_{2n-1}),
+\end{align}
+$$
+
+Since $|\delta_i| < u$ for any $i = 1, 2, \cdots$, it is possible to bound the error range by simpler form.
+To evaluate the error range, the following relations can be used [[3]](#reference).
+
+$$
+\begin{align}
+\prod_{i=1}^n (1 + \delta_i) \le (1 + u)^n \le 1 + \frac{nx}{1 + (1-n)x}
+\end{align}
+$$
+
+$$
+\begin{align}
+\prod_{i=1}^n (1 + \delta_i) \ge (1 - u)^n > 1 - nu
+\end{align}
+$$
+
+In the discussion of [[2]](#reference), these relations are written in a less-tight form.
+
+$$
+\begin{align}
+\prod_{i=1}^n (1 + \delta_i) = 1 + \theta_n, \quad \mathrm{where} \quad |\theta_n| \le \frac{nu}{1 - nu}
+\end{align}
+$$
+
+Using this relation, the amount of error can be bounded as shown below.
+
+$$
+\begin{align}
+|\bm{x}^T \bm{y} - fl(\bm{x}^T \bm{y})| \le \frac{nu}{1 - nu} \sum_{i=1}^n |x_i y_i|
 \end{align}
 $$
 
@@ -151,3 +185,4 @@ $$
 
 1. "IEEE Standard for Floating-Point Arithmetic" in IEEE Std 754-2019 (Revision of IEEE 754-2008), pp.1-84, 22 July 2019, doi: [10.1109/IEEESTD.2019.8766229](https://doi.org/10.1109/IEEESTD.2019.8766229).
 2. Nicholas J. Higham, "Accuracy and Stability of Numerical Algorithms, Second Edition", Society for industrial and applied mathematics, 2002.
+3. Dragoslav S. Mitrinović, "Analytic Inequalities", Springer Berlin, Heidelberg, 1970.
