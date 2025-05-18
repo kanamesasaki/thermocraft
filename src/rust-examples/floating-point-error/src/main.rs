@@ -1,15 +1,18 @@
 use rand::Rng;
 
 fn main() {
+    let pi_bits: u32 = std::f32::consts::PI.to_bits();
+    println!("PI: {:032b}", pi_bits);
+    println!("PI: {:?}", std::f32::consts::PI);
+    // PI: 01000000010010010000111111011011
+    let val: f32 = 2.0 * (1.0 + 4788187.0 / (2.0 as f32).powi(23));
+    println!("val: {:?}", val);
+
     let mut rng = rand::rng();
     let x_u32: u32 = rng.random();
     let y_u32: u32 = rng.random();
-    println!("x_u32: {:?}, y_u32: {:?}", x_u32, y_u32);
-    println!("{:?}", x_u32.to_be_bytes());
-    println!("{:?}", y_u32.to_be_bytes());
     let x: f32 = f32::from_be_bytes(x_u32.to_be_bytes());
     let y: f32 = f32::from_be_bytes(y_u32.to_be_bytes());
-    println!("x: {:?}, y: {:?}", x, y);
     let x_add_y = x + y;
     let x_sub_y = x - y;
     let x_mul_y = x * y;

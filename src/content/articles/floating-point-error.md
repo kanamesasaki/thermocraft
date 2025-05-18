@@ -1,6 +1,6 @@
 ---
 title: "Tracking the Floating Point Error"
-description: "If rounding errors for floating point numbers are critical for your numerical calculation. What is the correct way to estimate and track the error?"
+description: "If rounding errors for floating point numbers are critical for your numerical calculation. What is the correct way to estimate and track the error? Looking into the definition in IEEE 754-2019 and basic methodology for the error estimation."
 pubDate: 2025-05-06
 updatedDate: 2025-05-06
 heroImage: ""
@@ -19,13 +19,16 @@ The basic concept of the floating point number can be described by the following
 - Exponent bits describe the power of 2 as $2^e$
 - Significand bits divide the range between $2^e$ and $2^{e+1}$ into equal intervals to represent real numbers inbetween
 
-This concept can be described by the following formula.
+This concept can be described by Eq. (1) and a 32-bit floating point number example for showing PI is described in Figure 1.
 
 $$
 \begin{equation}
 v = (-1)^S \times 2^{E-bias} \times (1 + 2^{1-p} \times T)
 \end{equation}
 $$
+
+![floating-point-error-1](./floating-point-error-1.svg)
+_Figure 1: Structure of IEEE 754 floating-point format, PI in 32-bit floating point number as an example._
 
 For typical floating point formats in 16, 32, 64, or 128 bits, the corresponding parameters are specified by the following table.
 
@@ -67,7 +70,7 @@ As the first step, the absolute amount of error is smaller than the amount of 1 
 
 $$
 \begin{equation}
-|fl(x) - x| < 2^{E-bias} \times \frac{1}{2^{23}}
+|fl(x) - x| < 2^{E-bias} \times \frac{1}{2^t}
 \end{equation}
 $$
 
@@ -75,7 +78,7 @@ Furthermore, assuming that $x$ is rounded to the nearest floating point number, 
 
 $$
 \begin{equation}
-|fl(x) - x| \le 2^{E-bias} \times \frac{1}{2^{24}}
+|fl(x) - x| \le 2^{E-bias} \times u
 \end{equation}
 $$
 
@@ -83,12 +86,12 @@ Based on this fact, the error ratio can be evaluated as shown below.
 
 $$
 \begin{equation}
-\left| \frac{fl(x) - x}{x} \right| < \frac{2^{E-bias} \times \frac{1}{2^{24}}}{2^{E-bias}} = \frac{1}{2^{24}} \simeq 5.9604645 \times 10^{-8}
+\left| \frac{fl(x) - x}{x} \right| < \frac{2^{E-bias} \times u}{2^{E-bias}} = u
 \end{equation}
 $$
 
-If the exponent part of the floating point number is $2^{E-bias}$, the range of original real number should be $[2^{E-bias}- \frac{2^{E-bias}}{2^{25}},~2^{E-bias+1}-\frac{2^{E-bias}}{2^{24}})$. So, it looks insufficient to represent $x$ by $2^{E-bias}$ when evaluating the error ratio.
-However, if $x < 2^{E-bias}$, the maximum error is less than half of $2^{E-bias} \times \frac{1}{2^{24}}$.
+If the exponent part of the floating point number is $2^{E-bias}$, the range of original real number should be $[2^{E-bias}- \frac{2^{E-bias}}{2^{p+1}},~2^{E-bias+1}-\frac{2^{E-bias}}{2^{p}})$. So, it looks insufficient to represent $x$ by $2^{E-bias}$ when evaluating the error ratio.
+However, if $x < 2^{E-bias}$, the maximum error is less than half of $2^{E-bias} \times \frac{1}{2^{p}}$.
 Thus, such case does not correspond to the maximum error ratio, and $2^{E-bias}$ can be used to represent $x$ for error ratio evaluation.
 
 ## Error Amount for Inner Product
@@ -97,7 +100,7 @@ When $x$ and $y$ are error-free floating point numbers, it is common to assume t
 
 $$
 \begin{equation}
-fl(x~\mathrm{op}~y) = (x~\mathrm{op}~y)(1 + \delta),\quad |\delta| \le \frac{1}{2^{24}},
+fl(x~\mathrm{op}~y) = (x~\mathrm{op}~y)(1 + \delta),\quad |\delta| \le u,
 \quad \mathrm{op} = +,~-,~*,~/
 \end{equation}
 $$
@@ -151,21 +154,7 @@ $$
 $$
 
 Since $|\delta_i| < u$ for any $i = 1, 2, \cdots$, it is possible to bound the error range by simpler form.
-To evaluate the error range, the following relations can be used [[3]](#reference).
-
-$$
-\begin{align}
-\prod_{i=1}^n (1 + \delta_i) \le (1 + u)^n \le 1 + \frac{nx}{1 + (1-n)x}
-\end{align}
-$$
-
-$$
-\begin{align}
-\prod_{i=1}^n (1 + \delta_i) \ge (1 - u)^n > 1 - nu
-\end{align}
-$$
-
-In the discussion of [[2]](#reference), these relations are written in a less-tight form.
+In the discussion of [[2]](#reference), the range of the multiple $(1 + \delta_i)$ product is described by the following relation.
 
 $$
 \begin{align}
@@ -178,6 +167,64 @@ Using this relation, the amount of error can be bounded as shown below.
 $$
 \begin{align}
 |\bm{x}^T \bm{y} - fl(\bm{x}^T \bm{y})| \le \frac{nu}{1 - nu} \sum_{i=1}^n |x_i y_i|
+\end{align}
+$$
+
+## Bernoulli's Inequality
+
+Actually, the relation of Eq. (12) can be written in slightly tighter form as shown in the equations below [[3]](#reference).
+The discussion assumes the parameter range of $n = 2, 3, \cdots$, and $0 < u \ll 1$.
+
+$$
+\begin{align}
+\prod_{i=1}^n (1 + \delta_i) \ge (1 - u)^n > 1 - nu
+\end{align}
+$$
+
+$$
+\begin{align}
+\prod_{i=1}^n (1 + \delta_i) \le (1 + u)^n \le 1 + \frac{nx}{1 + (1-n)x}
+\end{align}
+$$
+
+The lower bound Eq. (14) corresponds to Bernoulli's inequality, and it can be confirmed easily by the mathematical induction.
+When $k=2$, the following inequality is valid.
+
+$$
+\begin{align}
+(1-u)^2 = 1 - 2u + u^2 > 1-2u
+\end{align}
+$$
+
+Assuming that $(1 - u)^k \ge 1 - ku$ is valid, the following relation can be optained by multiplying $(1 - u)$.
+
+$$
+\begin{align}
+(1 - u)^{k+1} \ge (1 - ku)(1 - u) = 1 - (k+1)u + ku^2 > 1 - (k+1)u
+\end{align}
+$$
+
+This completes the diduction proof for Eq. (14).
+
+Applying $(1 - \frac{u}{1+u})^n$ to Eq. (14), we obtain the following relation.
+
+$$
+\begin{align}
+\left( 1 - \frac{u}{1+u} \right)^n > 1 - n \frac{u}{1+u}
+\end{align}
+$$
+
+$$
+\begin{align}
+\frac{1}{(1+u)^n} > \frac{1+u-nu}{1+u}
+\end{align}
+$$
+
+If $1 + u -nu > 0$, the following relation is obtained.
+
+$$
+\begin{align}
+(1 + u)^n < \frac{1+u}{1+u-nu} = 1 + \frac{nu}{1 + (1-n)u}
 \end{align}
 $$
 
