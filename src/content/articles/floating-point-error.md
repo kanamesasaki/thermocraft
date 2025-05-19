@@ -2,7 +2,7 @@
 title: "Tracking the Floating Point Error"
 description: "If rounding errors for floating point numbers are critical for your numerical calculation. What is the correct way to estimate and track the error? Looking into the definition in IEEE 754-2019 and basic methodology for the error estimation."
 pubDate: 2025-05-18
-updatedDate: 2025-05-18
+updatedDate: 2025-05-19
 heroImage: ""
 tags: ["programming", "numerical analysis"]
 ---
@@ -183,7 +183,7 @@ $$
 
 $$
 \begin{align}
-\prod_{i=1}^n (1 + \delta_i) \le (1 + u)^n \le 1 + \frac{nx}{1 + (1-n)x}
+\prod_{i=1}^n (1 + \delta_i) \le (1 + u)^n \le 1 + \frac{nu}{1 + (1-n)u}
 \end{align}
 $$
 
@@ -196,7 +196,7 @@ $$
 \end{align}
 $$
 
-Assuming that $(1 - u)^k \ge 1 - ku$ is valid, the following relation can be optained by multiplying $(1 - u)$.
+Assuming that $(1 - u)^k \ge 1 - ku$ is valid, the following relation can be obtained by multiplying $(1 - u)$.
 
 $$
 \begin{align}
@@ -204,7 +204,7 @@ $$
 \end{align}
 $$
 
-This completes the diduction proof for Eq. (14).
+This completes the induction proof for Eq. (14).
 
 Applying $(1 - \frac{u}{1+u})^n$ to Eq. (14), we obtain the following relation.
 
