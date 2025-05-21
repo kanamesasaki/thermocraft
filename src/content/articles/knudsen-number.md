@@ -64,7 +64,7 @@ Integrating $\Delta N_i$ for all possible velocity vectors, i.e. over the veloci
 
 $$
 \begin{equation}
-\sum_i \Delta N_i \sigma_\mathrm{T} |\bm{v}_\mathrm{r}| = N \sum_i \frac{\Delta N_i}{N} \sigma_\mathrm{T} |\bm{v}_\mathrm{r}|
+\nu = N \overline{\sigma_\mathrm{T} v_\mathrm{r}}, \quad \mathrm{where} \quad \overline{\sigma_\mathrm{T} v_\mathrm{r}} = \frac{1}{N} \sum_i \Delta N_i \sigma_\mathrm{T} |\bm{v}_\mathrm{r}|
 \end{equation}
 $$
 
@@ -95,8 +95,8 @@ $$
 ## Mean Free Path under Equilibrium
 
 In this section, we look into the concrete description of the mean free path for single type and rigid sphere molecules.
-In Eq. (8), the unknowns are the mean velocity of the molecules $\overline{v'}$ and the mean relative velocity of the molecules $\overline{v_\mathrm{r}}$.
-Using the Maxwell-Boltzmann distribution Eq. (9), which is a velocity distribution under equilibrium, we try to determine the form of these parameters.
+In Eq. (7), the unknowns are the mean velocity of the molecules $\overline{v'}$ and the mean relative velocity of the molecules $\overline{v_\mathrm{r}}$.
+Using the Maxwell-Boltzmann distribution Eq. (8), which is a velocity distribution under equilibrium, we try to determine the form of these parameters.
 
 $$
 \begin{equation}
@@ -135,7 +135,7 @@ $$
 
 To calculate this integral, we should convert the parameters from $\bm{v}_1 = (u_1, v_1, w_1)$ and $\bm{v}_2 = (u_2, v_2, w_2)$ to $\bm{v}_\mathrm{r} = (u_\mathrm{r}, v_\mathrm{r}, w_\mathrm{r})$ and $\bm{v}_\mathrm{m} = (u_\mathrm{m}, v_\mathrm{m}, w_\mathrm{m})$.
 To do this parameter conversion, the corresponding Jacobian has to be specified.
-First, we describe $\bm{v}_1, \bm{v}_2$ by using $\bm{v}_\mathrm{r}, \bm{v}_\mathrm{m}$ based on Eq. (10) and (11).
+First, we describe $\bm{v}_1, \bm{v}_2$ by using $\bm{v}_\mathrm{r}, \bm{v}_\mathrm{m}$ based on Eq. (9) and (10).
 
 $$
 \begin{gather}
@@ -328,10 +328,11 @@ $$
 \begin{align}
 % \label{eq:Bird1994_4.41}
 \overline{v_\mathrm{r}}
-&= \frac{2(m_1 m_2)^{\frac{3}{2}}}{\pi (k_\mathrm{B} T)^3} \int^\infty_{0} \int^\infty_{0} {v}_\mathrm{r}^3 {v}_\mathrm{m}^2 \exp\left[ \frac{-(m_\mathrm{r} v_\mathrm{r}^2 + (m_1 + m_2) v_\mathrm{m}^2)}{2k_\mathrm{B} T} \right] d{v}_\mathrm{r} d{v}_\mathrm{m} \notag \\
+&= \frac{2(m_1 m_2)^{\frac{3}{2}}}{\pi (k_\mathrm{B} T)^3} \int^\infty_{0} \int^\infty_{0} |\bm{v}_\mathrm{r}|^3 |\bm{v}_\mathrm{m}|^2
+\exp\left[ \frac{-(m_\mathrm{r} |\bm{v}_\mathrm{r}|^2 + (m_1 + m_2) |\bm{v}_\mathrm{m}|^2)}{2k_\mathrm{B} T} \right] d|\bm{v}_\mathrm{r}| d|\bm{v}_\mathrm{m}| \notag \\
 &= \frac{2(m_1 m_2)^{\frac{3}{2}}}{\pi (k_\mathrm{B} T)^3}
-\int^\infty_{0} {v}_\mathrm{r}^3 \exp\left[ \frac{-m_\mathrm{r} v_\mathrm{r}^2}{2k_\mathrm{B} T} \right] d{v}_\mathrm{r}
-\int^\infty_{0} {v}_\mathrm{m}^2 \exp\left[ \frac{-(m_1 + m_2) v_\mathrm{m}^2}{2k_\mathrm{B} T} \right] d{v}_\mathrm{m}
+\int^\infty_{0} |\bm{v}_\mathrm{r}|^3 \exp\left[ \frac{-m_\mathrm{r} |\bm{v}_\mathrm{r}|^2}{2k_\mathrm{B} T} \right] d|\bm{v}_\mathrm{r}| \notag \\
+&\hspace{50pt}\times \int^\infty_{0} |\bm{v}_\mathrm{m}|^2 \exp\left[ \frac{-(m_1 + m_2) |\bm{v}_\mathrm{m}|^2}{2k_\mathrm{B} T} \right] d|\bm{v}_\mathrm{m}|
 \end{align}
 $$
 
@@ -391,7 +392,7 @@ $$
 \begin{align}
 \overline{v'} &= \int_{-\infty}^{\infty} |\bm{v}| \left( \frac{m}{2\pi k_\mathrm{B} T} \right)^{\frac{3}{2}} \exp \left[ -\frac{m|\bm{v}|^2}{2k_\mathrm{B}T} \right] du dv dw \notag \\
 &= \int_{0}^{\infty} |\bm{v}|^3 \left( \frac{m}{2\pi k_\mathrm{B} T} \right)^{\frac{3}{2}} \exp \left[ -\frac{m|\bm{v}|^2}{2k_\mathrm{B}T} \right] d|\bm{v}| \int_0^{2\pi} d\varphi \int_0^{\pi} \sin\theta d\theta \notag \\
-&= 4\pi \left( \frac{m}{2\pi k_\mathrm{B} T} \right)^{\frac{3}{2}} \int_{0}^{\infty} |\bm{v}|^3 \exp \left[ -\frac{m|\bm{v}|^2}{2k_\mathrm{B}T} \right] d|\bm{v}| \notag
+&= 4\pi \left( \frac{m}{2\pi k_\mathrm{B} T} \right)^{\frac{3}{2}} \int_{0}^{\infty} |\bm{v}|^3 \exp \left[ -\frac{m|\bm{v}|^2}{2k_\mathrm{B}T} \right] d|\bm{v}|
 \end{align}
 $$
 
@@ -405,7 +406,7 @@ $$
 
 ## Conclusion
 
-Through the discussions in the previous sections, mean relative velocity $\overline{v_\mathrm{r}}$ and mean velocity $\overline{v'}$ are characterized by Eq. (25) and Eq. (26), respectively.
+Through the discussions in the previous sections, mean relative velocity $\overline{v_\mathrm{r}}$ and mean velocity $\overline{v'}$ are characterized by Eq. (25) and Eq. (27), respectively.
 Substituting these results to Eq. (7), the mean free path is described by
 
 $$

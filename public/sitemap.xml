@@ -8,7 +8,13 @@
   </url>
   <url>
     <loc>https://craftbook.thermocraft.space/articles/floating-point-error/</loc>
-    <lastmod>2025-05-06</lastmod>
+    <lastmod>2025-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://craftbook.thermocraft.space/articles/knudsen-number/</loc>
+    <lastmod>2025-05-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
