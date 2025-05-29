@@ -4,7 +4,7 @@ description: "The transformation from ECEF (Earth Centered Earth Fixed) coordina
 pubDate: 2025-05-26
 updatedDate: 2025-05-26
 heroImage: ""
-tags: ["Astrodynamics"]
+tags: ["astrodynamics"]
 ---
 
 The transformation from ECEF (Earth Centered Earth Fixed) coordinates to geodetic coordinates is a well-known problem in geodesy.

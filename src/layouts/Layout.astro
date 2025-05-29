@@ -12,7 +12,7 @@ interface Props {
 const { 
   title, 
   description, 
-  image = '/images/blog-placeholder.jpg',
+  image = '/og-image.png',
   canonicalURL = Astro.url.href
 } = Astro.props;
 
@@ -41,22 +41,22 @@ const siteConfig = {
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://craftbook.thermocraft.space/og-image.png" />
+    <meta property="og:image" content={new URL(image, siteConfig.siteUrl).toString()} />
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://craftbook.thermocraft.space/" />
+    <meta name="twitter:url" content={canonicalURL} />
     <meta
       name="twitter:title"
-      content="Craftbook"
+      content={title}
     />
     <meta
       name="twitter:description"
-      content="A comprehensive database of spacecraft thermal analysis information and software for flight missions."
+      content={description}
     />
     <meta
       name="twitter:image"
-      content="https://craftbook.thermocraft.space/og-image.png"
+      content={new URL(image, siteConfig.siteUrl).toString()}
     />
     
     <!-- Google Analytics -->
