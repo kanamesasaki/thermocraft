@@ -2,7 +2,7 @@
 title: "Knudsen Number"
 description: "When the interested fluid phenomenon reaches very low density region, we have to be careful whether it is still within the scope of ordinary fluid dynamics. One of the useful indicators to characterize such physical phenomena is a dimensionless quantity called Knudsen number."
 pubDate: 2025-05-20
-updatedDate: 2025-05-20
+updatedDate: 2025-05-29
 heroImage: ""
 tags: ["fluid dynamics"]
 ---
@@ -122,7 +122,7 @@ $$
 $$
 
 A probability of having $\bm{v}_\mathrm{r}$ is calculated as a product of a probability of having $\bm{v}_1$ and a probability of having $\bm{v}_2$.
-ultiplying the probability of $\bm{v}_\mathrm{r}$ and the relative velocity $v_\mathrm{r}$, and integrating it over the entire $\bm{v}_1$ and $\bm{v}_2$ distributions, gives the average relative velocity.
+Multiplying the probability of $\bm{v}_\mathrm{r}$ and the relative velocity $v_\mathrm{r}$, and integrating it over the entire $\bm{v}_1$ and $\bm{v}_2$ distributions, gives the average relative velocity.
 
 $$
 \begin{align}
