@@ -174,7 +174,7 @@ $$
 0 & 0 & -\frac{m_1}{m_1+m_2} & 0 & 0 & 1
 \end{array} \right|\\
 
-&= \frac{m_2}{m_1+m_2} 
+&= \frac{m_2}{m_1+m_2}
 \left| \begin{array}{ccccc}
 \frac{m_2}{m_1+m_2} & 0 & 0 & 1 & 0\\
 0 & \frac{m_2}{m_1+m_2} & 0 & 0 & 1\\
@@ -182,7 +182,7 @@ $$
 -\frac{m_1}{m_1+m_2} & 0 & 0 & 1 & 0\\
 0 & -\frac{m_1}{m_1+m_2} & 0 & 0 & 1
 \end{array} \right|
-+\frac{m_1}{m_1+m_2} 
++\frac{m_1}{m_1+m_2}
 \left| \begin{array}{ccccc}
 0 & 0 & 1 & 0 & 0\\
 \frac{m_2}{m_1+m_2} & 0 & 0 & 1 & 0\\
@@ -191,7 +191,7 @@ $$
 0 & -\frac{m_1}{m_1+m_2} & 0 & 0 & 1
 \end{array} \right| \\
 
-&= \left( \frac{m_2}{m_1+m_2} \right)^2 
+&= \left( \frac{m_2}{m_1+m_2} \right)^2
 \left| \begin{array}{cccc}
 \frac{m_2}{m_1+m_2} & 0 & 0 & 1\\
 0 & 1 & 0 & 0\\
@@ -367,8 +367,8 @@ Based on the above relations, Eq. (20) is concretely described by
 
 $$
 \begin{equation}
-\overline{v_\mathrm{r}} = \frac{2(m_1 m_2)^{\frac{3}{2}}}{\pi (k_\mathrm{B} T)^3} 
-\frac{2 (k_\mathrm{B} T)^2}{m_\mathrm{r}^2} 
+\overline{v_\mathrm{r}} = \frac{2(m_1 m_2)^{\frac{3}{2}}}{\pi (k_\mathrm{B} T)^3}
+\frac{2 (k_\mathrm{B} T)^2}{m_\mathrm{r}^2}
 \frac{\sqrt{\pi}}{4} \frac{(2 k_\mathrm{B} T)^{\frac{3}{2}}}{(m_1 + m_2)^{\frac{3}{2}}}
 = \frac{2}{\sqrt{\pi}} \left( \frac{2k_\mathrm{B} T}{m_\mathrm{r}} \right)^\frac{1}{2}
 \end{equation}
@@ -379,7 +379,7 @@ In this case, the mean relative velocity is described by
 
 $$
 \begin{equation}
-\overline{v_\mathrm{r}} 
+\overline{v_\mathrm{r}}
 = \sqrt{\frac{16 k_\mathrm{B} T}{\pi m}}
 \end{equation}
 $$
