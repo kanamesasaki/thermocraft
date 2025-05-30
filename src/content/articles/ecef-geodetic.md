@@ -2,7 +2,7 @@
 title: "Transformation of ECEF Coordinates to Geodetic Coordinates"
 description: "The transformation from ECEF (Earth Centered Earth Fixed) coordinates to geodetic coordinates is a well-known problem in geodesy. For the realistic transformation, the Earth should be approximated by a spheroid, and the transformation in this case is not trivial."
 pubDate: 2025-05-26
-updatedDate: 2025-05-26
+updatedDate: 2025-05-30
 heroImage: ""
 tags: ["astrodynamics"]
 ---
@@ -476,4 +476,4 @@ def geodetic_vermeille(x, y, z):
 ## Reference
 
 1. David A. Vallado, Fundamentals of Astrodynamics and Applications Fourth Edition, 2013, Microsoft Press
-2. H. Vermeille, “Direct transformation from geocentric to geodetic coordinates”, 2002, Journal of Geodesy, 76:451-454
+2. H. Vermeille, “Direct transformation from geocentric to geodetic coordinates”, 2002, Journal of Geodesy, 76:451-454, doi: [10.1007/s00190-002-0273-6](https://doi.org/10.1007/s00190-002-0273-6).
