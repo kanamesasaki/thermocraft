@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  currentSlug: string;
+  currentTags?: string[];
+}
+
+const { currentSlug, currentTags = [] } = Astro.props;
+
+// Get all articles
+const allArticles = await getCollection('articles');
+
+// Find related articles based on shared tags
+const relatedArticles = allArticles
+  .filter(article => article.slug !== currentSlug)
+  .filter(article => {
+    if (!currentTags.length || !article.data.tags) return false;
+    return article.data.tags.some(tag => currentTags.includes(tag));
+  })
+  .slice(0, 3); // Show up to 3 related articles
+
+// If no related articles by tags, show recent articles
+const recentArticles = relatedArticles.length > 0 
+  ? relatedArticles 
+  : allArticles
+      .filter(article => article.slug !== currentSlug)
+      .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+      .slice(0, 3);
+---
+
+{recentArticles.length > 0 && (
+  <section class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+    <h2 class="text-2xl font-bold mb-6">
+      {relatedArticles.length > 0 ? 'Related Articles' : 'Recent Articles'}
+    </h2>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {recentArticles.map((article) => (
+        <article class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:shadow-lg transition-shadow">
+          <h3 class="font-semibold mb-2">
+            <a href={`/articles/${article.slug}/`} class="text-blue-600 dark:text-blue-400 hover:underline">
+              {article.data.title}
+            </a>
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400 text-sm mb-2">
+            {article.data.description}
+          </p>
+          <time class="text-xs text-gray-500 dark:text-gray-400">
+            {article.data.pubDate.toLocaleDateString()}
+          </time>
+        </article>
+      ))}
+    </div>
+  </section>
+)}
