@@ -24,7 +24,7 @@ In this setup, the following two statements are equivalent:
 1. For any non-zero $n$-bit binary vector, applying the $n \times n$ binary matrix $T$ will generate all non-zero $n$-bit Boolean vectors.
 2. The period of the $n \times n$ binary matrix $T$ is $2^n-1$.
 
-In the original paper [[2]](#reference), this equivalence is discussesed in detail using characteristic polynomials.
+In the original paper [[2]](#reference), this equivalence is discussed in detail using characteristic polynomials.
 But for rough understanding, it can be intuitively explained as follows.
 
 1 $\Leftarrow$ 2:
@@ -108,7 +108,7 @@ One requirement is that the matrix $T$ must be regular, because...
 - The matrix $T$ must be bijective, to be able to generate all $n$-bit Boolean vectors.
 - The matrix $T$ is bijective ⇔ The matrix $T$ has an inverse matrix $T^{-1}$.
 
-However, this requirement alone does not specify the form of the matrix, and in fact, there are many matrices that satisfy the periodic condition.
+However, this requirement alone does not specify the form of the matrix, and in fact, there are many matrices that satisfy the p.eriodic condition.
 
 Rather than trying to narrow down the required form of the matrix, let us think about some matrices that have low computational cost for the operations, and then check if they satisfy the periodic condition.
 The key concept that comes into play at this point is the Xorshift operation.
@@ -162,7 +162,7 @@ impl BinaryVector32 {
 }
 ```
 
-Since a product of regular matrices is also regular, we can create canditates for the matrix $T$ by multiplying these matrices.
+Since a product of regular matrices is also regular, we can create candidates for the matrix $T$ by multiplying these matrices.
 According to the original paper [[1]](#reference), for $n=32$, there are no matrices of the form $T=(I+L^a)(I+R^b)$ or $T=(I+R^b)(I+L^a)$ that satisfy the periodic condition.
 But if we consider matrices of the form $T=(I+L^a)(I+R^b)(I+L^c)$, there are several combinations of $(a, b, c)$ that satisfy the condition.
 
@@ -196,7 +196,7 @@ $$
 \end{align}
 $$
 
-The following Rust code implements the $32 \times 32$ binary matrix and provides methods to perform the operations described above. For the calculation of the matrix power, we use the binary exponentiation method (Exponentiation by squaring), which is efficient for large exponents.
+The following Rust code implements a $32 \times 32$ binary matrix and provides methods to perform the operations described above. For the calculation of the matrix power, we use the binary exponentiation method (Exponentiation by squaring), which is efficient for large exponents.
 
 ```rust
 /// A 32x32 binary matrix implemented using bitwise operations for efficiency
@@ -335,7 +335,7 @@ impl BinaryMatrix32 {
 
         let identity = Self::identity();
 
-        // Check no smaller periods exist by testing T^k != I for proper divisors k of (2^32-1)
+        // Check that no smaller periods exist by testing T^k != I for proper divisors k of (2^32-1)
         // 2^32 - 1 = 3 × 5 × 17 × 257 × 65537, so check each quotient
         let quotients = [
             (2_u64.pow(32) - 1) / 3,     // Missing factor 3
@@ -359,7 +359,7 @@ impl BinaryMatrix32 {
         xorshift.has_correct_full_period()
     }
 
-    /// Search for all valid xorshift parameter triplets in range 1..32
+    /// Search for all valid xorshift parameter triplets in the range 1..32
     pub fn search_valid_triplets() -> Vec<(usize, usize, usize)> {
         let mut valid_triplets = Vec::new();
         let mut tested = 0;
@@ -387,7 +387,7 @@ impl BinaryMatrix32 {
 }
 ```
 
-Executing the above code, we can obtain the parameter sets $(a, b, c)$ that satisfies the periodic condition.
+Executing the above code, we can obtain the parameter sets $(a, b, c)$ that satisfy the periodic condition.
 The following output is consistent with the results presented in the original paper [[1]](#reference).
 
 ```console
