@@ -1,8 +1,8 @@
 ---
-title: "Concept of Xorshift Random Number Generator"
+title: "Xorshift Random Number Generator"
 description: "Xorshift is one of the simplest and high-speed random number generator (RNG) algorithms. In this article, we explore the concept of Xorshift, and implement Rust code for searching valid Xorshift parameters for 32-bit binary."
 pubDate: 2025-06-01
-updatedDate: 2025-06-01
+updatedDate: 2025-06-02
 heroImage: ""
 tags: ["programming", "numerical analysis"]
 ---
@@ -42,8 +42,10 @@ Thus, the sequence must return to the original vector $\beta$ after $2^n-1$ oper
 ## Binary Matrix
 
 Before discussing the Xorshift algorithm, we should quickly review the properties of binary matrix.
-One important remark is that the binary matrix and its operations in this context are NOT the definitions from the Boolean algebra.
-The basic operations (addition and multiplication) used here are defined as shown in Eqs. (1) and (2). The major difference from the Boolean algebra is that the addition operation is defined as XOR rather than OR.
+One important remark is that the binary matrix and its operations in this context are NOT the definitions from the Boolean algebra (For more info about the Boolean matrices, Luce's paper could be a good introduction for the basics [[3]](#reference)).
+The basic operations (addition and multiplication) used here are defined as shown in Eqs. (1) and (2).
+The difference from the Boolean algebra is that the addition operation is defined as XOR rather than OR.
+With this definition, many properties from the real/complex matrix can be applied to the binary matrix as well.
 
 $$
 \begin{align}
@@ -174,20 +176,21 @@ The value $2^{32}-1$ can be factored as shown in Eq. (6).
 
 $$
 \begin{align}
-2^{32} - 1 &= (2^{16} + 1)(2^{16} - 1) \notag \\
-&= (2^{16} + 1)(2^8 + 1)(2^8 - 1) \notag \\
-&= (2^{16} + 1)(2^8 + 1)(2^4 + 1)(2^4 - 1) \notag \\
+2^{32} - 1
+% &= (2^{16} + 1)(2^{16} - 1) \notag \\
+% &= (2^{16} + 1)(2^8 + 1)(2^8 - 1) \notag \\
+% &= (2^{16} + 1)(2^8 + 1)(2^4 + 1)(2^4 - 1) \notag \\
 &= (2^{16} + 1)(2^8 + 1)(2^4 + 1)(2^2 + 1)(2^2 - 1) \notag \\
 &= 65537 \cdot 257 \cdot 17 \cdot 5 \cdot 3
 \end{align}
 $$
 
 We should confirm that the matrix $T$ becomes $I$ after $2^{32}-1$ multiplications, but it does not become $I$ with shorter periods, specifically at the periods of any composite factors of $2^{32}-1$.
-In other words, we should check if the following conditions are satisfied.
+In other words, we should check if the following conditions are satisfied (By checking Eqs. (8) to (12), we can confirm that $T^{3} \neq I,~ T^{5} \neq I,~ \cdots$ as well).
 
 $$
 \begin{align}
-&T^{2^{32}-1} = I \\
+&T^{2^{32}-1} = I \quad \text{or} \quad T^{2^{32}} = T \\
 &T^{(2^{32}-1) / 3} \neq I \\
 &T^{(2^{32}-1) / 5} \neq I \\
 &T^{(2^{32}-1) / 17} \neq I \\
