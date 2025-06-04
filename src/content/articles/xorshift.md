@@ -2,7 +2,7 @@
 title: "Xorshift Random Number Generator"
 description: "Xorshift is one of the simplest and high-speed random number generator (RNG) algorithms. In this article, we explore the concept of Xorshift, and implement Rust code for searching valid Xorshift parameters for 32-bit binary."
 pubDate: 2025-06-01
-updatedDate: 2025-06-02
+updatedDate: 2025-06-04
 heroImage: ""
 tags: ["programming", "numerical analysis"]
 ---
@@ -12,7 +12,7 @@ tags: ["programming", "numerical analysis"]
 There are various well-known algorithms for generating pseudo-random numbers, such as Linear Congruential Generator, Xorshift, and Mersenne Twister.
 Among them, Xorshift is known for its simple operations and high speed.
 In this article, we will explore the basic concepts of Xorshift, referring to the original papers by Marsaglia [[1]](#reference) [[2]](#reference).
-The focus will be to grasp the intuition behind the algorithm rather than following the proofs in detail.
+The focus will be to grasp the intuition behind the algorithm rather than just implementing the Xorshift algorithm.
 
 ## Pseudo-Random Number Generation by Binary Matrix
 
@@ -110,7 +110,7 @@ One requirement is that the matrix $T$ must be regular, because...
 - The matrix $T$ must be bijective, to be able to generate all $n$-bit Boolean vectors.
 - The matrix $T$ is bijective ⇔ The matrix $T$ has an inverse matrix $T^{-1}$.
 
-However, this requirement alone does not specify the form of the matrix, and in fact, there are many matrices that satisfy the p.eriodic condition.
+However, this requirement alone does not specify the form of the matrix, and in fact, there are many matrices that satisfy the periodic condition.
 
 Rather than trying to narrow down the required form of the matrix, let us think about some matrices that have low computational cost for the operations, and then check if they satisfy the periodic condition.
 The key concept that comes into play at this point is the Xorshift operation.
