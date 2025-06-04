@@ -2,9 +2,9 @@
 title: "Disk View Factor from a Plate Element"
 description: "Analytical derivation of a disk view factor from a plate element, using both area integration and line integration approaches."
 pubDate: 2025-06-03
-updatedDate: 2025-06-03
+updatedDate: 2025-06-04
 heroImage: ""
-tags: ["Thermal"]
+tags: ["thermal"]
 ---
 
 ## Introduction
@@ -13,11 +13,11 @@ In this article, we will derive analytical view factor expressions for a disk fr
 We describe the disk geometry and relative position with respect to the plate element by parameters $(R, h, \omega)$ as shown in Figure 1.
 
 ![disk-viewfactor-1](./disk-viewfactor-1.svg)
-_Figure 1: Spheroidal Earth Geometry and Geodetic Coordinate Parameters._
+_Figure 1: Geometrical Configuration of a Disk and a Plate Element for View Factor Evaluation._
 
-## View Factor Evaluation based on the Area Integrtion
+## View Factor Evaluation based on the Area Integration
 
-A disk view factgor from a plate element can be derived, by executing the area integration based on the view factor definition.
+A disk view factor from a plate element can be derived, by executing the area integration based on the view factor definition.
 
 $$
 \begin{align}
@@ -48,12 +48,12 @@ h \tan \Lambda = r, \quad
 \end{equation}
 $$
 
-The calculatioin up to this point is the case where the entire disk is visible from the plate element.
+The calculation up to this point is the case where the entire disk is visible from the plate element.
 If the orientation of the plate element becomes more inclined (i.e. $\omega > \arctan \frac{h}{R}$), a part of the disk goes out of the view from the plate element.
 In this case, the area integration must be performed only for the visible part of the disk, which significantly complicates the calculation.
 
 ![disk-viewfactor-2](./disk-viewfactor-2.svg)
-_Figure 1: Disk View Factor Calculation by Area Integration._
+_Figure 2: Disk View Factor Calculation by Area Integration._
 
 To execute the area integration correctly, we divide the disk into two parts: $\textcircled{1}$ sector of the disk ($0 \le \beta \le \beta_0$), and $\textcircled{2}$ triangular area.
 
@@ -190,7 +190,7 @@ $$
 In this case, we managed to complete the integration, thanks to the shape simplicity of the disk.
 However, performing the double integration is highly complex, and it would be very difficult to obtain a closed-form solution for more complicated geometries.
 
-## View Factor Evaluation based on the Line Integrtion
+## View Factor Evaluation based on the Line Integration
 
 In some cases, the area integral can be transformed into a line integral using Stokes' theorem.
 This is not always possible, but it can be applied to the calculation of the view factor.
@@ -211,7 +211,7 @@ $$
 \end{align}
 $$
 
-The view facotr in question is expressed as shown in Eq. (18).
+The view factor in question is expressed as shown in Eq. (18).
 
 $$
 \begin{align}
@@ -246,8 +246,8 @@ As an example, we can verify the first condition in Eq. (19) as shown in Eqs. (2
 
 $$
 \begin{align}
-\frac{\partial R}{\partial y} &= \frac{\partial}{\partial y} \left(\frac{-l_1 y + m_1 x}{2 \pi S^2} \right) = \frac{-l}{2 \pi S^2} - \frac{(-l_1y + m_1x)y}{\pi S^4} \\
-\frac{\partial Q}{\partial z} &= \frac{\partial}{\partial z} \left(\frac{-n_1 x + l_1 z}{2 \pi S^2} \right) = \frac{l}{2 \pi S^2} - \frac{(-n_1x + l_1z)z}{\pi S^4}
+\frac{\partial R}{\partial y} &= \frac{\partial}{\partial y} \left(\frac{-l_1 y + m_1 x}{2 \pi S^2} \right) = \frac{-l_1}{2 \pi S^2} - \frac{(-l_1y + m_1x)y}{\pi S^4} \\
+\frac{\partial Q}{\partial z} &= \frac{\partial}{\partial z} \left(\frac{-n_1 x + l_1 z}{2 \pi S^2} \right) = \frac{l_1}{2 \pi S^2} - \frac{(-n_1x + l_1z)z}{\pi S^4}
 \end{align}
 $$
 
@@ -283,7 +283,7 @@ $$
 $$
 
 ![disk-viewfactor-3](./disk-viewfactor-3.svg)
-_Figure 1: Disk View Factor Calculation by Line Integration._
+_Figure 3: Disk View Factor Calculation by Line Integration._
 
 Now, we are ready to perform the view factor calculation by the line integral.
 The vector $(l_2, m_2, n_2)$ representing the orientation of the disk is directed downward, and we will integrate in a clockwise direction with respect to this vector.
