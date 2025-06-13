@@ -2,7 +2,7 @@
 title: "Disk View Factor from a Plate Element"
 description: "Analytical derivation of a disk view factor from a plate element, using both area integration and line integration approaches."
 pubDate: 2025-06-03
-updatedDate: 2025-06-04
+updatedDate: 2025-06-13
 heroImage: ""
 tags: ["thermal"]
 ---
@@ -11,6 +11,7 @@ tags: ["thermal"]
 
 In this article, we will derive analytical view factor expressions for a disk from a plate element.
 We describe the disk geometry and relative position with respect to the plate element by parameters $(R, h, \omega)$ as shown in Figure 1.
+The actual view factor values can be calculated by our online tool: [View Factor Calculator](https://viewfactor.thermocraft.space).
 
 ![disk-viewfactor-1](./disk-viewfactor-1.svg)
 _Figure 1: Geometrical Configuration of a Disk and a Plate Element for View Factor Evaluation._
@@ -309,3 +310,4 @@ With this approach, we have successfully derived the view factor expression for 
 ## Reference
 
 1. A Catalog of Configuration Factors, 3rd Edition, [https://www.thermalradiation.net/indexCat.html](https://www.thermalradiation.net/indexCat.html)
+2. View Factor Calculator, [https://viewfactor.thermocraft.space](https://viewfactor.thermocraft.space)
