@@ -24,20 +24,109 @@ import Layout from '../layouts/Layout.astro';
       Explore our other engineering tools and resources:
     </p>
     
-    <ul>
-      <li>
-        <strong><a href="https://tasindex.thermocraft.space/" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">TASIndex - Spacecraft Thermal Analysis Database</a></strong><br>
-        A comprehensive database of spacecraft thermal analysis information and software for flight missions.
-      </li>
-      <li>
-        <strong><a href="https://psychroid.thermocraft.space/" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">Psychroid - Psychrometric Chart Calculator</a></strong><br>
-        Interactive psychrometric chart calculator for HVAC engineers. Calculate and visualize air properties, process flows, and energy requirements.
-      </li>
-      <li>
-        <strong><a href="https://viewfactor.thermocraft.space/" target="_blank" rel="noopener noreferrer" class="underline hover:no-underline">View Factor Calculator</a></strong><br>
-        Radiation view factors (configuration factors) for different geometrical configurations are calculated by the analytical formula and Monte Carlo method.
-      </li>
-    </ul>
+<div class="tools-grid">
+    <!-- TASIndex Card -->
+    <a href="https://tasindex.thermocraft.space/" target="_blank" rel="noopener noreferrer" class="card-link">
+        <div class="card">
+            <img src="https://tasindex.thermocraft.space/og-image.svg" alt="TASIndex - Spacecraft Thermal Analysis Database OG Image" class="card-image" loading="lazy">
+            <div class="card-content">
+                <h3 class="card-title">TASIndex - Spacecraft Thermal Analysis Database</h3>
+                <p class="card-description">A comprehensive database of spacecraft thermal analysis information and software for flight missions.</p>
+            </div>
+        </div>
+    </a>
+
+    <!-- Psychroid Card -->
+    <a href="https://psychroid.thermocraft.space/" target="_blank" rel="noopener noreferrer" class="card-link">
+        <div class="card">
+            <img src="https://psychroid.thermocraft.space/og-image.svg" alt="Psychroid - Psychrometric Chart Calculator OG Image" class="card-image" loading="lazy">
+            <div class="card-content">
+                <h3 class="card-title">Psychroid - Psychrometric Chart Calculator</h3>
+                <p class="card-description">Interactive psychrometric chart calculator for HVAC engineers. Calculate and visualize air properties, process flows, and energy requirements.</p>
+            </div>
+        </div>
+    </a>
+
+    <!-- Craftbook Card -->
+    <a href="https://craftbook.thermocraft.space/" target="_blank" rel="noopener noreferrer" class="card-link">
+        <div class="card">
+            <img src="https://craftbook.thermocraft.space/og-image.svg" alt="Craftbook - Spacecraft Thermal Engineer's Notebook OG Image" class="card-image" loading="lazy">
+            <div class="card-content">
+                <h3 class="card-title">Craftbook - Spacecraft Thermal Engineer's Notebook</h3>
+                <p class="card-description">Technical articles on thermal and aerospace engineering topics, featuring mathematical derivations and code examples.</p>
+            </div>
+        </div>
+    </a>
+
+    <!-- View Factor Calculator Card -->
+    <a href="https://viewfactor.thermocraft.space/" target="_blank" rel="noopener noreferrer" class="card-link">
+        <div class="card">
+            <img src="https://viewfactor.thermocraft.space/og-image.svg" alt="View Factor Calculator OG Image" class="card-image" loading="lazy">
+            <div class="card-content">
+                <h3 class="card-title">View Factor Calculator</h3>
+                <p class="card-description">Radiation view factors (configuration factors) for different geometrical configurations are calculated by the analytical formula and Monte Carlo method.</p>
+            </div>
+        </div>
+    </a>
+</div>
+<style>
+    .card-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+    
+    .card {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: #fff;
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-image {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        display: block;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .card-content {
+        padding: 15px;
+        flex-grow: 1;
+    }
+    
+    .card-title {
+        margin-top: 0;
+        margin-bottom: 8px;
+        font-size: 1.15em;
+    }
+    
+    .card-description {
+        font-size: 0.9em;
+        color: #666;
+        margin-bottom: 0;
+    }
+    
+    .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+</style>
 
     <h2>Contact</h2>
     <p>
