@@ -1,61 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://craftbook.thermocraft.space/</loc>
+    <loc>https://thermocraft.space/</loc>
     <lastmod>2025-05-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://craftbook.thermocraft.space/about/</loc>
+    <loc>https://thermocraft.space/about/</loc>
     <lastmod>2025-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://craftbook.thermocraft.space/articles/floating-point-error/</loc>
+    <loc>https://thermocraft.space/articles/floating-point-error/</loc>
     <lastmod>2025-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://craftbook.thermocraft.space/articles/knudsen-number/</loc>
+    <loc>https://thermocraft.space/articles/knudsen-number/</loc>
     <lastmod>2025-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://craftbook.thermocraft.space/articles/ecef-geodetic/</loc>
+    <loc>https://thermocraft.space/articles/ecef-geodetic/</loc>
     <lastmod>2025-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://craftbook.thermocraft.space/articles/runge-kutta/</loc>
+    <loc>https://thermocraft.space/articles/runge-kutta/</loc>
     <lastmod>2025-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://craftbook.thermocraft.space/articles/point-distribution/</loc>
+    <loc>https://thermocraft.space/articles/point-distribution/</loc>
     <lastmod>2025-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://craftbook.thermocraft.space/articles/xorshift/</loc>
+    <loc>https://thermocraft.space/articles/xorshift/</loc>
     <lastmod>2025-06-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://craftbook.thermocraft.space/articles/disk-viewfactor/</loc>
+    <loc>https://thermocraft.space/articles/disk-viewfactor/</loc>
     <lastmod>2025-06-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://craftbook.thermocraft.space/articles/mrg32k3a/</loc>
+    <loc>https://thermocraft.space/articles/mrg32k3a/</loc>
     <lastmod>2025-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
