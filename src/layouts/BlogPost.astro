@@ -32,13 +32,13 @@ const structuredData = {
   "publisher": {
     "@type": "Organization",
     "name": "Craftbook",
-    "url": "https://craftbook.thermocraft.space"
+    "url": "https://thermocraft.space"
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": Astro.url.href
   },
-  ...(heroImage && { "image": new URL(heroImage, "https://craftbook.thermocraft.space").toString() }),
+  ...(heroImage && { "image": new URL(heroImage, "https://thermocraft.space").toString() }),
   ...(tags && { "keywords": tags.join(", ") })
 };
 ---

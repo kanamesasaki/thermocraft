@@ -411,4 +411,3 @@ Found 81 valid triplets:
 1. Marsaglia, G. (2003). Xorshift RNGs. Journal of Statistical Software, 8(14), 1–6. doi: [10.1109/IEEESTD.2019.8766229](https://doi.org/10.18637/jss.v008.i14).
 2. George Marsaglia, Liang-Huei Tsay, Matrices and the structure of random number sequences, Linear Algebra and its Applications, Volume 67, 1985, Pages 147-156, ISSN 0024-3795, doi: [10.1016/0024-3795(85)90192-2](<https://doi.org/10.1016/0024-3795(85)90192-2>).
 3. Luce, R. Duncan. "A note on Boolean matrix theory." Proceedings of the American Mathematical Society 3.3, 1952, 382-388, doi: [10.2307/2031888](https://doi.org/10.2307/2031888).
-   $$

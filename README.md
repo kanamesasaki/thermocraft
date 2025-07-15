@@ -1,4 +1,4 @@
-# Craftbook Blog
+# ThermoCraft Blog
 
 A static blog site built with Astro that supports markdown content with mathematical equations.
 
