@@ -7,16 +7,11 @@ import Layout from '../layouts/Layout.astro';
   
   <div class="prose prose-slate dark:prose-invert lg:prose-lg max-w-none">
     <p>
-      ThermoCraft is a technical blog featuring in-depth articles on thermal engineering, aerospace engineering, numerical analysis, and programming. 
-    </p>
-    
-    <h2>Disclaimer</h2>
-    <p>
-      The content on this website is provided for educational and informational purposes only. While every effort is made to ensure accuracy, the author makes no warranties or representations regarding the completeness, accuracy, or reliability of the information presented. The mathematical derivations, code examples, and technical discussions are based on established literature and best practices, but readers should verify results independently for critical applications.
+      ThermoCraft is a technical blog featuring in-depth articles on thermal engineering, aerospace engineering, numerical analysis, and programming.
     </p>
     
     <p>
-      The author is not liable for any errors, omissions, or damages arising from the use of this information. For professional engineering applications, always consult relevant standards, perform independent verification, and seek appropriate professional guidance.
+      The content provided on this blog is for educational and informational purposes. While we strive for accuracy, please verify calculations and methods independently for your specific applications.
     </p>
     
     <h2>Related Tools & Services</h2>
@@ -71,10 +66,9 @@ import Layout from '../layouts/Layout.astro';
         overflow: hidden;
         background-color: #fff;
         transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        height: 100%;
         display: flex;
         flex-direction: column;
-        margin-bottom: 20px;
+        height: 100%;
     }
     
     .card:hover {
@@ -83,35 +77,40 @@ import Layout from '../layouts/Layout.astro';
     }
     
     .card-image {
-        width: 100%;
-        height: 260px;
+        width: 300px;
+        height: 160px;
         object-fit: cover;
+        object-position: center;
         display: block;
         border-bottom: 1px solid #e0e0e0;
+        flex-shrink: 0;
+        margin: 0 auto;
     }
     
     .card-content {
-        padding: 15px;
+        padding: 8px 12px 12px 12px;
         flex-grow: 1;
+        display: flex;
+        flex-direction: column;
     }
     
     .card-title {
         margin-top: 0;
-        margin-bottom: 8px;
-        font-size: 1.15em;
+        margin-bottom: 6px;
+        font-size: 1.0em;
     }
     
     .card-description {
-        font-size: 0.9em;
         color: #666;
         margin-bottom: 0;
+        font-size: 0.8em;
     }
-    
+
     .tools-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-        max-width: 1200px;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 16px;
+        max-width: 900px;
         margin: 0 auto;
         padding: 20px;
     }
