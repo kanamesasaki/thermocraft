@@ -24,7 +24,7 @@ $$
 \end{equation}
 $$
 
-![point-distribution-1](./point-distribution-1.svg)
+![point-distribution-1](../figures/point-distribution-1.svg)
 _Figure 1: Point Distribution on a Rectangle._
 
 ## Triangle
@@ -33,7 +33,7 @@ For a triangle, one simple approach is to calculate the point in the same way as
 To ensure the points are inside the triangle, the sum of the two random values $(q_1, q_2)$ should be less than or equal to 1.
 If the sum exceeds 1, the values should be discarded, and new random values should be generated until a valid combination is obtained.
 
-![point-distribution-2](./point-distribution-2.svg)
+![point-distribution-2](../figures/point-distribution-2.svg)
 _Figure 2: Point Distribution on a Triangle._
 
 ## Cylindrical Surface
@@ -53,7 +53,7 @@ $$
 \end{gather}
 $$
 
-![point-distribution-3](./point-distribution-3.svg)
+![point-distribution-3](../figures/point-distribution-3.svg)
 _Figure 3: Point Distribution on a Cylindrical Surface._
 
 ## Disc
@@ -84,7 +84,7 @@ $$
 \end{equation}
 $$
 
-![point-distribution-4](./point-distribution-4.svg)
+![point-distribution-4](../figures/point-distribution-4.svg)
 _Figure 4: Point Distribution on a Disk._
 
 ## Spherical Surface
@@ -118,7 +118,7 @@ $$
 \end{equation}
 $$
 
-![point-distribution-5](./point-distribution-5.svg)
+![point-distribution-5](../figures/point-distribution-5.svg)
 _Figure 5: Point Distribution on a Spherical Surface._
 
 ## Cone
@@ -153,7 +153,7 @@ $$
 \end{equation}
 $$
 
-![point-distribution-6](./point-distribution-6.svg)
+![point-distribution-6](../figures/point-distribution-6.svg)
 _Figure 6: Point Distribution on a Cone._
 
 ## Parabolic Surface
@@ -161,7 +161,7 @@ _Figure 6: Point Distribution on a Cone._
 We consider a parabolic surface as shown in Figure 7.
 The vertex of the parabolic surface is at the coordinate origin, and the axis of the parabolic surface aligns with the vertical axis of the coordinate system.
 
-![point-distribution-7](./point-distribution-7.svg)
+![point-distribution-7](../figures/point-distribution-7.svg)
 _Figure 7: Point Distribution on a Parabolic Surface._
 
 The relationship between the radius $r$ and the height $h$ is expressed by

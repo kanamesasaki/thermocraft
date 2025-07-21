@@ -12,7 +12,7 @@ tags: ['thermal']
 In this article, we will derive analytical view factor expressions for an arbitrary triangle from a plate element.
 We describe the disk geometry and relative position with respect to the plate element by parameters $(R, h, \omega)$ as shown in Figure 1.
 
-![disk-viewfactor-1](./disk-viewfactor-1.svg)
+![disk-viewfactor-1](../figures/disk-viewfactor-1.svg)
 _Figure 1: Geometrical Configuration of a Disk and a Plate Element for View Factor Evaluation._
 
 ## View Factor Evaluation based on the Area Integration

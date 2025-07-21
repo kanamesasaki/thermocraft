@@ -46,7 +46,7 @@ $$
 \end{equation}
 $$
 
-![knudsen-number-1](./knudsen-number-1.svg)
+![knudsen-number-1](../figures/knudsen-number-1.svg)
 _Figure 1: Total Collision Cross-Section of Monoatomic Molecules._
 
 In other words, the left side of Eq. (2) indicates the volume of the region swept by the motion of a molecule, and the right side indicates the volume allocated to a molecule.

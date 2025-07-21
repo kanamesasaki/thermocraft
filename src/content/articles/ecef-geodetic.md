@@ -26,7 +26,7 @@ b_\oplus \sin\varphi_\mathrm{rd} \end{array} \right]
 \end{gather}
 $$
 
-![ecef-geodetic-1](./ecef-geodetic-1.svg)
+![ecef-geodetic-1](../figures/ecef-geodetic-1.svg)
 _Figure 1: Spheroidal Earth Geometry and Geodetic Coordinate Parameters._
 
 On the other hand, $\bm{r}_\mathrm{site}$ can be described as Eq. (2), and it should be possible to write $r_\mathrm{site}$ as a function of $\varphi_\mathrm{gc}$.

@@ -27,7 +27,7 @@ v = (-1)^S \times 2^{E-bias} \times (1 + 2^{1-p} \times T)
 \end{equation}
 $$
 
-![floating-point-error-1](./floating-point-error-1.svg)
+![floating-point-error-1](../figures/floating-point-error-1.svg)
 _Figure 1: Structure of IEEE 754 floating-point format, PI in 32-bit floating point number as an example._
 
 For typical floating point formats in 16, 32, 64, or 128 bits, the corresponding parameters are specified by the following table.

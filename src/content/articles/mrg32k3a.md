@@ -17,7 +17,7 @@ Basically, random number generation (RNG) algorithms sequentially generate value
 The simplest approach is that each computation thread first skips ahead to different points in the sequence, and then generates values one by one from there (Figure 1).
 To achieve this, we need an efficient skip algorithm as well as an algorithm for sequentially generating values.
 
-![mrg32k3a-1](./mrg32k3a-1.svg)
+![mrg32k3a-1](../figures/mrg32k3a-1.svg)
 \_Figure 1: Idea of Parallel Random Number Generation.
 
 In this article, we introduce one of the common RNG algorithms for parallel computation: MRG32k3a.
