@@ -1,10 +1,10 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import { formatDate } from '../utils/date';
-import { useTranslations, getCollectionName } from '../utils/i18n';
+import { formatDate } from '../../utils/date';
+import { useTranslations, getCollectionName } from '../../utils/i18n';
 
-const lang = 'en';
+const lang = 'ja';
 const t = useTranslations(lang);
 const posts = (await getCollection(getCollectionName(lang))).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -42,15 +42,15 @@ const allTags = [...new Set(posts.flatMap(post => post.data.tags || []))].sort()
       <div class="mb-2 text-sm font-medium">Filter by tags:</div>
       <div class="flex flex-wrap gap-2">
         <button
-          class="tag-button active py-1 px-3 text-xs rounded-full bg-blue-600 text-white dark:bg-blue-700"
-          data-tag="all"
+          class="tag-button px-3 py-1 text-sm rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-600"
+          data-tag=""
         >
           {t('filter.all')}
         </button>
         {
           allTags.map(tag => (
             <button
-              class="tag-button py-1 px-3 text-xs rounded-full bg-slate-200 dark:bg-slate-700"
+              class="tag-button px-3 py-1 text-sm rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-600"
               data-tag={tag}
             >
               {tag}

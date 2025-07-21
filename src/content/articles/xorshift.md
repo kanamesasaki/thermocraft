@@ -1,10 +1,10 @@
 ---
-title: "Xorshift Random Number Generator"
-description: "Xorshift is one of the simplest and high-speed random number generator (RNG) algorithms. In this article, we explore the concept of Xorshift, and implement Rust code for searching valid Xorshift parameters for 32-bit binary."
+title: 'Xorshift Random Number Generator'
+description: 'Xorshift is one of the simplest and high-speed random number generator (RNG) algorithms. In this article, we explore the concept of Xorshift, and implement Rust code for searching valid Xorshift parameters for 32-bit binary.'
 pubDate: 2025-06-01
 updatedDate: 2025-06-04
-heroImage: ""
-tags: ["programming", "numerical analysis"]
+heroImage: ''
+tags: ['programming', 'numerical analysis']
 ---
 
 ## Introduction

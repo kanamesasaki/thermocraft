@@ -1,10 +1,10 @@
 ---
-title: "Transformation of ECEF Coordinates to Geodetic Coordinates"
-description: "The transformation from ECEF (Earth Centered Earth Fixed) coordinates to geodetic coordinates is a well-known problem in geodesy. For the realistic transformation, the Earth should be approximated by a spheroid, and the transformation in this case is not trivial."
+title: 'Transformation of ECEF Coordinates to Geodetic Coordinates'
+description: 'The transformation from ECEF (Earth Centered Earth Fixed) coordinates to geodetic coordinates is a well-known problem in geodesy. For the realistic transformation, the Earth should be approximated by a spheroid, and the transformation in this case is not trivial.'
 pubDate: 2025-05-26
 updatedDate: 2025-05-30
-heroImage: ""
-tags: ["astrodynamics"]
+heroImage: ''
+tags: ['astrodynamics']
 ---
 
 The transformation from ECEF (Earth Centered Earth Fixed) coordinates to geodetic coordinates is a well-known problem in geodesy.

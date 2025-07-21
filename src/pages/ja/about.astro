@@ -1,8 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { useTranslations } from '../utils/i18n';
+import Layout from '../../layouts/Layout.astro';
+import { useTranslations } from '../../utils/i18n';
 
-const t = useTranslations('en');
+const t = useTranslations('ja');
 ---
 
 <Layout
@@ -12,19 +12,15 @@ const t = useTranslations('en');
   <h1 class="text-3xl font-bold mb-6">{t('about.title')}</h1>
 
   <div class="prose prose-slate dark:prose-invert lg:prose-lg max-w-none">
-    <p>
-      ThermoCraft is a technical blog featuring in-depth articles on thermal engineering, aerospace
-      engineering, numerical analysis, and programming.
-    </p>
+    <p>ThermoCraftは、熱工学、宇宙工学、数値解析に関する記事を特集する技術ブログです。</p>
 
     <p>
-      The content provided on this blog is for educational and informational purposes. While we
-      strive for accuracy, please verify calculations and methods independently for your specific
-      applications.
+      記事の内容は正確性を期すよう努めていますが、個別の用途に適用する前に、計算や手法を独自に検証するようお願いいたします。
+      記事の内容により損害や問題が発生した場合、当方は一切の責任を負いませんのでご了承ください。
     </p>
 
     <h2>Related Tools & Services</h2>
-    <p>Explore our other engineering tools and resources:</p>
+    <p>その他に公開している、宇宙機の熱設計に関連するツールをご紹介します。</p>
 
     <div class="tools-grid">
       <!-- TASIndex Card -->
@@ -44,8 +40,7 @@ const t = useTranslations('en');
           <div class="card-content">
             <h3 class="card-title">TASIndex - Spacecraft Thermal Analysis Database</h3>
             <p class="card-description">
-              A comprehensive database of spacecraft thermal analysis information and software for
-              flight missions.
+              宇宙機熱解析の情報と使用されているソフトウェアの包括的なデータベース。
             </p>
           </div>
         </div>
@@ -63,8 +58,7 @@ const t = useTranslations('en');
           <div class="card-content">
             <h3 class="card-title">Psychroid - Psychrometric Chart Calculator</h3>
             <p class="card-description">
-              Interactive psychrometric chart calculator for HVAC engineers. Calculate and visualize
-              air properties, process flows, and energy requirements.
+              HVAC技術者向けのインタラクティブな湿り空気線図。湿り空気の状態変化を計算し、湿り空気線図上に可視化します。
             </p>
           </div>
         </div>
@@ -82,8 +76,7 @@ const t = useTranslations('en');
           <div class="card-content">
             <h3 class="card-title">View Factor Calculator</h3>
             <p class="card-description">
-              Radiation view factors (configuration factors) for different geometrical
-              configurations are calculated by the analytical formula and Monte Carlo method.
+              形態係数計算ツール。複数の幾何形状に対して、形態係数の解析解およびモンテカルロ法による数値解を提供します。
             </p>
           </div>
         </div>
@@ -92,10 +85,10 @@ const t = useTranslations('en');
 
     <h2>Contact</h2>
     <p>
-      For comments, questions, or suggestions regarding the content, please feel free to send an
-      email to <a href="mailto:support@thermocraft.space" class="underline hover:no-underline"
-        >support@thermocraft.space</a
-      >.
+      記事の内容に誤り等ございましたら、こちらのメールアドレスまでご連絡ください：<a
+        href="mailto:support@thermocraft.space"
+        class="underline hover:no-underline">support@thermocraft.space</a
+      >
     </p>
   </div>
 </Layout>

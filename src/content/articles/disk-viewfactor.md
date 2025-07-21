@@ -1,10 +1,10 @@
 ---
-title: "Disk View Factor from a Plate Element"
-description: "Analytical derivation of a disk view factor from a plate element, using both area integration and line integration approaches."
+title: 'Disk View Factor from a Plate Element'
+description: 'Analytical derivation of a disk view factor from a plate element, using both area integration and line integration approaches.'
 pubDate: 2025-06-03
 updatedDate: 2025-06-13
-heroImage: ""
-tags: ["thermal"]
+heroImage: ''
+tags: ['thermal']
 ---
 
 ## Introduction

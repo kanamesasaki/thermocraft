@@ -1,21 +1,44 @@
 ---
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../utils/i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const navItems = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' }
+  { label: t('nav.home'), href: getLocalizedPath('/', lang) },
+  { label: t('nav.about'), href: getLocalizedPath('/about', lang) },
 ];
 ---
 
 <nav class="mb-10">
   <div class="flex items-center justify-between py-4">
-    <a href="/" class="text-xl font-bold">ThermoCraft</a>
-    <ul class="flex space-x-8">
-      {navItems.map(item => (
-        <li>
-          <a href={item.href} class="hover:text-blue-600 dark:hover:text-blue-400">
-            {item.label}
-          </a>
-        </li>
-      ))}
-    </ul>
+    <a href={getLocalizedPath('/', lang)} class="text-xl font-bold">{t('site.title')}</a>
+    <div class="flex items-center space-x-8">
+      <ul class="flex space-x-8">
+        {
+          navItems.map(item => (
+            <li>
+              <a href={item.href} class="hover:text-blue-600 dark:hover:text-blue-400">
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="flex space-x-2 text-sm">
+        <a
+          href={Astro.url.pathname.replace(/^\/ja/, '') || '/'}
+          class={`px-2 py-1 rounded ${lang === 'en' ? 'bg-blue-600 text-white' : 'text-gray-600 hover:text-blue-600'}`}
+        >
+          EN
+        </a>
+        <a
+          href={`/ja${Astro.url.pathname === '/' ? '' : Astro.url.pathname}`}
+          class={`px-2 py-1 rounded ${lang === 'ja' ? 'bg-blue-600 text-white' : 'text-gray-600 hover:text-blue-600'}`}
+        >
+          JA
+        </a>
+      </div>
+    </div>
   </div>
 </nav>

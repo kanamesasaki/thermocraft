@@ -11,27 +11,27 @@ interface Props {
   tags?: string[];
 }
 
-const { 
-  title, 
-  description, 
+const {
+  title,
+  description,
   image = '/og-image.png',
   canonicalURL = Astro.url.href,
-  tags
+  tags,
 } = Astro.props;
 
 // Site configuration
 const siteConfig = {
   siteUrl: 'https://thermocraft.space',
   title: 'ThermoCraft',
-}
+};
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
-    {tags && <meta name="keywords" content={tags.join(", ")} />}
+    {tags && <meta name="keywords" content={tags.join(', ')} />}
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="generator" content={Astro.generator} />
@@ -39,50 +39,45 @@ const siteConfig = {
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
-    
+
     <!-- RSS Feed -->
     <link rel="alternate" type="application/rss+xml" title="ThermoCraft RSS Feed" href="/rss.xml" />
-    
+
     <!-- Open Graph / Facebook Meta Tags -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(image, siteConfig.siteUrl).toString()} />
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonicalURL} />
-    <meta
-      name="twitter:title"
-      content={title}
-    />
-    <meta
-      name="twitter:description"
-      content={description}
-    />
-    <meta
-      name="twitter:image"
-      content={new URL(image, siteConfig.siteUrl).toString()}
-    />
-    
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, siteConfig.siteUrl).toString()} />
+
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NR7TMX1P1S"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NR7TMX1P1S"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
-      gtag("js", new Date());
-      gtag("config", "G-NR7TMX1P1S", {
-        cookie_flags: "SameSite=None;Secure",
-        consent: "default",
+      gtag('js', new Date());
+      gtag('config', 'G-NR7TMX1P1S', {
+        cookie_flags: 'SameSite=None;Secure',
+        consent: 'default',
       });
     </script>
-    
+
     <!-- KaTeX CSS for math equation rendering -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+      integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn"
+      crossorigin="anonymous"
+    />
   </head>
   <body class="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-50">
     <div class="max-w-4xl mx-auto px-4 py-8">

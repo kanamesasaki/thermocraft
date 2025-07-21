@@ -10,54 +10,61 @@ interface Props {
   updatedDate?: Date;
   heroImage?: string;
   tags?: string[];
+  slug?: string;
 }
 
-const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, tags, slug } = Astro.props;
 
-// Extract slug from URL for related articles
-const currentSlug = Astro.url.pathname.split('/').filter(Boolean).pop() || '';
+// Extract slug from URL or use provided slug for related articles
+const currentSlug = slug || Astro.url.pathname.split('/').filter(Boolean).pop() || '';
 
 // Generate structured data for the article
 const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": title,
-  "description": description,
-  "datePublished": pubDate.toISOString(),
-  "dateModified": (updatedDate || pubDate).toISOString(),
-  "author": {
-    "@type": "Person",
-    "name": "K. Sasaki"
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description: description,
+  datePublished: pubDate.toISOString(),
+  dateModified: (updatedDate || pubDate).toISOString(),
+  author: {
+    '@type': 'Person',
+    name: 'K. Sasaki',
   },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": Astro.url.href
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': Astro.url.href,
   },
-  ...(heroImage && { "image": new URL(heroImage, "https://thermocraft.space").toString() }),
-  ...(tags && { "keywords": tags.join(", ") })
+  ...(heroImage && { image: new URL(heroImage, 'https://thermocraft.space').toString() }),
+  ...(tags && { keywords: tags.join(', ') }),
 };
 ---
 
 <Layout title={title} description={description} image={heroImage} tags={tags}>
   <!-- Structured Data for SEO -->
-  <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
-  
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
   <article>
-    {heroImage && <img src={heroImage} alt="" class="w-full aspect-video object-cover rounded-lg mb-6" />}
+    {
+      heroImage && (
+        <img src={heroImage} alt="" class="w-full aspect-video object-cover rounded-lg mb-6" />
+      )
+    }
     <h1 class="font-bold text-3xl md:text-4xl mb-2">{title}</h1>
     <div class="text-gray-500 dark:text-gray-400 mb-8">
       <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
-      {updatedDate && (
-        <div>
-          <span>Last updated: </span>
-          <time datetime={updatedDate.toISOString()}>{formatDate(updatedDate)}</time>
-        </div>
-      )}
+      {
+        updatedDate && (
+          <div>
+            <span>Last updated: </span>
+            <time datetime={updatedDate.toISOString()}>{formatDate(updatedDate)}</time>
+          </div>
+        )
+      }
     </div>
     <div class="prose prose-slate dark:prose-invert lg:prose-lg max-w-none">
       <slot />
     </div>
-    
+
     <!-- Related Articles -->
     <RelatedArticles currentSlug={currentSlug} currentTags={tags} />
   </article>

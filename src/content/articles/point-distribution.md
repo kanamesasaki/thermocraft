@@ -1,10 +1,10 @@
 ---
-title: "Uniformly Distribute Points on Primitive Shapes"
-description: "Mathematical methods for uniformly distributing points on primitive geometric surfaces including rectangles, triangles, cylinders, discs, spheres, cones, and parabolic surfaces for ray tracing applications."
+title: 'Uniformly Distribute Points on Primitive Shapes'
+description: 'Mathematical methods for uniformly distributing points on primitive geometric surfaces including rectangles, triangles, cylinders, discs, spheres, cones, and parabolic surfaces for ray tracing applications.'
 pubDate: 2025-05-30
 updatedDate: 2025-05-30
-heroImage: ""
-tags: ["thermal", "numerical analysis"]
+heroImage: ''
+tags: ['thermal', 'numerical analysis']
 ---
 
 When evaluating the radiative heat exchange, one of the common methodologies is to use ray tracing.

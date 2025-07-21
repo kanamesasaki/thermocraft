@@ -1,10 +1,10 @@
 ---
-title: "MRG32k3a Random Number Generator on GPU for Web Applications"
-description: "MRG32k3a is one of the common algorithms for random number generation for parallel computing. In this article, we will implement the MRG32k3a algorithm on GPUs using WebGL2, with skip-ahead functionality."
+title: 'MRG32k3a Random Number Generator on GPU for Web Applications'
+description: 'MRG32k3a is one of the common algorithms for random number generation for parallel computing. In this article, we will implement the MRG32k3a algorithm on GPUs using WebGL2, with skip-ahead functionality.'
 pubDate: 2025-06-05
 updatedDate: 2025-06-05
-heroImage: ""
-tags: ["numerical analysis", "programming"]
+heroImage: ''
+tags: ['numerical analysis', 'programming']
 ---
 
 ## Introduction

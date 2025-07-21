@@ -1,10 +1,10 @@
 ---
-title: "Proving Runge-Kutta Method (RK4) is 4th Order"
-description: "If you want to calculate the time evolution of ODE, one of the most common and simple methods is the Runge-Kutta method (RK4). In this article, we will confirm that RK4 achieves fourth-order accuracy."
+title: 'Proving Runge-Kutta Method (RK4) is 4th Order'
+description: 'If you want to calculate the time evolution of ODE, one of the most common and simple methods is the Runge-Kutta method (RK4). In this article, we will confirm that RK4 achieves fourth-order accuracy.'
 pubDate: 2025-05-29
 updatedDate: 2025-05-29
-heroImage: ""
-tags: ["numerical analysis"]
+heroImage: ''
+tags: ['numerical analysis']
 ---
 
 ## Update Formula of Runge-Kutta Method

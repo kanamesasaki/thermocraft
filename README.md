@@ -34,11 +34,11 @@ docker-compose up
 
 ```markdown
 ---
-title: "Your Post Title"
-description: "A brief description of your post"
+title: 'Your Post Title'
+description: 'A brief description of your post'
 pubDate: 2023-05-01
-heroImage: "/images/your-image.jpg" # Optional
-tags: ["tag1", "tag2"] # Optional
+heroImage: '/images/your-image.jpg' # Optional
+tags: ['tag1', 'tag2'] # Optional
 ---
 
 Your markdown content here...
