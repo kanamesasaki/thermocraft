@@ -1,24 +1,24 @@
 ---
-title: 'Disk View Factor from a Plate Element'
-description: 'Analytical derivation of a disk view factor from a plate element, using both area integration and line integration approaches.'
-pubDate: 2025-06-03
-updatedDate: 2025-06-13
+title: '微小表面から円板への形態係数(View Factor)'
+description: '微小表面から円板への形態係数(View Factor)の解析解を、面積分による方法と線積分による方法の、２つのアプローチで導出する。'
+pubDate: 2025-07-21
+updatedDate: 2025-07-21
 heroImage: ''
 tags: ['thermal']
 ---
 
 ## Introduction
 
-In this article, we will derive analytical view factor expressions for a disk from a plate element.
-We describe the disk geometry and relative position with respect to the plate element by parameters $(R, h, \omega)$ as shown in Figure 1.
-The actual view factor values can be calculated by our online tool: [View Factor Calculator](https://sterad.net/).
+今回は、微小表面から円板へのView Factor例に、View Factorの解析解を導出する方法について解説する。
+微小表面と円板の形状、および位置関係は以下のFigure 1のように、$(R,~h,~\omega)$によって表されるものとする。
+実際のView Factorの値は、オンラインツール[View Factor Calculator](https://sterad.net/)を使用して計算することができる。
 
 ![disk-viewfactor-1](../figures/disk-viewfactor-1.svg)
 _Figure 1: Geometrical Configuration of a Disk and a Plate Element for View Factor Evaluation._
 
-## View Factor Evaluation based on the Area Integration
+## 面積分によるView Factorの計算
 
-A disk view factor from a plate element can be derived, by executing the area integration based on the view factor definition.
+定義どおり真面目に積分してやればView Factorを計算することが出来る。
 
 $$
 \begin{align}
@@ -31,7 +31,7 @@ F &= \int_A \frac{\cos \Omega \cos \Lambda}{\pi S^2} dA
 \end{align}
 $$
 
-The parameter transformations for $\cos\Omega$ and $\cos\Lambda$ are performed as shown in Eqs. (2) and (3).
+ただし、$\cos \Omega$と$\cos \Lambda$の変形はEqs. (2)および(3)のように行っている。
 
 $$
 \begin{align}
@@ -49,14 +49,13 @@ h \tan \Lambda = r, \quad
 \end{equation}
 $$
 
-The calculation up to this point is the case where the entire disk is visible from the plate element.
-If the orientation of the plate element becomes more inclined (i.e. $\omega > \arctan \frac{h}{R}$), a part of the disk goes out of the view from the plate element.
-In this case, the area integration must be performed only for the visible part of the disk, which significantly complicates the calculation.
+ここまでに計算したのは、円板全体が見えている場合だ。もし微小表面の方向がもう少し倒れてくる（$\omega > \arctan \frac{h}{R}$）と、円板の一部が視野の水平線の下に落ち込んで見えなくなる。
+このような場合、円板の見えている部分のみについて面積分しないといけないので、計算が一気に煩雑になる。
 
 ![disk-viewfactor-2](../figures/disk-viewfactor-2.svg)
 _Figure 2: Disk View Factor Calculation by Area Integration._
 
-To execute the area integration correctly, we divide the disk into two parts: $\textcircled{1}$ sector of the disk ($0 \le \beta \le \beta_0$), and $\textcircled{2}$ triangular area.
+積分を実行するために、積分領域を2つに分割する。1つ目は円弧状の領域（$0 \le \beta \le \beta_0$）。2つ目は三角形状の領域である。
 
 $$
 \begin{align}
@@ -68,7 +67,7 @@ $$
 \end{align}
 $$
 
-For the parameter transformations of $\cos \Omega$ and $\cos \Lambda$ in the triangular area, we applied Eqs. (4) and (5).
+三角形部分での、$\cos \Omega$と$\cos \Lambda$の変形には次の関係を用いた。
 
 $$
 \begin{align}
@@ -85,9 +84,9 @@ h \tan \Lambda = \sqrt{x^2 + y^2}, \quad
 \end{gather}
 $$
 
-Now, we evaluate each integral term in Eq. (4).
+ここから順番に各項の積分を求めていく。
 
-First term:
+1項目：
 
 $$
 \begin{align}
@@ -104,7 +103,7 @@ $$
 \end{align}
 $$
 
-Second term:
+2項目：
 
 $$
 \begin{align}
@@ -115,7 +114,7 @@ $$
 \end{align}
 $$
 
-Third term:
+3項目：
 
 $$
 \begin{align}
@@ -128,9 +127,9 @@ $$
 \end{align}
 $$
 
-Fourth term:
+4項目：
 
-First, we perform integration in the $Y$ direction.
+まずY方向に積分する。
 
 $$
 \begin{align}
@@ -147,7 +146,7 @@ $$
 \end{align}
 $$
 
-The parameter transformation has been performed as shown in Eqs. (11) and (12).
+置換積分は以下のように行った。
 
 $$
 \begin{align}
@@ -156,7 +155,7 @@ $$
 \end{align}
 $$
 
-Then, we integrate two terms in Eq. (10) in the $X$ direction.
+積分結果を今度はX方向に積分する。
 
 $$
 \begin{align}
@@ -177,7 +176,7 @@ $$
 \end{align}
 $$
 
-Finally, the fourth term can be expressed as follows:
+結局4項目の積分結果は次のようになった。
 
 $$
 \begin{align}
@@ -191,17 +190,21 @@ $$
 In this case, we managed to complete the integration, thanks to the shape simplicity of the disk.
 However, performing the double integration is highly complex, and it would be very difficult to obtain a closed-form solution for more complicated geometries.
 
-## View Factor Evaluation based on the Line Integration
+この例では、対象が円板といういい形をしているので、なんとか計算できたものの、2重積分しなければいけないというのは非常に厄介だ。
+対象がもうちょっと変な形をしていたら、初頭関数を用いた解析的な表現を見つけることはほとんど不可能になってくる。
 
-In some cases, the area integral can be transformed into a line integral using Stokes' theorem.
-This is not always possible, but it can be applied to the calculation of the view factor.
-Stokes' theorem is expressed as shown in Eq. (16) as vector form, and Eq. (17) as explicit parametric form.
+## 線積分によるView Factorの計算
+
+面積分はストークスの定理を用ると、対象の面を取り囲むような線積分（Contour Integration）の形に置き換えられることがある。
+これはいつでもできるわけではないが、View Factorの計算にはこの手法を適用できる。まずストークスの定理を確認しておこう。
 
 $$
 \begin{equation}
 \iint_{\Omega} \nabla \times \boldsymbol{F} \cdot d\boldsymbol{s} = \int_{\partial \Omega} \boldsymbol{F} \cdot d \boldsymbol{l}
 \end{equation}
 $$
+
+各パラメタを明示的に書くと次のようになる。
 
 $$
 \begin{align}
@@ -212,7 +215,7 @@ $$
 \end{align}
 $$
 
-The view factor in question is expressed as shown in Eq. (18).
+さて、今求めたいView Factorは次のように表される。
 
 $$
 \begin{align}
@@ -223,7 +226,7 @@ F &= \int_A \frac{\cos \psi \cos \lambda}{\pi S^2} dA
 \end{align}
 $$
 
-Comparing the expressions in Eqs. (17) and (18), the following relationships must hold for the application of Stokes' theorem.
+これらの式を見比べると、ストークスの定理を用いるには、$P,Q,R$が次の関係を満たせばよいことが分かる。
 
 $$
 \begin{align}
@@ -233,7 +236,7 @@ $$
 \end{align}
 $$
 
-While this choice of $P$, $Q$, and $R$ might appear arbitrary, it conveniently fulfills the conditions.
+天下り的だが、このように$P,Q,R$をとるとうまいこと条件が満たされる。
 
 $$
 \begin{align*}
@@ -243,7 +246,7 @@ R = \frac{-l_1 y + m_1 x}{2 \pi S^2}
 \end{align*}
 $$
 
-As an example, we can verify the first condition in Eq. (19) as shown in Eqs. (20)--(22).
+本当に満たされているか、ひとつ確認してみよう。
 
 $$
 \begin{align}
@@ -260,7 +263,7 @@ $$
 \end{align}
 $$
 
-Since we have specified appropriate $P$, $Q$, and $R$, we can express the view factor as a line integral.
+適切な$P,Q,R$が見つかったので、View Factorを線積分で表すことができる。
 
 $$
 \begin{align}
@@ -286,8 +289,8 @@ $$
 ![disk-viewfactor-3](../figures/disk-viewfactor-3.svg)
 _Figure 3: Disk View Factor Calculation by Line Integration._
 
-Now, we are ready to perform the view factor calculation by the line integral.
-The vector $(l_2, m_2, n_2)$ representing the orientation of the disk is directed downward, and we will integrate in a clockwise direction with respect to this vector.
+これで、View Factorを実際に計算する準備が整った。
+ひとつ注意点として、円板の向きを表すベクトル$(l_2, m_2, n_2)$は下向きで、このベクトルに関して右回りになるように積分する。
 
 $$
 \begin{align}
@@ -305,7 +308,7 @@ $$
 \end{align}
 $$
 
-With this approach, we have successfully derived the view factor expression for a disk from a plate element with reduced complexity.
+非常に煩雑だった面積分の計算が、線積分に置き換えることでかなり簡略化されたのが分かる。
 
 ## Reference
 
