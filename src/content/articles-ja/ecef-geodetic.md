@@ -1,21 +1,21 @@
 ---
-title: 'Transformation of ECEF Coordinates to Geodetic Coordinates'
-description: 'The transformation from ECEF (Earth Centered Earth Fixed) coordinates to geodetic coordinates is a well-known problem in geodesy. For the realistic transformation, the Earth should be approximated by a spheroid, and the transformation in this case is not trivial.'
-pubDate: 2025-05-26
-updatedDate: 2025-05-30
+title: 'ECEF座標から測地（geodetic）座標への変換'
+description: 'ECEF座標から測地座標への変換は測地学における古典的な問題だ。現実的な変換行うには地球を回転楕円体で近似する必要があり、この場合の変換は自明ではない。この記事では、ECEF座標から測地座標への変換の基礎と、Vermeilleによる解析的な手法について紹介する。'
+pubDate: 2025-07-22
+updatedDate: 2025-07-22
 heroImage: ''
 tags: ['astrodynamics']
 ---
 
-The transformation from ECEF (Earth Centered Earth Fixed) coordinates to geodetic coordinates is a well-known problem in geodesy.
-The rough transformation could be done by using $\arctan$ function, assuming that the Earth is a sphere.
-However, for the realistic transformation, the Earth should be approximated by a spheroid, and the transformation in this case is not trivial.
+XYZ座標の形で表された人工衛星の位置を、緯度・経度・高度に変換したいとき、ざっくりでよければ地球を球体と仮定してarctanを使って求めることはできる。
+ただ、もう少しきちんと求める場合には、地球を回転楕円体として考えるべきで、この場合の変換はそれほど簡単ではない。
+ECEF（Earth Centered Earth Fixed）座標から測地（geodetic）座標への効率的な変換方法の開発は、多くの研究者の興味を集めてきたトピックで、何十年も前から最近まで多くの論文が発表されている。
 
-## ECEF Coordinate System and Geodetic Coordinate System
+## ECEF座標と測地（geodetic）座標の関係
 
-Let us first think about a point $\bm{r}_\mathrm{site}$ on the Earth surface.
-The Earth is approximated by a spheroid, which is axi-symmetric around the Earth rotation axis and slightly squashed in the north-south direction.
-Thus, a point on the Earth surface can be described by Eq. (1).
+まず地球表面上の点$\boldsymbol{r}_\mathrm{site}$を式で表すことを考えよう。
+地球はおおよそ回転楕円体Spheroid（楕円体Ellipsoidのうち1軸に関しては軸対称なもの）で、地軸回りで対称、南北方向に少し押しつぶしたような形をしているので、以下のように表すことができる。
+ここで$\varphi_\mathrm{rd}$はreduced latitudeと呼ばれるもので、geodetic latitude $\varphi_\mathrm{gc}$ではないことに注意しよう。
 
 $$
 \begin{gather}
@@ -29,7 +29,7 @@ $$
 ![ecef-geodetic-1](../figures/ecef-geodetic-1.svg)
 _Figure 1: Spheroidal Earth Geometry and Geodetic Coordinate Parameters._
 
-On the other hand, $\bm{r}_\mathrm{site}$ can be described as Eq. (2), and it should be possible to write $r_\mathrm{site}$ as a function of $\varphi_\mathrm{gc}$.
+一方で、geodetic latitude $\varphi_\mathrm{gc}$を使って表すこともできるはずで、$r_\mathrm{site}$は何かしらの緯度の関数になる。
 
 $$
 \begin{gather}
@@ -40,7 +40,7 @@ r_\mathrm{site} \sin\varphi_\mathrm{gc} \end{array} \right]
 \end{gather}
 $$
 
-Comparing Eq. (1) and Eq. (2), the following relationship can be found betwen $\varphi_\mathrm{rd}$ and $\varphi_\mathrm{gc}$.
+これらの式を見比べると、$\varphi_\mathrm{rd}$と$\varphi_\mathrm{gc}$の間に以下の関係が得られる。
 
 $$
 \begin{gather}
@@ -48,8 +48,8 @@ $$
 \end{gather}
 $$
 
-The next step is to find the relationship between $\varphi_\mathrm{rd}$ and $\varphi_\mathrm{gd}$.
-The tangential directions at the point $\bm{r}_\mathrm{site}$ can be specified by differentiating $\bm{r}_\mathrm{site}$ with respect to $\varphi_\mathrm{rd}$ and $\lambda$.
+次に、$\varphi_\mathrm{rd}$と$\varphi_\mathrm{gd}$の関係を導く。
+$\boldsymbol{r}_\mathrm{site}$での接面の方向は、$\varphi_\mathrm{rd}$と$\lambda$について微分してやると分かる。
 
 $$
 \begin{align}
@@ -66,7 +66,7 @@ b_\oplus \cos\varphi_\mathrm{rd} \end{array} \right], \\
 \end{align}
 $$
 
-From the above equations, the normal direction at the point $\bm{r}_\mathrm{site}$ can be obtained by
+で、これをよく見ると、$\bm{r}_\mathrm{site}$での法線方向が分かる。
 
 $$
 \begin{gather}
@@ -78,7 +78,7 @@ R_\oplus \sin\varphi_\mathrm{rd}
 \end{gather}
 $$
 
-Based on the normal direction, the relationship between reduced latitude $\varphi_\mathrm{rd}$ and geodetic latitude $\varphi_\mathrm{gd}$ can be obtained.
+法線方向が分かると、reduced latitude $\varphi_\mathrm{rd}$とgeodetic latitude $\varphi_\mathrm{gd}$の関係を求めることができる。
 
 $$
 \begin{gather}
@@ -86,7 +86,7 @@ $$
 \end{gather}
 $$
 
-From Eq. (3) and Eq. (7), the geocentric latitude $\varphi_\mathrm{gc}$ can be described by using the geodetic latitude $\varphi_\mathrm{gd}$.
+式(3)および式(7)より、geocentric latitude $\varphi_\mathrm{gc}$はgeodetic latitude $\varphi_\mathrm{gd}$を用いて次のようにあらわされる。
 
 $$
 \begin{gather}
@@ -94,9 +94,10 @@ $$
 \end{gather}
 $$
 
-In this way, the transformation from geocentric parameters to geodetic parameters can be performed on the surface of the Earth.
-However, as we are interested in the transformation of the on-orbit satellite position $(x, y, z)$ to the geodetic parameters, some additional steps are required.
-Now, the goal is to describe $(x, y, z)$ with the geodetic parameters and then reversly solve the relation.
+これで、地表面でgeocentricなパラメタからgeodeticなパラメタへ変換することができた。
+ただ今知りたいのは、軌道上の点$(x,y,z)$からgeodeticなパラメタを求めることで、これにはもうひと手間いる。
+目標は$(x,y,z)$をgeodeticなパラメタのみで表して、逆に解くことである。
+そのためにradius of curvature in the prime vertical $C_\oplus$を$\varphi_\mathrm{gd}$を用いて表す。
 
 $$
 \begin{align}
@@ -108,8 +109,6 @@ $$
 \end{array} \right]
 \end{align}
 $$
-
-As $(x, y, z)$ coordinates can be described by Eq. (9), we should specify the parameters $C_\oplus$ and $S_\oplus$.
 
 $$
 \begin{align}
@@ -125,8 +124,8 @@ r_\mathrm{k}
 \end{align}
 $$
 
-In these equations, $\cos \varphi_\mathrm{rd}$ is still unknown.
-From the following relations, $\cos \varphi_\mathrm{rd}$ can be expressed by $\varphi_\mathrm{gd}$.
+上式で、$\cos \varphi_\mathrm{rd}$が未知となっているが、
+以下の関係式から、$\cos \varphi_\mathrm{rd}$は$\varphi_\mathrm{gd}$を用いて表すことができる。
 
 $$
 \begin{align}
@@ -136,7 +135,7 @@ $$
 \end{align}
 $$
 
-Then, $C_\oplus$ and $S_\oplus$ can be expressed by the following formula.
+最終的に、$C_\oplus$は次のように表される。
 
 $$
 \begin{align}
@@ -147,16 +146,18 @@ C_\oplus &= \frac{R_\oplus}{\cos\varphi_\mathrm{gd}} \frac{1}{\sqrt{\frac{b_\opl
 \end{align}
 $$
 
+$S_\oplus$も同様に整理できて、以下のように表される。
+
 $$
 \begin{equation}
 S_\oplus = \frac{R_\oplus(1-e_\oplus^2)}{\sqrt{1 - e_\oplus^2 \sin^2 \varphi_{\mathrm{gd}}}}
 \end{equation}
 $$
 
-## Numerical Transformation
+## 数値計算による変換
 
-As the relationship between geodetic coordinates and ECEF coordinates is clarified, we proceed to the actual transformation.
-The reference spheroid is WGS84, the shape of which is specified by the semi-major axis $R_\oplus$ and the flattening $f_\oplus$.
+ここで具体的な変換方法について考えてみよう。
+基準となる楕円体としてWGS84を用いることとし、これは長半径（semi-major axis）$R_\oplus$および扁平率（flattening）$f_\oplus$で表される。
 
 $$
 \begin{gather}
@@ -165,7 +166,7 @@ f_\oplus = \frac{1}{298.257223563}
 \end{gather}
 $$
 
-The other parameters are calculated as follows.
+その他のパラメタは次のように計算できる。
 
 $$
 \begin{align}
@@ -174,7 +175,7 @@ b_\oplus &= R_\oplus \sqrt{1-e_\oplus^2} = R_\oplus(1-f_\oplus) = 6356.752314245
 \end{align}
 $$
 
-The longitude is simply calculated by
+経度に関しては、特に問題なく次のように計算できる。
 
 $$
 \begin{gather}
@@ -182,9 +183,8 @@ $$
 \end{gather}
 $$
 
-Regarding the geodetic latitude and altitude, it seems difficult to find the explicit analytic solution.
-Thus, we try to find the solution by using a numerical method.
-If we know the geodetic latitude $\varphi_\mathrm{gd}$, the altitude $h_\mathrm{ellp}$ can be calculated by
+緯度と高度に関してはexplicitに解けなさそうなので、数値的に求めることを考えてみる。
+まず、仮に$\varphi_\mathrm{gd}$が分かっていた場合には、$h_\mathrm{ellp}$は簡単に決定できる。
 
 $$
 \begin{align}
@@ -195,7 +195,7 @@ h_\mathrm{ellp} &= \frac{z}{\sin\varphi_\mathrm{gd}} - S_\oplus
 \end{align}
 $$
 
-To make the above equations equal, we should find the geodetic latitude $\varphi_\mathrm{gd}$ which satisfies the following equation.
+これらが等しくなるように、以下の関係を満たす$\varphi_\mathrm{gd}$を数値的に求めればよい。
 
 $$
 \begin{gather}
@@ -209,8 +209,8 @@ $$
 \end{gather}
 $$
 
-For the initial value, we can use the geocentric latitude.
-As an example, the following python script shows the transformation from ECEF coordinates to geodetic coordinates.
+初期値はgeocentricなパラメタを用いることとして、
+例えばPythonで以下のようなスクリプトを書くと、実際にgeodetic latitudeを求めることができる。
 
 ```python
 # WGS84 parameters
@@ -245,16 +245,15 @@ def latitude_equation(x: np.ndarray, *args) -> np.ndarray:
     return args[2] - np.sqrt(args[0]**2 + args[1]**2) * np.tan(x) + eccentricity**2 * semimajor * np.sin(x) / np.sqrt(1 - eccentricity**2 * np.sin(x)**2)
 ```
 
-Now, we understand the basics of the conversion from ECEF coordinates to geodetic parameters.
-However, this numerical method requires a considerable amount of computation as the amount of data increases.
-Therefore, we would like to use a more efficient method to calculate the geodetic parameters.
+これでECEF座標からgeodeticなパラメタへの変換の基本は理解できた。
+ただこの方法で解を探すと、データ量が増えるにつれてかなりの計算量が必要になってしまうので、できればより効率的な方法が欲しくなってくる。
 
-## Vermeille's Method
+## Vermeilleの解析的な変換手法
 
-One of the more efficient methods is the method proposed by Vermeille [[2]](#reference).
-In this method, the solution can be obtained analytically, by using quite technical parameter transformations.
+より効率的な変換手法で、論文としてもよく引用されているものに、Vermeilleの手法がある[[2]](#reference)。
+この方法では、かなりアクロバットな変数の置き換えをすることで、解析的に解を求めることができる。
 
-First, we define the following variable $k > 0$.
+まず、次のような変数$k$を定義する。これは常に$k>0$となる。
 
 $$
 \begin{align}
@@ -263,7 +262,7 @@ $$
 \end{align}
 $$
 
-Next, we describe $C_\oplus$ by using $k$.
+この$k$を用いた関係式を作るために、$C_\oplus$を$k$で表す。
 
 $$
 \begin{align}
@@ -279,7 +278,7 @@ C_\oplus^2 &= \frac{R_\oplus^2}{(1 - e_\oplus^2 \sin^2\varphi_\mathrm{gd})} = R_
 \end{align}
 $$
 
-Using the above equation, we re-write $x^2 + y^2$.
+これらを用いて、$x^2+y^2$を書き換えていく。
 
 $$
 \begin{align}
@@ -297,7 +296,7 @@ $$
 \end{align}
 $$
 
-Now, we define the following variables $p$ and $q$.
+ここで、$p, q$を以下のようにおく。
 
 $$
 \begin{align}
@@ -305,9 +304,9 @@ p = \frac{x^2 + y^2}{R_\oplus^2}, \quad q = \frac{1-e_\oplus^2}{R_\oplus^2} z^2
 \end{align}
 $$
 
-Using these variables, we can formulate the 4th order polynomial equation (quartic equation) for $k$.
-In general, quartic equations can be solved analytically, such as by using Ferrari's method.
-Vermeille's method does not apply Ferrari's method directly, but uses some similar transformations to find the factorized form.
+これらを用いて、$k$について4次の代数方程式を作る。
+4次の代数方程式は一般に解くことが可能で、Ferrariの解法をはじめ様々な手法がある。
+ただ、Vermeilleはそれらの手法をそのまま用いるのではなく、ところどころに式変形のアイデアを取り入れて、因数分解していっている。
 
 $$
 \begin{align}
@@ -315,7 +314,7 @@ k^4 + 2e_\oplus^2 k^3 - (p+q-e_\oplus^4) k^2 - 2e_\oplus^2 q k - e_\oplus^4 q = 
 \end{align}
 $$
 
-Now, we introduce a new variable $u$. For any $u$, the following equation holds.
+ここで謎のパラメタ$u$を導入する。$u$が任意の値の場合について、次の式が成り立つ。
 
 $$
 \begin{align}
@@ -323,9 +322,10 @@ $$
 \end{align}
 $$
 
-In Eq. (33), the inside of $\left[ \cdots \right]$ is a quadratic polynomial with respect to $k$.
-If we require that discriminant of this part equals zero, the condition of Eq. (34) is obtained.
-If this condition is satisfied, the quadratic polynomial can be factorized into the form of $(\cdots)^2$, and then the entire equation can be factorized as well.
+カギ括弧の中身は$k$の2次方程式になっているが、
+これについて判別式がゼロになるように要求すると、以下の関係式が得られる。
+この式が満たされるときカギ括弧の中は$(\cdots)^2$の形で書けて、式全体が因数分解できることが分かる。
+形は少し異なるものの、謎パラメタを導入しつつ、判別式ゼロを要求することで、因数分解できる形にする、というのはFerrariの解法と類似している。
 
 $$
 \begin{align}
@@ -339,7 +339,7 @@ $$
 \end{align}
 $$
 
-Additionally, we introduce the following variables $r$ and $s$.
+さらに、変数$r, s$を以下のように置く。
 
 $$
 \begin{align}
@@ -347,7 +347,7 @@ r = \frac{p+q-e_\oplus^4}{6}, \quad s = e_\oplus^4 \frac{pq}{4r^3}
 \end{align}
 $$
 
-These variables are always positive, because
+ただし、これらの変数は常に正である。
 
 $$
 \begin{align}
@@ -356,7 +356,7 @@ p + q = \frac{x^2 + y^2}{R_\oplus^2} + \frac{(1-e_\oplus^2) z^2}{R_\oplus^2}
 \end{align}
 $$
 
-Then, the cubic equation with respect to $u/r$ can be obtained.
+これらを用いて、さらに式(35)の全体を$2r^3$で割ると以下ように$u/r$に関する3次方程式が得られる。
 
 $$
 \begin{align}
@@ -364,10 +364,9 @@ $$
 \end{align}
 $$
 
-We define $u/r$ as shown in Eq. (39), to obtain the equation with respect to $t$.
-In the range of $t > 0$, $1 + t +  1/t$ takes the minimum value of 3 at $t = 1$.
-When $t = 1$, the left-hand side of Eq. (40) becomes $-2s < 0$.
-Therefore, there should be one solution in the range of $0 < t < 1$, and another solution in the range of $t > 1$.
+ここで$u/r$を式(39)のように置いて、$t$の式に書き換える。$t>0$の範囲では、$t=1$で$1+t+\frac{1}{t}$は極小値3をとり、式(40)の左辺は$-2s$になる。
+$t$が動けば、$\frac{u}{r}$は増加し、$0<t<1$の範囲でひとつ、$t>1$の範囲でもひとつ解を持つはずだ。
+（ちなみに、相反方程式と呼ばれる形の代数方程式は、$x+\frac{1}{x}=t$という変形をすることで、うまく因数分解できる。ちょっと形は違うがその辺からインスピレーションを受けているのかもしれない。）
 
 $$
 \begin{align}
@@ -381,8 +380,7 @@ t^6 - 2(1+s)t^3 + 1 = 0
 \end{gather}
 $$
 
-Focusing on real values, the following two solutions can be found.
-As expected, one solution is in the range of $0 < t < 1$, and the other is in the range of $t > 1$.
+実際、$0<t<1$と$t>1$の範囲に以下のような解を見つけることができる。
 
 $$
 \begin{align}
@@ -391,9 +389,8 @@ t &= \sqrt[3]{1 + s \pm \sqrt{s(2+s)}}
 \end{align}
 $$
 
-Regardless of which solution is chosen, the value of $u/r$ will be the same.
-So we can choose whichever solution we like. For now, let us choose the solution with plus sign.
-The second term in Eq. (33) is expressed in the square form.
+で、いずれの$t$の解が得られても$\frac{u}{r}$の値は同じなので、どっちか好きな方を選べばよい。とりあえず、ここではプラスの方を選ぶことにしよう。
+これで、式(33)のカギ括弧内を2乗の形で表せるような$u$を求めることができた。
 
 $$
 \begin{align}
@@ -408,9 +405,8 @@ $$
 \end{align}
 $$
 
-The first bracket in Eq. (44) has no solution for $k>0$, because $v-u$, $v$, and $q$ are all positive.
-So we are interested in the second bracket.
-Since $u+v$ is positive, there is only one solution for $k>0$.
+式(44)のひとつ目の括弧内は、$v-u, v, q$がいずれも正なので、$k>0$に解は持たない。
+なので、興味があるのはふたつ目の括弧内の方である。$u+v$が正なので、$k>0$の解はひとつだけで、これは以下のように書ける。
 
 $$
 \begin{gather}
@@ -418,7 +414,7 @@ k = \sqrt{u+v+w^2} - w, \quad \mathrm{where} \quad w = e_\oplus^2\frac{u+v-q}{2v
 \end{gather}
 $$
 
-As $k$ has been determined, we can calculate the geodetic latitude $\varphi_\mathrm{gd}$ and the altitude $h_\mathrm{ellp}$.
+これで$k$が一意に求まったので、geodetic latitude $\varphi_\mathrm{gd}$も高度$h_\mathrm{ellp}$も求めることができる。
 
 $$
 \begin{equation}
@@ -434,8 +430,8 @@ h_\mathrm{ellp} = \frac{k+e_\oplus^2-1}{k}, \quad
 \end{equation}
 $$
 
-The original paper [[2]](#reference) lists the minimum equations required for the conversion.
-By writing a simple script based on these equations, we can convert from ECEF coordinates to geodetic parameters.
+元論文[[2]](#reference)には変換に最低限必要な式がリストアップされているので、
+それらをもとに簡単なスクリプトを書くと、ECEF座標からgeodeticなパラメタへの変換を実行できる。
 
 ```python
 # WGS84 parameters
