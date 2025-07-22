@@ -15,7 +15,7 @@ ECEF（Earth Centered Earth Fixed）座標から測地（geodetic）座標への
 
 まず地球表面上の点$\boldsymbol{r}_\mathrm{site}$を式で表すことを考えよう。
 地球はおおよそ回転楕円体Spheroid（楕円体Ellipsoidのうち1軸に関しては軸対称なもの）で、地軸回りで対称、南北方向に少し押しつぶしたような形をしているので、以下のように表すことができる。
-ここで$\varphi_\mathrm{rd}$はreduced latitudeと呼ばれるもので、geodetic latitude $\varphi_\mathrm{gc}$ではないことに注意しよう。
+ここで$\varphi_\mathrm{rd}$はreduced latitudeと呼ばれるもので、geocentric latitude $\varphi_\mathrm{gc}$ではないことに注意しよう。
 
 $$
 \begin{gather}
@@ -29,7 +29,7 @@ $$
 ![ecef-geodetic-1](../figures/ecef-geodetic-1.svg)
 _Figure 1: Spheroidal Earth Geometry and Geodetic Coordinate Parameters._
 
-一方で、geodetic latitude $\varphi_\mathrm{gc}$を使って表すこともできるはずで、$r_\mathrm{site}$は何かしらの緯度の関数になる。
+一方で、geocentric latitude $\varphi_\mathrm{gc}$を使って表すこともできるはずで、$r_\mathrm{site}$は何かしらの緯度の関数になる。
 
 $$
 \begin{gather}
