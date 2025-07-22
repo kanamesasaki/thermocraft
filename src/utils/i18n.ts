@@ -24,7 +24,7 @@ export const ui = {
     'nav.about': 'About',
     'nav.articles': 'Articles',
     'site.title': 'ThermoCraft',
-    'site.description': '宇宙機熱設計エンジニアリング ブログ',
+    'site.description': '宇宙機の熱制御と熱解析',
     'posts.title': 'Posts',
     'posts.filter': 'タグで絞り込み',
     'posts.recent': '最新記事',
