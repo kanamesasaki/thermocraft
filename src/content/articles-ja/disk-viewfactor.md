@@ -1,8 +1,8 @@
 ---
-title: '微小表面から円板への形態係数(View Factor)'
-description: '微小表面から円板への形態係数(View Factor)の解析解を、面積分による方法と線積分による方法の、２つのアプローチで導出する。'
+title: '微小表面から円板への形態係数（View Factor）'
+description: '微小表面から円板への形態係数（View Factor）の解析解を、面積分による方法と線積分による方法の、２つのアプローチで導出する。'
 pubDate: 2025-07-21
-updatedDate: 2025-07-21
+updatedDate: 2025-07-22
 heroImage: ''
 tags: ['thermal']
 ---
@@ -10,8 +10,11 @@ tags: ['thermal']
 ## Introduction
 
 今回は、微小表面から円板へのView Factor例に、View Factorの解析解を導出する方法について解説する。
-微小表面と円板の形状、および位置関係は以下のFigure 1のように、$(R,~h,~\omega)$によって表されるものとする。
-実際のView Factorの値は、オンラインツール[View Factor Calculator](https://sterad.net/)を使用して計算することができる。
+View Factorは、２つ表面間の熱輻射のエネルギー交換を表すパラメタで、それぞれの表面の形状と位置関係のみによって決まる。
+過去に様々な形状関するView Factorの解析解が導出されており、Prof. Howell, Prof Mengüç [[1,2]](#reference)によって詳しくまとめられている。
+また、いくつかの形状に関しては、オンラインツール[[3]](#reference)を使用して計算することもできる。
+
+さて、今回注目する微小表面と円板の形状、および位置関係はFigure 1のように、$(R,~h,~\omega)$によって表されるものとする。
 
 ![disk-viewfactor-1](../figures/disk-viewfactor-1.svg)
 _Figure 1: Geometrical Configuration of a Disk and a Plate Element for View Factor Evaluation._
@@ -31,7 +34,7 @@ F &= \int_A \frac{\cos \Omega \cos \Lambda}{\pi S^2} dA
 \end{align}
 $$
 
-ただし、$\cos \Omega$と$\cos \Lambda$の変形はEqs. (2)および(3)のように行っている。
+ただし、$\cos \Omega$と$\cos \Lambda$の変形は以下のように行っている。
 
 $$
 \begin{align}
@@ -187,10 +190,7 @@ $$
 \end{align}
 $$
 
-In this case, we managed to complete the integration, thanks to the shape simplicity of the disk.
-However, performing the double integration is highly complex, and it would be very difficult to obtain a closed-form solution for more complicated geometries.
-
-この例では、対象が円板といういい形をしているので、なんとか計算できたものの、2重積分しなければいけないというのは非常に厄介だ。
+この例では、対象が円板というシンプルな形をしているので、なんとか計算できたものの、2重積分しなければいけないというのは非常に厄介だ。
 対象がもうちょっと変な形をしていたら、初頭関数を用いた解析的な表現を見つけることはほとんど不可能になってくる。
 
 ## 線積分によるView Factorの計算
@@ -312,5 +312,6 @@ $$
 
 ## Reference
 
-1. A Catalog of Configuration Factors, 3rd Edition, [https://www.thermalradiation.net/indexCat.html](https://www.thermalradiation.net/indexCat.html)
-2. View Factor Calculator, [https://sterad.net](https://sterad.net)
+1. John R. Howell, M. Pinar Mengüç, "Radiative transfer configuration factor catalog: A lising of relations for common geometries", Journal of Quantitative Spectroscopy and Radiative Transfer, Volume 112, Issue 5, 2011, Pages 910-912, [https://doi.org/10.1016/j.jqsrt.2010.10.002](https://doi.org/10.1016/j.jqsrt.2010.10.002)
+2. A Catalog of Configuration Factors, 3rd Edition, [https://www.thermalradiation.net/indexCat.html](https://www.thermalradiation.net/indexCat.html)
+3. View Factor Calculator, [https://sterad.net](https://sterad.net)
