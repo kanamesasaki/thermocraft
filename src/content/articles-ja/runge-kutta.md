@@ -1,8 +1,8 @@
 ---
 title: 'ルンゲクッタ法（RK4）の精度確認'
 description: '常微分方程式の時間発展を計算する際に、手軽に用いられる手法にルンゲクッタ法（RK4）があります。この記事では、ルンゲクッタ法が4次精度を達成していることを確認します。'
-pubDate: 2025-05-29
-updatedDate: 2025-05-29
+pubDate: 2025-07-23
+updatedDate: 2025-07-23
 heroImage: ''
 tags: ['numerical analysis']
 ---
