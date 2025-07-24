@@ -78,6 +78,12 @@
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+    <url>
+    <loc>https://thermocraft.space/ja/articles/xorshift/</loc>
+    <lastmod>2025-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
   <url>
     <loc>https://thermocraft.space/articles/disk-viewfactor/</loc>
     <lastmod>2025-07-15</lastmod>

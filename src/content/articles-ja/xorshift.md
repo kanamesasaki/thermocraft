@@ -135,9 +135,6 @@ R^1 =
 \end{align}
 $$
 
-These matrices are not regular. However, by adding an XOR (exclusive OR) operation, we can create matrices $T=I+L^a$ and $T=I+R^b$ that are regular.
-This one-step Xorshift operation can be performed as the binary operation without performing the matrix calculation. An example code for a 32-bit binary vector is shown below.
-
 これらは正則でないので，XOR（排他的論理和）の操作を加えることで$T=I+L^a$または$T=I+R^b$とすると，正則かつ計算コストが少ない操作を作ることが出来る．
 この操作は行列計算を行わずにバイナリ演算として実行できる．32ビットの場合の、1ステップのXorshift操作を行うコード例を以下に示す。
 
