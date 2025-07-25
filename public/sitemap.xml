@@ -31,6 +31,12 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://thermocraft.space/ja/articles/floating-point-error/</loc>
+    <lastmod>2025-07-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
     <loc>https://thermocraft.space/articles/knudsen-number/</loc>
     <lastmod>2025-07-15</lastmod>
     <changefreq>monthly</changefreq>
