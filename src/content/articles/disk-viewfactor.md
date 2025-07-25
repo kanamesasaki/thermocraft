@@ -2,7 +2,7 @@
 title: 'Disk View Factor from a Plate Element'
 description: 'Analytical derivation of a disk view factor from a plate element, using both area integration and line integration approaches.'
 pubDate: 2025-06-03
-updatedDate: 2025-06-13
+updatedDate: 2025-07-25
 heroImage: ''
 tags: ['thermal']
 ---
@@ -182,8 +182,8 @@ Finally, the fourth term can be expressed as follows:
 $$
 \begin{align}
 &\int^0_{R \cos \beta_0} \int_0^{x \tan \beta_0} \frac{2h^2 \cos \omega}{\pi (x^2 + y^2 + h^2)^2} dy dx \notag \\
-&= -\frac{\cos \omega}{\pi \tan \beta_0} \left[ \frac{R \sin \beta_0}{\sqrt{R^2 \cos^2 \beta_0 + h^2}} \arctan \left( \frac{R \sin \beta_0}{\sqrt{R^2 \cos^2 \beta_0 + h^2}} \right)
-\log \left\{ \cos \left( \arctan \left( \frac{R \sin \beta_0}{\sqrt{R^2 \cos^2 \beta_0 + h^2}} \right) \right) \right\} \right] \notag \\
+&= -\frac{\cos \omega}{\pi \tan \beta_0} \left[ \frac{R \sin \beta_0}{\sqrt{R^2 \cos^2 \beta_0 + h^2}} \arctan \left( \frac{R \sin \beta_0}{\sqrt{R^2 \cos^2 \beta_0 + h^2}} \right)\right. \notag \\
+&\hspace{70pt}\times \left.\log \left\{ \cos \left( \arctan \left( \frac{R \sin \beta_0}{\sqrt{R^2 \cos^2 \beta_0 + h^2}} \right) \right) \right\} \right] \notag \\
 &\hspace{11pt}- \frac{\cos \omega}{2 \pi \tan \beta_0} \log \left( 1 + \frac{R^2 \sin^2 \beta_0}{R^2 \cos^2 \beta_0 + h^2} \right)
 \end{align}
 $$

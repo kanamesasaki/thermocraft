@@ -18,7 +18,7 @@ The simplest approach is that each computation thread first skips ahead to diffe
 To achieve this, we need an efficient skip algorithm as well as an algorithm for sequentially generating values.
 
 ![mrg32k3a-1](../figures/mrg32k3a-1.svg)
-\_Figure 1: Idea of Parallel Random Number Generation.
+_Figure 1: Idea of Parallel Random Number Generation._
 
 In this article, we introduce one of the common RNG algorithms for parallel computation: MRG32k3a.
 Based on the papers by L'Ecuyer [[2]](#reference) and [[3]](#reference), we will review the outline of the algorithm and how to implement it on WebGL2.

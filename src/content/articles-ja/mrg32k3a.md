@@ -18,7 +18,7 @@ OpenGL ES 3.0には乱数発生させるビルトイン関数は存在しない�
 これを実現するには、順々に値を発生させるアルゴリズムに加えて、効率的にスキップするアルゴリズムが必要になる。
 
 ![mrg32k3a-1](../figures/mrg32k3a-1.svg)
-\_Figure 1: Idea of Parallel Random Number Generation.
+_Figure 1: Idea of Parallel Random Number Generation._
 
 今回は並列計算でもよく用いられる乱数発生アルゴリズム[[1]](#reference)のうちMRG32k3aについて、L'Ecuyerの論文 [[2,3]](#reference)を参考にアルゴリズムの概要と具体的な実装方法について考えていきたい。
 

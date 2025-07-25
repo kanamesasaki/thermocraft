@@ -2,7 +2,7 @@
 title: '微小表面から円板への形態係数（View Factor）'
 description: '微小表面から円板への形態係数（View Factor）の解析解を、面積分による方法と線積分による方法の、２つのアプローチで導出します。'
 pubDate: 2025-07-21
-updatedDate: 2025-07-22
+updatedDate: 2025-07-25
 heroImage: ''
 tags: ['thermal']
 ---
@@ -184,8 +184,8 @@ $$
 $$
 \begin{align}
 &\int^0_{R \cos \beta_0} \int_0^{x \tan \beta_0} \frac{2h^2 \cos \omega}{\pi (x^2 + y^2 + h^2)^2} dy dx \notag \\
-&= -\frac{\cos \omega}{\pi \tan \beta_0} \left[ \frac{R \sin \beta_0}{\sqrt{R^2 \cos^2 \beta_0 + h^2}} \arctan \left( \frac{R \sin \beta_0}{\sqrt{R^2 \cos^2 \beta_0 + h^2}} \right)
-\log \left\{ \cos \left( \arctan \left( \frac{R \sin \beta_0}{\sqrt{R^2 \cos^2 \beta_0 + h^2}} \right) \right) \right\} \right] \notag \\
+&= -\frac{\cos \omega}{\pi \tan \beta_0} \left[ \frac{R \sin \beta_0}{\sqrt{R^2 \cos^2 \beta_0 + h^2}} \arctan \left( \frac{R \sin \beta_0}{\sqrt{R^2 \cos^2 \beta_0 + h^2}} \right)\right. \notag \\
+&\hspace{70pt}\times \left.\log \left\{ \cos \left( \arctan \left( \frac{R \sin \beta_0}{\sqrt{R^2 \cos^2 \beta_0 + h^2}} \right) \right) \right\} \right] \notag \\
 &\hspace{11pt}- \frac{\cos \omega}{2 \pi \tan \beta_0} \log \left( 1 + \frac{R^2 \sin^2 \beta_0}{R^2 \cos^2 \beta_0 + h^2} \right)
 \end{align}
 $$

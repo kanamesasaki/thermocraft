@@ -11,7 +11,7 @@ tags: ['programming', 'numerical analysis']
 
 There are various well-known algorithms for generating pseudo-random numbers, such as Linear Congruential Generator, Xorshift, and Mersenne Twister.
 Among them, Xorshift is known for its simple operations and high speed.
-In this article, we will explore the basic concepts of Xorshift, referring to the original papers by Marsaglia [[1]](#reference) [[2]](#reference).
+In this article, we will explore the basic concepts of Xorshift, referring to the original papers by Marsaglia [[1,2]](#reference).
 The focus will be to grasp the intuition behind the algorithm rather than just implementing the Xorshift algorithm.
 
 ## Pseudo-Random Number Generation by Binary Matrix
