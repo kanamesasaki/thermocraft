@@ -1,22 +1,21 @@
 ---
-title: 'Uniformly Distribute Points on Primitive Shapes'
-description: 'Mathematical methods for uniformly distributing points on primitive geometric surfaces including rectangles, triangles, cylinders, discs, spheres, cones, and parabolic surfaces for ray tracing applications.'
-pubDate: 2025-05-30
+title: 'いろいろな形状の表面に点を一様分布させる'
+description: '輻射熱伝達をレイトレーシングによって評価する場合、物体表面から一様に光線を発生させる必要があります。今回は、長方形・三角形・円板・球面・円柱・円錐・放物面などの基本的な表面形状について、0–1の範囲のランダム値からどうやって一様分布を発生させるかを解説します。'
+pubDate: 2025-07-25
 updatedDate: 2025-07-25
 heroImage: ''
 tags: ['thermal', 'numerical analysis']
 ---
 
-When evaluating the radiative heat exchange, one of the common methodologies is to use ray tracing.
-With this method, it is possible to determine radiative couplings (or view factors) between objects.
-In this analysis, it is necessary to specify ray origin points on the object surfaces such that they are uniformly distributed over the area, and then the ray directions should be determined according to Lambert's cosine law (assumining diffuse surfaces).
-In this article, we discuss how to distribute points uniformly on primitive shapes using random values in the range of 0 to 1.
+輻射による熱のやり取りを評価する場合，レイトレースすることで物体間のRadiative Coupling（または形態係数）を求めることが出来る．
+このとき光線は，物体の表面上で面積に関して一様になるように発生点を指定して，そこからランベルトの余弦則に沿うように光線の方向を決めてやる必要がある．
+今回は基本的な表面形状（長方形・三角形・円板・球面・円柱・円錐・放物面）について，0–1の範囲のランダム値からどうやって一様分布を発生させるかを考える．
 
-## Rectangle
+## 長方形
 
-The most simple case for uniform point distribution is a rectangle.
-To uniformly distribute points on a rectangle, each point can be calculated by Eq. (1) using two random numbers $q_1$ and $q_2$ in the range of [0, 1].
-This method can be applicable to parallelograms as well.
+一様分布を考えるとき、もっともシンプルなケースは長方形だろう。
+Figure 1のような長方形上に点を一様分布させる場合は，2つのランダム値$(q_1, q_2)$を発生させて，以下のように計算すればよい．
+平行四辺形の場合でも同様の方法が使える。
 
 $$
 \begin{equation}
@@ -27,19 +26,19 @@ $$
 ![point-distribution-1](../figures/point-distribution-1.svg)
 _Figure 1: Point Distribution on a Rectangle._
 
-## Triangle
+## 三角形
 
-For a triangle, one simple approach is to calculate the point in the same way as a rectangle, using Eq. (1).
-To ensure the points are inside the triangle, the sum of the two random values $(q_1, q_2)$ should be less than or equal to 1.
-If the sum exceeds 1, the values should be discarded, and new random values should be generated until a valid combination is obtained.
+三角形上に点を一様分布させる場合、長方形と同様にEq. (1)を用いて計算することができる。
+ただし、指定した点が三角形の外にある場合を除外するために、2つのランダム値$(q_1, q_2)$の和が1以下である必要がある。
+もし和が1を超えた場合は、その値を破棄し、有効な組み合わせが得られるまで新しいランダム値を生成する。
 
 ![point-distribution-2](../figures/point-distribution-2.svg)
 _Figure 2: Point Distribution on a Triangle._
 
-## Cylindrical Surface
+## 円柱側面
 
-For a cylindrical surface, points can be distributed uniformly in both the height and the circumferential direction.
-The height $h$ and circumferential parameter $\varphi$ are determined using a random value $q_1$ and $q_2$ as shown in Eq. (2) and Eq. (3), respectively.
+円柱側面上に点を一様分布させる場合は，高方向・周方向それぞれ一様に値をとればよい．
+高さ$h$と周方向のパラメタ$\varphi$は、ランダム値$q_1$と$q_2$を用いてそれぞれ以下のように計算できる。
 
 $$
 \begin{gather}
@@ -56,10 +55,9 @@ $$
 ![point-distribution-3](../figures/point-distribution-3.svg)
 _Figure 3: Point Distribution on a Cylindrical Surface._
 
-## Disc
+## 円板
 
-We consider a partial disk as shown in Figure 4.
-When distributing points uniformly on a partial disk, the probability $q_1$ of a point falling within the radius of $r$ can be expressed by Eq. (4).
+部分円板上に点を一様にばらまく場合，ある点が半径方向の位置$r$の内側に入る確率$q_1$は次のように表される．
 
 $$
 \begin{equation}
@@ -68,7 +66,7 @@ q_1 = \frac{\int_{r_\mathrm{inner}}^{r} \int_{\theta_\mathrm{start}}^{\theta_\ma
 \end{equation}
 $$
 
-Solving this equation for $r$ gives us the description of the radial position $r$ as a function of random value $q_1$.
+この式を$r$について解くと、ランダム値$q_1$に対して半径方向の位置$r$を対応させることができる。
 
 $$
 \begin{equation}
@@ -76,7 +74,7 @@ r = \sqrt{q_1 (r_\mathrm{outer}^2 - r_\mathrm{inner}^2) + r_\mathrm{inner}^2}
 \end{equation}
 $$
 
-For the angular direction, the angle $\theta$ can be determined using a random value $q_2$ as shown in Eq. (6).
+周方向については、ランダム値$q_2$を用いて以下のように指定できる。
 
 $$
 \begin{equation}
@@ -87,10 +85,9 @@ $$
 ![point-distribution-4](../figures/point-distribution-4.svg)
 _Figure 4: Point Distribution on a Disk._
 
-## Spherical Surface
+## 球面
 
-We consider a partial spherical surface as shown in Figure 5.
-When distributing points uniformly on a spherical surface, the probability $q_1$ that a point is below a polar angle of $\theta$ can be expressed as shown in Eq. (7).
+部分球面上に一様に点をばらまく場合，ある点が緯度方向について$\theta$以下である確率$q_1$は次のように表される．
 
 $$
 \begin{align}
@@ -101,7 +98,7 @@ $$
 \end{align}
 $$
 
-Solving this equation for $\theta$, we can express the polar angle $\theta$ as a function of the random value $q_1$.
+この式を$\theta$について解くと、ランダム値$q_1$に対して緯度方向のパラメタ$\theta$を対応させることができる。
 
 $$
 \begin{align}
@@ -110,7 +107,7 @@ $$
 \end{align}
 $$
 
-For the azimuthal direction, the angle $\varphi$ can be determined using a random value $q_2$ as shown in Eq. (9).
+経度方向については、ランダム値$q_2$を用いて以下のように指定できる。
 
 $$
 \begin{equation}
@@ -121,10 +118,9 @@ $$
 ![point-distribution-5](../figures/point-distribution-5.svg)
 _Figure 5: Point Distribution on a Spherical Surface._
 
-## Cone
+## 円錐面
 
-We consider a partial conical surface as shown in Figure 6.
-When distributing points uniformly on a conical surface, the probability $q_1$ that a point is below a height of $h$ can be expressed as shown in Eq. (10).
+部分円錐面上に一様に点をばらまく場合，ある点が高さ$h$以下である確率$q_1$は次のように表される．
 
 $$
 \begin{align}
@@ -139,13 +135,16 @@ $$
 Solving this equation for $h$, we obtain the height $h$ as a function of the random value $q_1$.
 There are two solutions to this equation, but we select the negative solution, so that the height $h$ does not exceed the apex of the cone.
 
+この式を$h$について解くと、ランダム値$q_1$に対して高さ$h$を対応させることができる。
+このとき、2つ解が存在するが、高さ$h$が円錐の頂点を超えないようにしたいので、マイナスの場合を用いる。
+
 $$
 \begin{equation}
 h = \frac{r_1}{\tan \theta} \pm \sqrt{\left( \frac{r_1}{\tan \theta} \right)^2 - 2q_1 h_\mathrm{max} \frac{r_1}{\tan \theta} + q_1 h_\mathrm{max}^2}
 \end{equation}
 $$
 
-For the angular direction, the angle $\varphi$ can be determined using a random value $q_2$ as shown in Eq. (14).
+周方向については、ランダム値$q_2$を用いて以下のように指定できる。
 
 $$
 \begin{equation}
@@ -156,15 +155,14 @@ $$
 ![point-distribution-6](../figures/point-distribution-6.svg)
 _Figure 6: Point Distribution on a Cone._
 
-## Parabolic Surface
+## 放物面
 
-We consider a parabolic surface as shown in Figure 7.
-The vertex of the parabolic surface is at the coordinate origin, and the axis of the parabolic surface aligns with the vertical axis of the coordinate system.
+Figure 7のような部分放物面について考えよう。ただし、放物面の頂点は原点にあり，放物面の軸が高さ方向の軸に一致するものとする．
 
 ![point-distribution-7](../figures/point-distribution-7.svg)
 _Figure 7: Point Distribution on a Parabolic Surface._
 
-The relationship between the radius $r$ and the height $h$ is expressed by
+半径$r$と高さ$h$の関係は次のように表される。
 
 $$
 \begin{equation}
@@ -178,7 +176,7 @@ r = \frac{\sqrt{h}}{a}
 \end{equation}
 $$
 
-The inclination of the tangential line $\tan\theta$ is described by
+接線の傾きを$\tan\theta$とすると、次のように表される。
 
 $$
 \begin{equation}
@@ -186,7 +184,7 @@ $$
 \end{equation}
 $$
 
-Using the relation of $1+\frac{1}{\tan^2 \theta} = \frac{1}{\sin^2 \theta}$, the following equations are obtained.
+ここで、$1+\frac{1}{\tan^2 \theta} = \frac{1}{\sin^2 \theta}$を用いると、以下の関係が得られる。
 
 $$
 \begin{gather}
@@ -196,7 +194,7 @@ $$
 \end{gather}
 $$
 
-If points are uniformly distributed on this parabolic surface, the probability $q_1$ that a point is below a height of $h$ can be expressed by Eq. (18).
+さて、この部分放物面上に点を一様にばらまく場合、ある点が高さ$h$以下である確率$q_1$は次のように表される。
 
 $$
 \begin{align}
@@ -207,7 +205,7 @@ q_1 &= \frac{\int_{h_\mathrm{min}}^{h} \int_{\varphi_\mathrm{start}}^{\varphi_\m
 \end{align}
 $$
 
-Solving this equation for $h$, we obtain the height $h$ as a function of the random value $q_1$.
+この式を$h$について解くと、ランダム値$q_1$に対して高さ$h$を対応させることができる。
 
 $$
 \begin{gather}
@@ -216,7 +214,7 @@ h = \left[q_1 \left\{ \left(h_\mathrm{max} + \frac{1}{4a^2} \right)^{\frac{3}{2}
 \end{gather}
 $$
 
-For the angular direction, the angle $\varphi$ can be determined using a random value $q_2$ as shown in Eq. (21).
+周方向については、ランダム値$q_2$を用いて以下のように指定できる。
 
 $$
 \begin{equation}
