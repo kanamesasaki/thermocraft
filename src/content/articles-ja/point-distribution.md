@@ -132,9 +132,6 @@ q_1 &= \frac{\int_{0}^{h} \int_{\varphi_\mathrm{start}}^{\varphi_\mathrm{end}} \
 \end{align}
 $$
 
-Solving this equation for $h$, we obtain the height $h$ as a function of the random value $q_1$.
-There are two solutions to this equation, but we select the negative solution, so that the height $h$ does not exceed the apex of the cone.
-
 この式を$h$について解くと、ランダム値$q_1$に対して高さ$h$を対応させることができる。
 このとき、2つ解が存在するが、高さ$h$が円錐の頂点を超えないようにしたいので、マイナスの場合を用いる。
 
