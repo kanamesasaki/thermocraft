@@ -42,15 +42,15 @@ const allTags = [...new Set(posts.flatMap(post => post.data.tags || []))].sort()
       <div class="mb-2 text-sm font-medium">Filter by tags:</div>
       <div class="flex flex-wrap gap-2">
         <button
-          class="tag-button px-3 py-1 text-sm rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-600"
-          data-tag=""
+          class="tag-button active py-1 px-3 text-xs rounded-full bg-blue-600 text-white dark:bg-blue-700"
+          data-tag="all"
         >
           {t('filter.all')}
         </button>
         {
           allTags.map(tag => (
             <button
-              class="tag-button px-3 py-1 text-sm rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-600"
+              class="tag-button py-1 px-3 text-xs rounded-full bg-slate-200 dark:bg-slate-700"
               data-tag={tag}
             >
               {tag}
