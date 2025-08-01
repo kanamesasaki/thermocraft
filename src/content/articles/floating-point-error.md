@@ -1,8 +1,8 @@
 ---
 title: 'Tracking the Floating Point Error'
-description: 'If rounding errors for floating point numbers are critical for your numerical calculation, what is the correct way to estimate and track the error? We will look into the definition in IEEE 754-2019 and discuss a basic methodology for the error estimation.'
+description: 'Rounding errors are inevitable in floating-point arithmetic. In particular, after multiple operations, how errors propagate is not immediately obvious. In this article, we will look into the floating point definition in IEEE 754-2019 and discuss a basic methodology for the error estimation.'
 pubDate: 2025-05-18
-updatedDate: 2025-05-19
+updatedDate: 2025-08-01
 heroImage: ''
 tags: ['programming', 'numerical analysis']
 ---

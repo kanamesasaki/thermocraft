@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://thermocraft.space/</loc>
-    <lastmod>2025-07-14</lastmod>
+    <lastmod>2025-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://thermocraft.space/ja/</loc>
-    <lastmod>2025-07-28</lastmod>
+    <lastmod>2025-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -26,13 +26,13 @@
   </url>
   <url>
     <loc>https://thermocraft.space/articles/floating-point-error/</loc>
-    <lastmod>2025-07-15</lastmod>
+    <lastmod>2025-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://thermocraft.space/ja/articles/floating-point-error/</loc>
-    <lastmod>2025-07-25</lastmod>
+    <lastmod>2025-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
