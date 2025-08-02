@@ -8,7 +8,7 @@
   </url>
   <url>
     <loc>https://thermocraft.space/ja/</loc>
-    <lastmod>2025-08-01</lastmod>
+    <lastmod>2025-08-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -123,6 +123,12 @@
   <url>
     <loc>https://thermocraft.space/ja/articles/rigid-body/</loc>
     <lastmod>2025-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://thermocraft.space/ja/articles/bimetal/</loc>
+    <lastmod>2025-08-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
