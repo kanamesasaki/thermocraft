@@ -127,6 +127,12 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://thermocraft.space/articles/bimetal/</loc>
+    <lastmod>2025-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
     <loc>https://thermocraft.space/ja/articles/bimetal/</loc>
     <lastmod>2025-08-02</lastmod>
     <changefreq>monthly</changefreq>
