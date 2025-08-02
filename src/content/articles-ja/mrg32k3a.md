@@ -1,8 +1,8 @@
 ---
-title: 'MRG32k3aを用いたWebアプリ用の乱数発生'
+title: 'MRG32k3aとWebGL2を用いた乱数発生'
 description: '並列計算で用いられる乱数発生アルゴリズムにMRG32k3aがあります。この記事では、WebGL2を用いてGPU上で実行できるMRG32k3aアルゴリズムを実装します。'
 pubDate: 2025-07-24
-updatedDate: 2025-07-24
+updatedDate: 2025-08-02
 heroImage: ''
 tags: ['numerical analysis', 'programming']
 ---
