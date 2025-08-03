@@ -2,7 +2,7 @@
 title: 'クヌッセン数と平均自由行程（Mean Free Path）'
 description: '扱っている流体現象が低密度な領域に入ってしまった場合、まだ流体力学が適用可能かを判断する指標となるのがクヌッセン数です。今回はクヌッセン数と、その中で用いられる平均自由行程（mean free path）の評価方法について解説します。'
 pubDate: 2025-07-22
-updatedDate: 2025-07-30
+updatedDate: 2025-08-03
 heroImage: ''
 tags: ['fluid dynamics']
 ---
