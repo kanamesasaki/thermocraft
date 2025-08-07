@@ -7,6 +7,9 @@ heroImage: ''
 tags: ['programming', 'numerical analysis']
 ---
 
+Rounding errors are inevitable in floating-point arithmetic. In particular, after multiple operations, how errors propagate is not immediately obvious.
+In this article, we will look into the floating point definition in IEEE 754-2019 and discuss a basic methodology for the error estimation.
+
 ## Floating Point Format
 
 Before starting error discussion on floating point numbers, let us first review the format of floating point numbers.
