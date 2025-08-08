@@ -2,7 +2,7 @@
 title: '微小表面から円板への形態係数（View Factor）'
 description: '微小表面から円板への形態係数（View Factor）の解析解を、面積分による方法と線積分による方法の、２つのアプローチで導出します。'
 pubDate: 2025-07-21
-updatedDate: 2025-07-25
+updatedDate: 2025-08-09
 heroImage: ''
 tags: ['thermal']
 ---
@@ -215,7 +215,8 @@ $$
 \end{align}
 $$
 
-さて、今求めたいView Factorは次のように表される。
+さて、今求めたいView Factorは次のように表される。ここで、$\bm{x}$は微小表面から円板上の点へのベクトルである。
+なので$(x, y, z)$は、微小表面を原点に取ったCartesian座標系におけるパラメタになっていることに注意しよう。
 
 $$
 \begin{align}
@@ -309,6 +310,89 @@ $$
 $$
 
 非常に煩雑だった面積分の計算が、線積分に置き換えることでかなり簡略化されたのが分かる。
+
+## 微小表面の位置にオフセットがある場合
+
+微小表面から円板へのView Factorとして、もうひとつ別のケースを考えてみよう。
+Figure 4のように、微小表面の位置が円板の中心からオフセットされており、微小表面の向きは円板と平行になっているものとする。
+
+![disk-viewfactor-4](../figures/disk-viewfactor-4.svg)
+_Figure 4: Plate Element to Disk in Parallel Plane. Element is Offset from the Disk Center._
+
+微小表面を原点に取った場合、円板の外周は次のように表される。
+
+$$
+\begin{align}
+\left[ \begin{array}{c} x \\ y \\ z \end{array} \right] =
+\left[ \begin{array}{c} R \cos\alpha - a \\ R \sin\alpha \\ h \end{array} \right], \quad
+\frac{d}{d\alpha} \left[ \begin{array}{c} x \\ y \\ z \end{array} \right] =
+\left[ \begin{array}{c} -R \sin\alpha \\ R \cos\alpha \\ 0 \end{array} \right]
+\end{align}
+$$
+
+これより、円板の外周上の点から微小表面までの距離$S$は次のように表される。
+
+$$
+\begin{align}
+S^2 &= (R \cos \alpha - a)^2 + (R \sin \alpha)^2 + h^2 \notag \\
+&= R^2 + a^2 + h^2 -2aR \cos\alpha
+\end{align}
+$$
+
+微小表面の向きを$(0,0,1)$とした場合、View Factorは次のように計算できる。
+
+$$
+\begin{align}
+F_\mathrm{offset} &= \int \frac{ydx - xdy}{2\pi S^2} = \int_{\pi}^{-\pi} \frac{-R^2 + aR \cos\alpha}{2\pi (R^2 + a^2 + h^2 -2aR \cos\alpha)}d\alpha \notag \\
+&= \frac{R^2}{2\pi} \int_{-\pi}^{\pi} \frac{d\alpha}{R^2 + a^2 + h^2 - 2aR \cos\alpha} - \frac{aR}{2\pi} \int_{-\pi}^{\pi} \frac{\cos\alpha ~d\alpha}{R^2 + a^2 + h^2 - 2aR \cos\alpha}
+\end{align}
+$$
+
+第１項目の積分は次のように計算できる。
+
+$$
+\begin{align}
+&\frac{R^2}{2\pi} \int_{-\pi}^{\pi} \frac{d\alpha}{R^2 + a^2 + h^2 - 2aR \cos\alpha} \notag \\
+&=\frac{R^2}{2\pi} \int_{-\infty}^{\infty} \frac{1}{R^2 + a^2 + h^2 - 2aR \frac{1-t^2}{1+t^2}} \frac{2}{1+t^2}dt \notag \\
+% &= \frac{R^2}{\pi} \int_{-\infty}^{\infty} \frac{1}{(R^2 + a^2 + h^2)(1+t^2) - 2aR(1-t^2)}dt \notag \\
+&= \frac{R^2}{\pi} \int_{-\infty}^{\infty} \frac{1}{(R^2 + a^2 + h^2 - 2aR) + (R^2 + a^2 + h^2 + 2aR)t^2}dt \notag \\
+&= \frac{R^2}{\pi(R^2 + a^2 + h^2 + 2aR)} \int_{-\infty}^{\infty} \frac{1}{A^2 + t^2}dt \notag \\
+&= \frac{R^2 A}{\pi(R^2 + a^2 + h^2 - 2aR)} \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} d\theta \notag = \frac{R^2A}{R^2 + a^2 + h^2 - 2aR} \notag \\
+&= \frac{R^2}{\sqrt{(R^2 + a^2 + h^2)^2 - 4a^2R^2}}
+\end{align}
+$$
+
+ただし、途中で使用したパラメタ$A$と、置換積分は次のように行った。
+
+$$
+\begin{align}
+t = A \tan\theta, \quad dt = \frac{A~d\theta}{\cos^2\theta}, \quad A = \sqrt{\frac{R^2 + a^2 + h^2 - 2aR}{R^2 + a^2 + h^2 + 2aR}}
+\end{align}
+$$
+
+第２項目の積分は次のように計算できる。
+
+$$
+\begin{align}
+&\frac{aR}{2\pi} \int_{-\pi}^{\pi} \frac{\cos\alpha ~d\alpha}{R^2 + a^2 + h^2 - 2aR \cos\alpha} \notag \\
+&=\frac{aR}{2\pi} \int_{-\infty}^{\infty} \frac{\frac{1-t^2}{1+t^2}}{R^2 + a^2 + h^2 - 2aR \frac{1-t^2}{1+t^2}} \frac{2}{1+t^2}dt \notag \\
+% &=\frac{aR}{\pi} \int_{-\infty}^{\infty} \frac{1-t^2}{(R^2 + a^2 + h^2)(1+t^2) - 2aR(1-t^2)} \frac{1}{1+t^2}dt \notag \\
+&=\frac{aR}{\pi} \int_{-\infty}^{\infty} \frac{1-t^2}{(R^2 + a^2 + h^2 - 2aR) + (R^2 + a^2 + h^2 + 2aR)t^2} \frac{1}{1+t^2}dt \notag \\
+&=\frac{aR}{\pi(R^2 + a^2 + h^2 + 2aR)} \int_{-\infty}^{\infty} \frac{1-t^2}{(A^2 + t^2)(1+t^2)}dt \notag \\
+&=\frac{aR}{\pi(R^2 + a^2 + h^2 + 2aR)} \int_{-\infty}^{\infty} \left(\frac{1+A^2}{1-A^2} \frac{1}{t^2 + A^2} - \frac{2}{1-A^2} \frac{1}{t^2 + 1}\right) dt \notag \\
+&=\frac{aRA}{R^2 + a^2 + h^2 - 2aR} \frac{1+A^2}{1-A^2} - \frac{aR}{R^2 + a^2 + h^2 + 2aR} \frac{2}{1-A^2} \notag \\
+% &=\frac{aR}{\sqrt{(R^2 + a^2 + h^2)^2 - 4a^2R^2}} \frac{R^2+a^2+h^2}{2aR} - \frac{1}{2} \notag \\
+&=\frac{1}{2}\frac{R^2 + a^2 + h^2}{\sqrt{(R^2 + a^2 + h^2)^2 - 4a^2R^2}} - \frac{1}{2}
+\end{align}
+$$
+
+これより、円板の中心からオフセットされた微小表面から円板へのView Factorは次のように表される。
+
+$$
+\begin{align}
+F_\mathrm{offset} &= \frac{1}{2} - \frac{1}{2}\frac{a^2 + h^2 - R^2}{\sqrt{(R^2 + a^2 + h^2)^2 - 4a^2R^2}}
+\end{align}
+$$
 
 ## Reference
 
