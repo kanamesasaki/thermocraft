@@ -2,7 +2,7 @@
 title: '微小表面から円板への形態係数（View Factor）'
 description: '微小表面から円板への形態係数（View Factor）の解析解を、面積分による方法と線積分による方法の、２つのアプローチで導出します。'
 pubDate: 2025-07-21
-updatedDate: 2025-08-09
+updatedDate: 2025-08-10
 heroImage: ''
 tags: ['thermal']
 ---
@@ -396,6 +396,6 @@ $$
 
 ## Reference
 
-1. John R. Howell, M. Pinar Mengüç, "Radiative transfer configuration factor catalog: A lising of relations for common geometries", Journal of Quantitative Spectroscopy and Radiative Transfer, Volume 112, Issue 5, 2011, Pages 910-912, [https://doi.org/10.1016/j.jqsrt.2010.10.002](https://doi.org/10.1016/j.jqsrt.2010.10.002)
+1. John R. Howell, M. Pinar Mengüç, "Radiative transfer configuration factor catalog: A listing of relations for common geometries", Journal of Quantitative Spectroscopy and Radiative Transfer, Volume 112, Issue 5, 2011, Pages 910-912, [https://doi.org/10.1016/j.jqsrt.2010.10.002](https://doi.org/10.1016/j.jqsrt.2010.10.002)
 2. A Catalog of Configuration Factors, 3rd Edition, [https://www.thermalradiation.net/indexCat.html](https://www.thermalradiation.net/indexCat.html)
 3. View Factor Calculator, [https://sterad.net](https://sterad.net)
