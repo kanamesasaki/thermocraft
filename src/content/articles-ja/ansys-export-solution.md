@@ -1,6 +1,6 @@
 ---
 title: 'APDLコマンドを用いたAnsys Workbench解析結果のエクスポート'
-description: 'When using Ansys Workbench, users may need to export their solutions in a specific format for post-processing or further analysis. This article provides some examples of how to generate customized output for transient thermal analysis using APDL commands.'
+description: 'Ansys Workbenchで得られた解析結果をエクスポートしたい場合、APDLコマンドを使用することで、より柔軟にフォーマットを指定して出力することが可能です。本記事では、熱解析のモデルデータおよび解析結果をCSV形式でエクスポートする方法を紹介します。'
 pubDate: 2025-08-24
 updatedDate: 2025-08-24
 heroImage: ''
