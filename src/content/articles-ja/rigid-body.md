@@ -1,8 +1,8 @@
 ---
-title: 剛体の運動方程式
+title: Legrange形式による剛体の運動方程式
 description: '剛体の運動を考えるためにまず必要となるのは、運動方程式を立てることです。今回は並進・回転運動する剛体の運動エネルギーを求めて、これをもとにLagrangeの運動方程式を立てていきます。'
 pubDate: 2025-08-01
-updatedDate: 2025-08-01
+updatedDate: 2025-08-25
 heroImage: ''
 tags: ['astrodynamics']
 ---
