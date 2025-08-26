@@ -2,7 +2,7 @@
 title: 'Time- and Temperature-Dependent Heat Load for Ansys Transient Thermal'
 description: 'In this article, we will explore the implementation of time- and temperature-dependent heat loads (surface heat flux and volumetric heat generation) in Ansys Transient Thermal simulations using APDL scripts.'
 pubDate: 2025-08-25
-updatedDate: 2025-08-25
+updatedDate: 2025-08-26
 heroImage: ''
 tags: ['thermal', 'numerical analysis', 'programming']
 ---
@@ -154,3 +154,11 @@ bfe,all,hgen,,%HEAT_GEN_TABLE%
 ! Reselects all entities in the model
 allsel,all
 ```
+
+## Remarks
+
+In general, it is not problematic to use time-dependent heat loads in transient thermal analysis, but care must be taken to use node-temperature dependency.
+If the node-temperature dependency is linear (e.g. convection boundary), the entire model is also linear which can be solved efficiently.
+However, if the node-temperature dependency is nonlinear, it may lead to significantly longer computation time and convergence issues.
+The presented APDL scripts introduce piecewise linear heat loads, with respect to the node temperature.
+Such problems are handled as nonlinear problems in the solver. Thus, users should observe the solution behavior closely and be prepared to adjust their approach as needed.
