@@ -2,9 +2,9 @@
 title: 'Hertz-Knudsen Equationの導出'
 description: 'Hertz-Knudsen Equation（Hertz-Knudsen-Langmuir Equation）は、凝縮・蒸発による質量流量を表す古典的なモデルとしてよく知られている。今回は、マクスウェル・ボルツマン分布を出発点としてHertz-Knudsen Equationを導出する。'
 pubDate: 2025-08-30
-updatedDate: 2025-08-30
+updatedDate: 2025-08-31
 heroImage: ''
-tags: ['thermal']
+tags: ['thermal', 'statistical mechanics']
 ---
 
 Hertz-Knudsen Equation（Hertz-Knudsen-Langmuir Equationとも呼ばれる）は、凝縮・蒸発による質量流量を表す古典的なモデルとしてよく知られている。
@@ -120,9 +120,9 @@ $$
 
 この式について残る問題は、凝縮係数$\sigma_c$と蒸発係数$\sigma_e$の値をどのように取るかである。
 まず、Liquid-Vapor Interfaceにおいて平衡状態が成り立っている場合には、質量流量$j^{LV}$は全体としてゼロになる。
-また、$T_l = T_v$および$p_v = p_{sat}(T_l)$も成り立つので、$\sigma_e = \sigma_c$が導かれる。
+また、$T_l = T_v$および$P_v = P_{sat}(T_l)$も成り立つので、$\sigma_e = \sigma_c$が導かれる。
 一方で、蒸発あるいは凝縮が進んでいる非平衡状態においては、$\sigma_e$と$\sigma_c$が等しいとは限らず、これらの値は実験やシミュレーションで決定する必要がある。
-例えば、水の蒸発に関する研究では、温度と圧力が上昇するにつれ、$\sigma_e$と$\sigma_c$は減少する傾向があることが知られているが、
+例えば、水の凝縮係数$\sigma_c$と蒸発係数$\sigma_e$に関しては、多くの研究が行われているが、
 値の推定手法によって結果にばらつきが大きく、温度と圧力を指定しても$\sigma_e$と$\sigma_c$の値を一意に決定することは難しい[[1]](#reference)。
 
 ## 気液平衡
