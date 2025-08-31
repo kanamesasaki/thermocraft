@@ -1,6 +1,6 @@
 ---
 title: 'Hertz-Knudsen Equationの導出'
-description: 'Hertz-Knudsen Equation（Hertz-Knudsen-Langmuir Equation）は、凝縮・蒸発による質量流量を表す古典的なモデルとしてよく知られている。今回は、マクスウェル・ボルツマン分布を出発点としてHertz-Knudsen Equationを導出する。'
+description: 'Hertz-Knudsen Equation（Hertz-Knudsen-Langmuir Equation）は、凝縮・蒸発による質量流量を表す古典的なモデルとしてよく知られています。今回は、マクスウェル・ボルツマン分布を出発点としてHertz-Knudsen Equationを導出します。'
 pubDate: 2025-08-30
 updatedDate: 2025-08-31
 heroImage: ''
