@@ -4,7 +4,7 @@ description: 'Liquid-Vapor Interfaceに衝突するような平均流速をMaxwe
 pubDate: 2025-08-31
 updatedDate: 2025-08-31
 heroImage: ''
-tags: ['thermal']
+tags: ['thermal', 'statistical mechanics']
 ---
 
 以前の記事で導出した[Hertz-Knudsen Equation](https://thermocraft.space/ja/articles/hertz-knudsen/)は、蒸発・凝縮の流量を表す式にはなっていたものの凝縮係数$\sigma_c$と蒸発係数$\sigma_e$という未知パラメタが含まれているという点が不便であった。
@@ -103,7 +103,8 @@ $$
 \end{equation}
 $$
 
-$m$は分子一個の重さで、アボガドロ数を$N_\mathrm{A}$として分子量$M = m N_\mathrm{A}$である。気体の状態方程式についても確認しておく。$R$はモル気体定数で$R = k_\mathrm{B} N_\mathrm{A}$である。
+$m$は分子一個の重さで、アボガドロ数を$N_\mathrm{A}$として分子量$M = m N_\mathrm{A}$である。
+気体の状態方程式についても確認しておく。$R$はモル気体定数で$R = k_\mathrm{B} N_\mathrm{A}$である。
 
 $$
 \begin{equation}
