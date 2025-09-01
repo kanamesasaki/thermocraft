@@ -33,7 +33,7 @@ Regarding the thermal characteristics, honeycomb panels typically have low therm
 When performing system thermal analysis of a spacecraft, details of the honeycomb core geometry cannot be included in the model.
 Thus, effective properties such as density and thermal conductivity must be estimated and incorporated into the model as material parameters.
 
-Using the core dimensions and material properties, the effective density and thermal conductivity of the honeycomb core can be estimated [[1]](#reference).
+Using the core dimensions and material properties, the effective density and thermal conductivity of the honeycomb core can be estimated [[1]](#references).
 We assume that the core shape is a regular hexagon as shown in Figure 1, but the basic idea remains the same for other core geometries.
 The honeycomb core is made by shaping and bonding sheet materials, and so the wall thickness varies with direction.
 
