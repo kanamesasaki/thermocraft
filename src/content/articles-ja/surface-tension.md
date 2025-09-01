@@ -23,7 +23,7 @@ $$
 
 1項目は圧力による仕事で、2項目は表面の面積が変化することで張力のする仕事である。この係数$\sigma$はsurface-tension coefficient（あるいは単純にsurface tension）と呼ばれ、次元は$[\mathrm{N}/\mathrm{m}]$または$[\mathrm{J}/\mathrm{m}^2]$である。
 
-![surface_tension-1](../figures/surface-tension-1.svg)
+![surface-tension-1](../figures/surface-tension-1.svg)
 _Figure 1: Two Media Separated by the Curved Surface._
 
 表面張力による仕事を求めたいので、まず表面が$\delta z$移動することによる、表面要素$dA= l_1 l_2$の面積の変化を評価しよう。ただし、表面の曲率半径は2方向にそれぞれ$R_1, R_2$で、$\delta z$の2次の項は十分小さいものとする。

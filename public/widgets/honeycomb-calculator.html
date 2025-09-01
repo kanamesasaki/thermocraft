@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Honeycomb Core Thermal Conductivity Calculator</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Helvetica,
+          Arial,
+          'Apple Color Emoji',
+          'Segoe UI Emoji';
+        margin: 16px;
+        line-height: 1.6;
+      }
+      fieldset {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 12px;
+        margin: 0 0 12px;
+      }
+      legend {
+        padding: 0 6px;
+        font-weight: 600;
+      }
+
+      /* Simple rows: Label | (Value + Unit) */
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 8px 0;
+      }
+      .row label {
+        font-weight: 500;
+        min-width: 11rem;
+      }
+      .control {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+      .control input {
+        flex: 1 1 12rem;
+        min-width: 0;
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #bbb;
+        border-radius: 6px;
+        box-sizing: border-box;
+      }
+      .unit,
+      .control select.unit {
+        flex: 0 0 auto;
+        min-width: 84px;
+        padding: 8px;
+        border: 1px solid #bbb;
+        border-radius: 6px;
+        background: inherit;
+        white-space: nowrap;
+        box-sizing: border-box;
+      }
+
+      output {
+        font-variant-numeric: tabular-nums;
+      }
+      .results {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 12px;
+      }
+      .val {
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+      .sub {
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 520px) {
+        .row {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .row label {
+          min-width: 0;
+        }
+        .control {
+          width: 100%;
+        }
+        .results {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Honeycomb Core Thermal Conductivity Calculator" />
+    <meta name="robots" content="noindex" />
+    <base target="_top" />
+    <script>
+      // Prevent layout shifts on first paint in some embeds
+      document.documentElement.style.visibility = 'hidden';
+      window.addEventListener('DOMContentLoaded', () => {
+        document.documentElement.style.visibility = '';
+      });
+    </script>
+  </head>
+  <body>
+    <form id="calc" novalidate>
+      <fieldset>
+        <legend>Input</legend>
+        <div class="row">
+          <label for="S">Cell Size S</label>
+          <div class="control">
+            <input
+              id="S"
+              type="number"
+              step="any"
+              min="0"
+              value="0.125"
+              aria-describedby="S_unit"
+            />
+            <select id="S_unit" class="unit">
+              <option value="inch" selected>inch</option>
+              <option value="mm">mm</option>
+              <option value="m">m</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="delta">Foil Thickness δ</label>
+          <div class="control">
+            <input
+              id="delta"
+              type="number"
+              step="any"
+              min="0"
+              value="0.0007"
+              aria-describedby="delta_unit"
+            />
+            <select id="delta_unit" class="unit">
+              <option value="inch" selected>inch</option>
+              <option value="mm">mm</option>
+              <option value="m">m</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="k">Material Conductivity k</label>
+          <div class="control">
+            <input id="k" type="number" step="any" min="0" value="120" />
+            <div class="unit">W/(m·K)</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="rho">Material Density ρ</label>
+          <div class="control">
+            <input id="rho" type="number" step="any" min="0" value="2640" />
+            <div class="unit">kg/m³</div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Output</legend>
+        <div class="results">
+          <div class="card" role="group" aria-label="Thickness Direction k_H">
+            <div>Thickness Direction k_H</div>
+            <div class="val"><output id="out_kH" aria-live="polite">—</output></div>
+            <div class="sub">W/(m·K)</div>
+          </div>
+          <div class="card" role="group" aria-label="L-Direction  k_L">
+            <div>L-Direction k_L</div>
+            <div class="val"><output id="out_kL" aria-live="polite">—</output></div>
+            <div class="sub">W/(m·K)</div>
+          </div>
+          <div class="card" role="group" aria-label="W-Direction  k_W">
+            <div>W-Direction k_W</div>
+            <div class="val"><output id="out_kW" aria-live="polite">—</output></div>
+            <div class="sub">W/(m·K)</div>
+          </div>
+          <div class="card" role="group" aria-label="Effective Density ρ_eff">
+            <div>Effective Density ρ_eff</div>
+            <div class="val"><output id="out_rho" aria-live="polite">—</output></div>
+            <div class="sub">kg/m³</div>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+
+    <script>
+      (function () {
+        const $ = s => document.querySelector(s);
+        function toMeters(v, unit) {
+          if (!Number.isFinite(v)) return NaN;
+          switch (unit) {
+            case 'm':
+              return v;
+            case 'mm':
+              return v / 1000;
+            case 'inch':
+              return v * 0.0254;
+            default:
+              return NaN;
+          }
+        }
+        function fmt(x) {
+          return Number.isFinite(x) ? (Math.abs(x) >= 100 ? x.toFixed(1) : x.toPrecision(3)) : '—';
+        }
+        function update() {
+          const S = toMeters(parseFloat($('#S').value), $('#S_unit').value);
+          const d = toMeters(parseFloat($('#delta').value), $('#delta_unit').value);
+          const k = parseFloat($('#k').value);
+          const rho = parseFloat($('#rho').value);
+          const ratio = S > 0 ? d / S : NaN;
+
+          const kH = (8 / 3) * k * ratio;
+          const kL = (3 / 2) * k * ratio;
+          const kW = k * ratio;
+          const rhoEff = (8 / 3) * rho * ratio;
+
+          $('#out_kH').textContent = fmt(kH);
+          $('#out_kL').textContent = fmt(kL);
+          $('#out_kW').textContent = fmt(kW);
+          $('#out_rho').textContent = fmt(rhoEff);
+        }
+        document.querySelectorAll('input, select').forEach(el => {
+          el.addEventListener('input', update);
+          el.addEventListener('change', update);
+        });
+        update();
+      })();
+    </script>
+  </body>
+</html>
