@@ -2,7 +2,7 @@
 title: 'Honeycomb Core Density and Thermal Conductivity'
 description: 'To include a honeycomb panel in a spacecraft system thermal model, the effective density and thermal conductivity as a panel must be estimated. We will discuss the evaluation methodology for honeycomb core effective properties, and introduce a calculation tool.'
 pubDate: 2025-09-01
-updatedDate: 2025-09-01
+updatedDate: 2025-09-11
 heroImage: ''
 tags: ['thermal']
 ---
@@ -16,7 +16,7 @@ Please enter the dimensions of the honeycomb core and set the density and therma
     src="/widgets/honeycomb-calculator.html"
     title="Honeycomb Core Thermal Conductivity Calculator"
     width="100%"
-    height="570"
+    height="490"
     loading="lazy"
     style="max-width: 720px; width: 100%; border:1px solid #ddd; border-radius:8px; background:#fff;">
   </iframe>

@@ -2,7 +2,7 @@
 title: 'Hertz-Knudsen-Schrage Equationの導出'
 description: 'Liquid-Vapor Interfaceに衝突するような平均流速をMaxwell-Boltzmann分布に追加することで、Hertz-Knudsen Equationを修正することが可能です。今回は、この仮定をもとに得られる、Hertz-Knudsen-Schrage Equationを導出します。'
 pubDate: 2025-08-31
-updatedDate: 2025-08-31
+updatedDate: 2025-09-11
 heroImage: ''
 tags: ['thermal', 'statistical mechanics']
 ---

@@ -2,7 +2,7 @@
 title: 'ハニカムコアの密度と熱伝導率'
 description: '人工衛星等のシステムの一部としてハニカムパネルの熱解析をする際には、実効密度・実効熱伝導率を推定してモデルに組み込む必要があります。今回は、特にハニカムコア部分に注目して実効密度と実効熱伝導率の推定方法を紹介します。'
 pubDate: 2025-09-02
-updatedDate: 2025-09-02
+updatedDate: 2025-09-11
 heroImage: ''
 tags: ['thermal']
 ---
@@ -16,7 +16,7 @@ tags: ['thermal']
     src="/widgets/honeycomb-calculator.html"
     title="Honeycomb Core Thermal Conductivity Calculator"
     width="100%"
-    height="570"
+    height="490"
     loading="lazy"
     style="max-width: 720px; width: 100%; border:1px solid #ddd; border-radius:8px; background:#fff;">
   </iframe>

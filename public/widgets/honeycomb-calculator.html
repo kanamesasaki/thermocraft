@@ -32,23 +32,15 @@
         font-weight: 600;
       }
 
-      /* Simple rows: Label | (Value + Unit) */
-      .row {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin: 8px 0;
-      }
-      .row label {
-        font-weight: 500;
-        min-width: 11rem;
-      }
       .control {
         display: flex;
         align-items: center;
         gap: 8px;
         flex: 1 1 auto;
         min-width: 0;
+      }
+      .control label {
+        min-width: 11rem;
       }
       .control input {
         flex: 1 1 12rem;
@@ -63,7 +55,7 @@
       .control select.unit {
         flex: 0 0 auto;
         min-width: 84px;
-        padding: 8px;
+        padding: 6px;
         border: 1px solid #bbb;
         border-radius: 6px;
         background: inherit;
@@ -74,39 +66,17 @@
       output {
         font-variant-numeric: tabular-nums;
       }
-      .results {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-      }
-      .card {
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 12px;
-      }
       .val {
-        font-size: 1.25rem;
-        font-weight: 700;
+        flex: 1 1 auto;
+        min-width: 0;
+        padding: 4px;
+        border: 1px solid #bbb;
+        border-radius: 6px;
+        background: inherit;
+        box-sizing: border-box;
       }
-      .sub {
-        color: #666;
-        font-size: 0.9rem;
-      }
-
-      @media (max-width: 520px) {
-        .row {
-          flex-direction: column;
-          align-items: stretch;
-        }
-        .row label {
-          min-width: 0;
-        }
-        .control {
-          width: 100%;
-        }
-        .results {
-          grid-template-columns: 1fr;
-        }
+      .control + .control {
+        margin-top: 5px;
       }
     </style>
     <meta name="color-scheme" content="light dark" />
@@ -125,83 +95,67 @@
     <form id="calc" novalidate>
       <fieldset>
         <legend>Input</legend>
-        <div class="row">
+        <div class="control">
           <label for="S">Cell Size S</label>
-          <div class="control">
-            <input
-              id="S"
-              type="number"
-              step="any"
-              min="0"
-              value="0.125"
-              aria-describedby="S_unit"
-            />
-            <select id="S_unit" class="unit">
-              <option value="inch" selected>inch</option>
-              <option value="mm">mm</option>
-              <option value="m">m</option>
-            </select>
-          </div>
+          <input id="S" type="number" step="any" min="0" value="0.125" aria-describedby="S_unit" />
+          <select id="S_unit" class="unit">
+            <option value="inch" selected>inch</option>
+            <option value="mm">mm</option>
+            <option value="m">m</option>
+          </select>
         </div>
 
-        <div class="row">
+        <div class="control">
           <label for="delta">Foil Thickness δ</label>
-          <div class="control">
-            <input
-              id="delta"
-              type="number"
-              step="any"
-              min="0"
-              value="0.0007"
-              aria-describedby="delta_unit"
-            />
-            <select id="delta_unit" class="unit">
-              <option value="inch" selected>inch</option>
-              <option value="mm">mm</option>
-              <option value="m">m</option>
-            </select>
-          </div>
+          <input
+            id="delta"
+            type="number"
+            step="any"
+            min="0"
+            value="0.0007"
+            aria-describedby="delta_unit"
+          />
+          <select id="delta_unit" class="unit">
+            <option value="inch" selected>inch</option>
+            <option value="mm">mm</option>
+            <option value="m">m</option>
+          </select>
         </div>
 
-        <div class="row">
+        <div class="control">
           <label for="k">Material Conductivity k</label>
-          <div class="control">
-            <input id="k" type="number" step="any" min="0" value="120" />
-            <div class="unit">W/(m·K)</div>
-          </div>
+          <input id="k" type="number" step="any" min="0" value="120" />
+          <div class="unit">W/(m·K)</div>
         </div>
 
-        <div class="row">
+        <div class="control">
           <label for="rho">Material Density ρ</label>
-          <div class="control">
-            <input id="rho" type="number" step="any" min="0" value="2640" />
-            <div class="unit">kg/m³</div>
-          </div>
+          <input id="rho" type="number" step="any" min="0" value="2640" />
+          <div class="unit">kg/m³</div>
         </div>
       </fieldset>
 
       <fieldset>
         <legend>Output</legend>
-        <div class="results">
-          <div class="card" role="group" aria-label="Thickness Direction k_H">
-            <div>Thickness Direction k_H</div>
+        <div class="control">
+            <label for="out_kH">Thickness Direction k_H</label>
             <div class="val"><output id="out_kH" aria-live="polite">—</output></div>
-            <div class="sub">W/(m·K)</div>
-          </div>
-          <div class="card" role="group" aria-label="L-Direction  k_L">
-            <div>L-Direction k_L</div>
+            <div class="unit">W/(m·K)</div>
+        </div>
+          <div class="control">
+            <label for="out_kL">L-Direction k_L</label>
             <div class="val"><output id="out_kL" aria-live="polite">—</output></div>
-            <div class="sub">W/(m·K)</div>
+            <div class="unit">W/(m·K)</div>
           </div>
-          <div class="card" role="group" aria-label="W-Direction  k_W">
-            <div>W-Direction k_W</div>
+          <div class="control">
+            <label for="out_kW">W-Direction k_W</label>
             <div class="val"><output id="out_kW" aria-live="polite">—</output></div>
-            <div class="sub">W/(m·K)</div>
+            <div class="unit">W/(m·K)</div>
           </div>
-          <div class="card" role="group" aria-label="Effective Density ρ_eff">
-            <div>Effective Density ρ_eff</div>
+          <div class="control">
+            <label for="out_rho">Effective Density ρ_eff</label>
             <div class="val"><output id="out_rho" aria-live="polite">—</output></div>
-            <div class="sub">kg/m³</div>
+            <div class="unit">kg/m³</div>
           </div>
         </div>
       </fieldset>
