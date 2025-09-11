@@ -23,7 +23,7 @@ impl BinaryMatrix32 {
     /// Get a specific bit at (row, col)
     pub fn get(&self, row: usize, col: usize) -> bool {
         if row >= 32 || col >= 32 {
-            panic!("Index out of bounds: ({}, {})", row, col);
+            panic!("Index out of bounds: ({row}, {col})");
         }
         (self.rows[row] & (1 << col)) != 0
     }
@@ -31,7 +31,7 @@ impl BinaryMatrix32 {
     /// Set a specific bit at (row, col)
     pub fn set(&mut self, row: usize, col: usize, value: bool) {
         if row >= 32 || col >= 32 {
-            panic!("Index out of bounds: ({}, {})", row, col);
+            panic!("Index out of bounds: ({row}, {col})");
         }
         if value {
             self.rows[row] |= 1 << col;
@@ -209,14 +209,14 @@ impl BinaryVector32 {
 
     pub fn get(&self, col: usize) -> bool {
         if col >= 32 {
-            panic!("Index out of bounds: {}", col);
+            panic!("Index out of bounds: {col}");
         }
         (self.row & (1 << col)) != 0
     }
 
     pub fn set(&mut self, col: usize, value: bool) {
         if col >= 32 {
-            panic!("Index out of bounds: {}", col);
+            panic!("Index out of bounds: {col}");
         }
         if value {
             self.row |= 1 << col;
@@ -279,7 +279,7 @@ fn main() {
     println!("Found {} valid triplets:", valid_triplets.len());
     // Print in table format, 9 triplets per row
     for (i, (a, b, c)) in valid_triplets.iter().enumerate() {
-        print!("|{:2},{:2},{:2}", a, b, c);
+        print!("|{a:2},{b:2},{c:2}");
         
         // Add row separator every 9 items or at the end
         if (i + 1) % 9 == 0 || i == valid_triplets.len() - 1 {
