@@ -13,15 +13,18 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let y_max = 1.0;
 
     // Render to an SVG file (no system fontconfig dependency)
-    // 140 mm / 25.4 * 96 = 529
-    // 80 mm / 25.4 * 96 = 302
+    // 140 mm / 25.4 * 96 * 4 = 2116 
+    // 60 mm / 25.4 * 96 * 4 = 907
     let filename = "hertz-knudsen-schrage-1.svg";
-    let root = SVGBackend::new(filename, (529, 302)).into_drawing_area();
+    let root = SVGBackend::new(filename, (2116, 907)).into_drawing_area();
 
     let mut chart = ChartBuilder::on(&root)
-        .margin(8)
-        .x_label_area_size(36)
-        .y_label_area_size(44)
+        .margin_left(150)   
+        .margin_right(180)  
+        .margin_top(32)     
+        .margin_bottom(0)  
+        .x_label_area_size(120)
+        .y_label_area_size(176)
         .build_cartesian_2d(x_min..x_max, y_min..y_max)?;
 
     // Configure only axes; we'll draw custom grid lines with explicit intervals
@@ -29,8 +32,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .configure_mesh()
         .x_desc("x")
         .y_desc("erf(x)")
-        .axis_desc_style(("sans-serif", 16))
-        .label_style(("sans-serif", 16))
+        .axis_desc_style(("Arial", 64))  // 16*4
+        .label_style(("Arial", 64))  // 16*4
+        .x_label_formatter(&|x| format!("{:.1}", x).replace('-', "−")) // Unicode minus sign
+        .y_label_formatter(&|y| format!("{:.1}", y).replace('-', "−")) // Unicode minus sign
         .disable_mesh()
         .draw()?;
 
@@ -80,7 +85,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Draw scatter points instead of a line
     // BLACK, WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW
     chart.draw_series(
-        data.iter().map(|&(x, y)| Circle::new((x, y), 2, BLUE.filled()))
+        data.iter().map(|&(x, y)| Circle::new((x, y), 8, BLUE.filled()))  // 2*4
     )?;
 
     // Axis zero lines for reference (draw on top)
