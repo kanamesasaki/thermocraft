@@ -4,25 +4,25 @@
     <loc>https://thermocraft.space/</loc>
     <lastmod>2025-08-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://thermocraft.space/ja/</loc>
     <lastmod>2025-08-03</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://thermocraft.space/about/</loc>
     <lastmod>2025-07-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://thermocraft.space/ja/about/</loc>
     <lastmod>2025-07-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://thermocraft.space/articles/floating-point-error/</loc>
@@ -224,6 +224,12 @@
   </url>
   <url>
     <loc>https://thermocraft.space/ja/articles/standard-atmosphere/</loc>
+    <lastmod>2025-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://thermocraft.space/ja/articles/read-pixels/</loc>
     <lastmod>2025-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
