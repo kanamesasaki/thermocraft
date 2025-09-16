@@ -4,7 +4,7 @@ description: '物体の姿勢を表現する手法として一般的なものに
 pubDate: 2025-08-03
 updatedDate: 2025-08-03
 heroImage: ''
-tags: ['Astrodynamics']
+tags: ['astrodynamics']
 ---
 
 ## 物体の姿勢表現
