@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+import { getLangFromUrl, languages, defaultLang } from '../utils/i18n';
 
 interface Props {
   title: string;
@@ -24,10 +25,29 @@ const siteConfig = {
   siteUrl: 'https://thermocraft.space',
   title: 'ThermoCraft',
 };
+
+// Detect current language from URL
+const lang = getLangFromUrl(Astro.url);
+
+// Construct alternate language URLs (simple en/ja toggle for now)
+function buildLocalizedUrl(targetLang: string) {
+  if (targetLang === defaultLang) {
+    // Remove leading /ja if present
+    return Astro.url.pathname.replace(/^\/ja/, '') || '/';
+  }
+  if (lang === targetLang) return Astro.url.pathname; // already localized
+  // Prepend /targetLang if not already
+  return `/${targetLang}${Astro.url.pathname === '/' ? '' : Astro.url.pathname}`;
+}
+
+const alternates = Object.keys(languages).map(code => ({
+  code,
+  url: new URL(buildLocalizedUrl(code), siteConfig.siteUrl).toString(),
+}));
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -42,6 +62,14 @@ const siteConfig = {
 
     <!-- RSS Feed -->
     <link rel="alternate" type="application/rss+xml" title="ThermoCraft RSS Feed" href="/rss.xml" />
+
+    <!-- Language Alternates -->
+    {alternates.map(a => <link rel="alternate" hreflang={a.code} href={a.url} />)}
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL(buildLocalizedUrl(defaultLang), siteConfig.siteUrl).toString()}
+    />
 
     <!-- Open Graph / Facebook Meta Tags -->
     <meta property="og:type" content="website" />
