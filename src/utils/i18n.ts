@@ -11,7 +11,9 @@ export const ui = {
     'nav.about': 'About',
     'nav.articles': 'Articles',
     'site.title': 'ThermoCraft',
-    'site.description': 'Spacecraft Thermal Engineering Blog',
+    'site.subtitle': 'Spacecraft Thermal Engineering Blog',
+    'site.description':
+      'ThermoCraft is a technical blog featuring in-depth articles on thermal engineering, aerospace engineering, numerical analysis, and programming.',
     'posts.title': 'Posts',
     'posts.filter': 'Filter by tags',
     'posts.recent': 'Recent Articles',
@@ -24,7 +26,9 @@ export const ui = {
     'nav.about': 'About',
     'nav.articles': 'Articles',
     'site.title': 'ThermoCraft',
-    'site.description': '宇宙機の熱制御と熱解析',
+    'site.subtitle': '宇宙機の熱設計と熱解析',
+    'site.description':
+      'ThermoCraftは、熱工学、宇宙工学、数値解析、プログラミングに関する記事を特集した技術ブログです。',
     'posts.title': 'Posts',
     'posts.filter': 'タグで絞り込み',
     'posts.recent': '最新記事',

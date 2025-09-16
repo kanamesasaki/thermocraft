@@ -14,7 +14,7 @@ const posts = (await getCollection(getCollectionName(lang))).sort(
 const allTags = [...new Set(posts.flatMap(post => post.data.tags || []))].sort();
 ---
 
-<Layout title={`${t('site.title')} – ${t('site.description')}`} description={t('site.description')}>
+<Layout title={`${t('site.title')} – ${t('site.subtitle')}`} description={t('site.description')}>
   <section class="mb-8">
     <div class="flex items-center justify-between mb-4">
       <h2 class="text-2xl font-bold">{t('posts.title')}</h2>

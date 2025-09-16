@@ -5,10 +5,7 @@ import { useTranslations } from '../utils/i18n';
 const t = useTranslations('en');
 ---
 
-<Layout
-  title={`${t('about.title')} | ${t('site.title')} – ${t('site.description')}`}
-  description={t('site.description')}
->
+<Layout title={`${t('about.title')} | ${t('site.title')}`} description={t('site.description')}>
   <h1 class="text-3xl font-bold mb-6">{t('about.title')}</h1>
 
   <div class="prose prose-slate dark:prose-invert lg:prose-lg max-w-none">
