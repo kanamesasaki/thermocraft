@@ -29,24 +29,22 @@ docker-compose up
 
 ### Creating New Content
 
-1. Add new blog posts as markdown files in the `src/content/articles/` directory
-2. Use the following frontmatter format:
+1. Add new blog posts as markdown files in the `src/content/articles/` directory for English and `src/content/articles-ja/` for Japanese.
+2. The article slug should be the same for both English and Japanese versions.
+3. Use the following frontmatter format. The `tags` should be written in lowercase.
 
 ```markdown
 ---
-title: 'Your Post Title'
-description: 'A brief description of your post'
-pubDate: 2023-05-01
-heroImage: '/images/your-image.jpg' # Optional
-tags: ['tag1', 'tag2'] # Optional
+title: ''
+description: ''
+pubDate: YYYY-MM-DD
+updatedDate: YYYY-MM-DD
+heroImage: ''
+tags: ['thermal']
 ---
 
 Your markdown content here...
 ```
-
-3. For mathematical equations, use LaTeX syntax:
-   - Inline math: `$E = mc^2$`
-   - Block math: `$$E = mc^2$$`
 
 ## Deployment
 
