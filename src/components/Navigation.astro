@@ -8,6 +8,15 @@ const navItems = [
   { label: t('nav.home'), href: getLocalizedPath('/', lang) },
   { label: t('nav.about'), href: getLocalizedPath('/about', lang) },
 ];
+
+// Normalize current path for language switcher
+const rawPath = Astro.url.pathname;
+// Remove a leading /ja (only the first occurrence) for base English path
+const basePath = rawPath.replace(/^\/ja(?=\/|$)/, '') || '/';
+// English URL (default language has no prefix)
+const enHref = basePath;
+// Japanese URL: ensure exactly one /ja prefix
+const jaHref = basePath === '/' ? '/ja' : `/ja${basePath}`;
 ---
 
 <nav class="mb-10">
@@ -27,13 +36,13 @@ const navItems = [
       </ul>
       <div class="flex space-x-2 text-sm">
         <a
-          href={Astro.url.pathname.replace(/^\/ja/, '') || '/'}
+          href={enHref}
           class={`px-2 py-1 rounded ${lang === 'en' ? 'bg-blue-600 text-white' : 'text-gray-600 hover:text-blue-600'}`}
         >
           EN
         </a>
         <a
-          href={`/ja${Astro.url.pathname === '/' ? '' : Astro.url.pathname}`}
+          href={jaHref}
           class={`px-2 py-1 rounded ${lang === 'ja' ? 'bg-blue-600 text-white' : 'text-gray-600 hover:text-blue-600'}`}
         >
           JA
