@@ -8,7 +8,7 @@ tags: ['thermal', 'statistical mechanics']
 ---
 
 以前の記事で導出した[Hertz-Knudsen Equation](https://thermocraft.space/ja/articles/hertz-knudsen/)は、蒸発・凝縮の流量を表す式にはなっていたものの凝縮係数$\sigma_c$と蒸発係数$\sigma_e$という未知パラメタが含まれているという点が不便であった。
-Schrageは蒸発・凝縮がある場合に、Liquid-Vapor Interfaceに衝突するような平均流速がある、という仮定をMaxwell-Boltzmann分布に追加することで、Hertz-Knudsen Equationを修正した[[1]](#reference)。
+Schrageは蒸発・凝縮がある場合に、Liquid-Vapor Interfaceに衝突するような平均流速がある、という仮定をMaxwell-Boltzmann分布に追加することで、Hertz-Knudsen Equationを修正した[[1]](#references)。
 今回はこの修正の手順を追って、Hertz-Knudsen-Schrage Equationを導出する。
 
 ## Hertz-Knudsen Equationの修正
@@ -83,8 +83,8 @@ $$
 &= P \frac{\beta}{\sqrt{\pi}} \exp \left[- \overline{v}_z^2 \beta^2 \right]
 - P \overline{v}_z \beta^2 \left[ 1 - \mathrm{erf}(\overline{v}_z \beta) \right] \notag  \\
 &= \frac{\beta P}{\sqrt{\pi}} \left\{ \exp \left[- \overline{v}_z^2 \beta^2 \right] - \overline{v}_z \beta \sqrt{\pi} \left[ 1 - \mathrm{erf}(\overline{v}_z \beta) \right] \right\} \notag \\
-&= \frac{\beta P}{\sqrt{\pi}} ~ \Gamma \left( \overline{v}_z \beta \right) 
-= \frac{\rho}{2\sqrt{\pi} \beta} ~ \Gamma \left( \overline{v}_z \beta \right) 
+&= \frac{\beta P}{\sqrt{\pi}} ~ \Gamma \left( \overline{v}_z \beta \right)
+= \frac{\rho}{2\sqrt{\pi} \beta} ~ \Gamma \left( \overline{v}_z \beta \right)
 \end{align}
 $$
 
@@ -176,9 +176,9 @@ $$
 $$
 \begin{equation}
 % \label{eq:Schrage1953_3.1-15}
-\overline{v}_z \beta_v 
+\overline{v}_z \beta_v
 = \frac{\rho_v \overline{v}_z}{2 \sqrt{\pi}} \frac{2\sqrt{\pi} \beta_l}{\rho_l} \left( \frac{\beta_v}{\beta_l} \right) \left( \frac{\rho_l}{\rho_v} \right)
-= \frac{1}{2 \sqrt{\pi}} \frac{j^{LV}}{j_l} \frac{\sqrt{T_v}}{\sqrt{T_l}} \frac{P_l}{P_v} 
+= \frac{1}{2 \sqrt{\pi}} \frac{j^{LV}}{j_l} \frac{\sqrt{T_v}}{\sqrt{T_l}} \frac{P_l}{P_v}
 \end{equation}
 $$
 

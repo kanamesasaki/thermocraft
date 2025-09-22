@@ -127,4 +127,4 @@ $$
 
 ## References
 
-1. David G. Gilmore, "Spacecraft Thermal Control Handbook. Vol. 1: Fundamental Technologies", The Aerospace Corporation Press, California, 2002
+1. David G. Gilmore, "Spacecraft Thermal Control Handbook. Vol. 1: Fundamental Technologies", The Aerospace Corporation Press, California, 2002, doi: [10.2514/4.989117](https://doi.org/10.2514/4.989117)
