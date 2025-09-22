@@ -2,7 +2,7 @@
 title: 'MRG32k3a Random Number Generator on WebGL2'
 description: 'MRG32k3a is one of the common algorithms for random number generation for parallel computing. In this article, we will implement the MRG32k3a algorithm on WebGL2, with skip-ahead functionality.'
 pubDate: 2025-06-05
-updatedDate: 2025-08-02
+updatedDate: 2025-09-22
 heroImage: ''
 tags: ['numerical analysis', 'programming']
 ---
@@ -21,7 +21,7 @@ To achieve this, we need an efficient skip algorithm as well as an algorithm for
 _Figure 1: Idea of Parallel Random Number Generation._
 
 In this article, we introduce one of the common RNG algorithms for parallel computation: MRG32k3a.
-Based on the papers by L'Ecuyer [[2]](#reference) and [[3]](#reference), we will review the outline of the algorithm and how to implement it on WebGL2.
+Based on the papers by L'Ecuyer [[2]](#references) and [[3]](#references), we will review the outline of the algorithm and how to implement it on WebGL2.
 
 ## MRG32k3a
 
@@ -249,7 +249,7 @@ uint skipMRG32k3a(uint n) {
 }
 ```
 
-## Reference
+## References
 
 1. T. Bradley, J. du Toit, R. Tong, M. Giles, P. Woodhams, Parallelization techniques for random numbers generators, in: GPU Computing Gems, Gems Emerald ed., 2011, pp. 231–246, [10.1016/B978-0-12-384988-5.00016-4](https://doi.org/10.1016/B978-0-12-384988-5.00016-4).
 2. Pierre L'Ecuyer, (1999) Good Parameters and Implementations for Combined Multiple Recursive Random Number Generators. Operations Research 47(1):159-164, [10.1287/opre.47.1.159](https://doi.org/10.1287/opre.47.1.159).

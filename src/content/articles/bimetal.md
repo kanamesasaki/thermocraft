@@ -2,7 +2,7 @@
 title: 'Analysis of Bimetal Deformation'
 description: 'If two plates with different materials are bonded together, it is called bimetall. Due to the different thermal expansion coefficient (CTE), a bimetallic strip causes deformation by temperature change.'
 pubDate: 2025-08-02
-updatedDate: 2025-08-02
+updatedDate: 2025-09-22
 heroImage: ''
 tags: ['structural mechanics', 'thermal']
 ---
@@ -20,24 +20,24 @@ Thermal louvers are not commonly used in the recent space missions, but some app
 
 _Table 1: Application Examples of Spacecraft Thermal Louver_
 
-| Spacecraft Name      | COSPAR ID            | Reference          |
-| -------------------- | -------------------- | ------------------ |
-| Mariner 4            | 1964-077A            | [[3]](#reference)  |
-| Pioneer 6            | 1965-105A            | [[4]](#reference)  |
-| Voyager 1, Voyager 2 | 1977-084A, 1977-076A | [[5]](#reference)  |
-| Ohzora               | 1984-015A            | [[6]](#reference)  |
-| Sakigake             | 1985-001A            | [[6]](#reference)  |
-| Suisei               | 1985-073A            | [[6]](#reference)  |
-| Akebono              | 1989-016A            | [[6]](#reference)  |
-| Magellan             | 1989-033B            | [[7]](#reference)  |
-| HALCA                | 1997-005A            | [[6]](#reference)  |
-| Landsat 7            | 1999-020A            | [[8]](#reference)  |
-| Rosetta              | 2004-006A            | [[9]](#reference)  |
-| Kaguya               | 2007-001A            | [[10]](#reference) |
-| Dawn                 | 2007-043A            | [[11]](#reference) |
-| Parker Solar Probe   | 2018-065A            | [[12]](#reference) |
-| Psyche               | 2023-157A            | [[13]](#reference) |
-| Europa Clipper       | 2024-182A            | [[14]](#reference) |
+| Spacecraft Name      | COSPAR ID            | Reference           |
+| -------------------- | -------------------- | ------------------- |
+| Mariner 4            | 1964-077A            | [[3]](#references)  |
+| Pioneer 6            | 1965-105A            | [[4]](#references)  |
+| Voyager 1, Voyager 2 | 1977-084A, 1977-076A | [[5]](#references)  |
+| Ohzora               | 1984-015A            | [[6]](#references)  |
+| Sakigake             | 1985-001A            | [[6]](#references)  |
+| Suisei               | 1985-073A            | [[6]](#references)  |
+| Akebono              | 1989-016A            | [[6]](#references)  |
+| Magellan             | 1989-033B            | [[7]](#references)  |
+| HALCA                | 1997-005A            | [[6]](#references)  |
+| Landsat 7            | 1999-020A            | [[8]](#references)  |
+| Rosetta              | 2004-006A            | [[9]](#references)  |
+| Kaguya               | 2007-001A            | [[10]](#references) |
+| Dawn                 | 2007-043A            | [[11]](#references) |
+| Parker Solar Probe   | 2018-065A            | [[12]](#references) |
+| Psyche               | 2023-157A            | [[13]](#references) |
+| Europa Clipper       | 2024-182A            | [[14]](#references) |
 
 ## Analytical Expression of Bending Radius
 
@@ -148,19 +148,19 @@ $$
 \end{equation}
 $$
 
-## Reference
+## References
 
-1. 小松 敬治, "機械構造弾性力学-弾性力学の基礎とMATLABによる有限要素解析-", 森北出版, 2013
+1. 小松 敬治, "機械構造弾性力学-弾性力学の基礎とMATLABによる有限要素解析-", 森北出版, 2013, ISBN: [978-4-627-66981-9](https://www.morikita.co.jp/books/mid/066981)
 2. S. Timoshenko, "Analysis of Bi-Metal Thermostats," J. Opt. Soc. Am. 11, 233-255 (1925), doi: [10.1364/JOSA.11.000233](https://doi.org/10.1364/JOSA.11.000233)
 3. F. GABRON, R. W. JOHNSON, J. M. F. VICKERS, J. W. LUCAS, "Thermal scale modeling of the Mariner IV SPACECRAFT", AIAA 3rd Aerospace Sciences Meeting, 1966, doi: [10.2514/6.1966-23](https://doi.org/10.2514/6.1966-23)
 4. O. W. Clausen, J, P. Kirkpatrick, "Thermal tests of an improved louver system for spacecraft thermal control", AIAA 4th Aerospace Sciences Meeting, 1969, doi: [10.2514/6.1969-627](https://doi.org/10.2514/6.1969-627)
 5. Heacock RL. The Voyager Spacecraft. Proceedings of the Institution of Mechanical Engineers. 1980;194(1):211-224. doi: [10.1243/PIME_PROC_1980_194_026_02](https://doi.org/10.1243/PIME_PROC_1980_194_026_02)
-6. 大西 晃, 科学衛星の熱設計の歩みと熱物性研究について, 2012
+6. 大西 晃, 科学衛星の熱設計の歩みと熱物性研究について, 2012, [http://www.netsubussei.jp/group/onishi.pdf](http://www.netsubussei.jp/group/onishi.pdf)
 7. James C. Neuman, Joseph A. Buescher, Gregory J. Esterl, "Magellan Spacecraft Thermal Control System Design and Performance," AIAA 28th Thermophysics Conference, 1993, doi: [10.2514/6.1993-2844](https://doi.org/10.2514/6.1993-2844)
 8. Choi, M., "Validation of Landsat-7 ETM+ MEM Thermal Improvement in Thermal Vacuum Tests and in Flight Due to Lower Louver Set Points," SAE Technical Paper 1999-01-2629, 1999, doi: [10.4271/1999-01-2629](https://doi.org/10.4271/1999-01-2629).
 9. Härtel, K., Morgenroth, L., Reichenberger, K., Domingo, M. et al., "Thermal Design and Test of ROSETTA Platform Louvres," SAE Technical Paper 2000-01-2276, 2000, doi: [10.4271/2000-01-2276](https://doi.org/10.4271/2000-01-2276)
 10. Hiroyuki MINAMINO, Michio TAKAHASHI, Satoshi TAYAMA, Yutaka TAKANO, Takeshi SASAKI, Shuichi MATSUMOTO, Shingo IKEGAMI, 月周回衛星「かぐや」衛星システムの開発, Aeronautical and Space Sciences Japan, 2008, Volume 56, Issue 656, Pages 229-235, doi: [10.14822/kjsass.56.656_229](https://doi.org/10.14822/kjsass.56.656_229)
 11. Thomas, V.C., Makowski, J.M., Brown, G.M. et al. The Dawn Spacecraft. Space Sci Rev 163, 175–249 (2011). doi: [10.1007/s11214-011-9852-2](https://doi.org/10.1007/s11214-011-9852-2)
-12. Carl J. Ercol, G. Allan Holtzman, "Post-Launch and Early Mission Thermal Performance of Parker Solar Probe", 49th International Conference on Environmental Systems, 2019.
-13. Isabel SOTO ARMAÑANZAS, Jose Javier VIÑALS ABELAN, Ben KWONG, Paul LINGGI, "Passive Thermal Control Louvers Mechanical Reliability", 50th International Conference on Environmental Systems, 2020.
-14. Pradeep Bhandari, A. J. Mastropietro, Razmig Kandilian, Jenny Hua, Sean Reilly, Paul Woodmansee, Tyler Schmidt, Mark Duran, "Thermal Control Technologies for Europa Clipper Mission", 49th International Conference on Environmental Systems, 2019.
+12. Carl J. Ercol, G. Allan Holtzman, "Post-Launch and Early Mission Thermal Performance of Parker Solar Probe", 49th International Conference on Environmental Systems, 2019, [https://hdl.handle.net/2346/84498](https://hdl.handle.net/2346/84498)
+13. Isabel SOTO ARMAÑANZAS, Jose Javier VIÑALS ABELAN, Ben KWONG, Paul LINGGI, "Passive Thermal Control Louvers Mechanical Reliability", 50th International Conference on Environmental Systems, 2020, [https://hdl.handle.net/2346/86250](https://hdl.handle.net/2346/86250)
+14. Pradeep Bhandari, A. J. Mastropietro, Razmig Kandilian, Jenny Hua, Sean Reilly, Paul Woodmansee, Tyler Schmidt, Mark Duran, "Thermal Control Technologies for Europa Clipper Mission", 49th International Conference on Environmental Systems, 2019, [https://hdl.handle.net/2346/84421](https://hdl.handle.net/2346/84421)

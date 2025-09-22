@@ -2,7 +2,7 @@
 title: 'MRG32k3aとWebGL2を用いた乱数発生'
 description: '並列計算で用いられる乱数発生アルゴリズムにMRG32k3aがあります。この記事では、WebGL2を用いてGPU上で実行できるMRG32k3aアルゴリズムを実装します。'
 pubDate: 2025-07-24
-updatedDate: 2025-08-02
+updatedDate: 2025-09-22
 heroImage: ''
 tags: ['numerical analysis', 'programming']
 ---
@@ -20,7 +20,7 @@ OpenGL ES 3.0には乱数発生させるビルトイン関数は存在しない�
 ![mrg32k3a-1](../figures/mrg32k3a-1.svg)
 _Figure 1: Idea of Parallel Random Number Generation._
 
-今回は並列計算でもよく用いられる乱数発生アルゴリズム[[1]](#reference)のうちMRG32k3aについて、L'Ecuyerの論文 [[2,3]](#reference)を参考にアルゴリズムの概要と具体的な実装方法について考えていきたい。
+今回は並列計算でもよく用いられる乱数発生アルゴリズム[[1]](#references)のうちMRG32k3aについて、L'Ecuyerの論文 [[2,3]](#references)を参考にアルゴリズムの概要と具体的な実装方法について考えていきたい。
 
 ## MRG32k3aとは
 
@@ -249,7 +249,7 @@ uint skipMRG32k3a(uint n) {
 }
 ```
 
-## Reference
+## References
 
 1. T. Bradley, J. du Toit, R. Tong, M. Giles, P. Woodhams, Parallelization techniques for random numbers generators, in: GPU Computing Gems, Gems Emerald ed., 2011, pp. 231–246, [10.1016/B978-0-12-384988-5.00016-4](https://doi.org/10.1016/B978-0-12-384988-5.00016-4).
 2. Pierre L'Ecuyer, (1999) Good Parameters and Implementations for Combined Multiple Recursive Random Number Generators. Operations Research 47(1):159-164, [10.1287/opre.47.1.159](https://doi.org/10.1287/opre.47.1.159).

@@ -2,7 +2,7 @@
 title: '標準大気モデル（U.S. Standard Atmosphere 1976、ISA、ICAO）'
 description: '地球大気の温度、圧力等の高度による変化を表すモデルとしてよく知られている、U.S. Standard Atmosphere 1976、ISA（国際標準大気）、ICAO Standard Atmosphereを紹介し、各種パラメタの計算方法について解説します。'
 pubDate: 2025-09-08
-updatedDate: 2025-09-08
+updatedDate: 2025-09-22
 heroImage: ''
 tags: ['thermal']
 ---
@@ -285,6 +285,6 @@ U.S. Standard Atmosphere 1976 では、86 km から 1000 km までの大気に�
 
 ## References
 
-1. Standard Atmosphere (identical with the ICAO and WMO Standard Atmospheres from 2 to 32 km), First Edition 1975-05-15, ISO 2533-1975
-2. U.S. Standard Atmosphere, 1976, NOAA-S/T 76-1562
-3. Manual of the ICAO Standard Atmosphere, extended to 80 kilometers (262 500 feet), 1993, Third Edition, Doc 7488/3
+1. Standard Atmosphere (identical with the ICAO and WMO Standard Atmospheres from 2 to 32 km), First Edition 1975-05-15, [ISO 2533-1975](https://www.iso.org/standard/7472.html)
+2. U.S. Standard Atmosphere, 1976, [NOAA-S/T 76-1562](https://www.ngdc.noaa.gov/stp/space-weather/online-publications/miscellaneous/us-standard-atmosphere-1976/us-standard-atmosphere_st76-1562_noaa.pdf)
+3. Manual of the ICAO Standard Atmosphere, extended to 80 kilometers (262 500 feet), 1993, Third Edition, [Doc 7488/3](https://store.icao.int/en/manual-of-the-icao-standard-atmosphere-extended-to-80-kilometres-262500-feet-doc-7488)

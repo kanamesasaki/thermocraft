@@ -2,13 +2,13 @@
 title: '表面張力とヤング・ラプラスの式'
 description: '異なる流体が曲率を持った表面を境界にして接している場合、圧力と表面張力を考慮して力のつりあい式を立てることが可能です。これはヤング・ラプラスの式と呼ばれ、境界となる表面の曲率、表面張力、圧力差の関係を表します。'
 pubDate: 2025-09-01
-updatedDate: 2025-09-01
+updatedDate: 2025-09-22
 heroImage: ''
 tags: ['fluid dynamics']
 ---
 
 異なる流体が曲率を持った表面を境界にして接している場合、圧力と表面張力を考慮して力のつりあい式を立てることが出来る。
-これはヤング・ラプラスの式と呼ばれ、境界となる表面の曲率、表面張力、圧力差の関係を表す。今回はヤング・ラプラスの式を[[1]](#reference)を参考に導出していこう。
+これはヤング・ラプラスの式と呼ばれ、境界となる表面の曲率、表面張力、圧力差の関係を表す。今回はヤング・ラプラスの式を[[1]](#references)を参考に導出していこう。
 
 ## ヤング・ラプラスの式
 
@@ -60,6 +60,6 @@ $$
 \end{equation}
 $$
 
-## Reference
+## References
 
-1. L D Landau、 E.M. Lifshitz、 "Fluid Mechanics、 Second Edition"、 Pergamon Press、 1987
+1. L D Landau, E.M. Lifshitz, "Fluid Mechanics, Second Edition", Pergamon Press, 1987, doi: [10.1016/C2013-0-03799-1](https://doi.org/10.1016/C2013-0-03799-1)

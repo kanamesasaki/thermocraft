@@ -2,7 +2,7 @@
 title: 'View Factors for Disks and Cylinder Walls'
 description: 'We will derive various view factors for disks and cylinder walls with finite area, based on the analytical view factor from a plate element to a disk.'
 pubDate: 2025-08-11
-updatedDate: 2025-08-11
+updatedDate: 2025-09-22
 heroImage: ''
 tags: ['thermal']
 ---
@@ -153,8 +153,8 @@ $$
 
 Since we are free to set the values of $h_A, h_B, h_C$, we can find the view factor between side walls with arbitrary spacing and width.
 
-## Reference
+## References
 
-1. John R. Howell, M. Pinar Mengüç, "Radiative transfer configuration factor catalog: A listing of relations for common geometries", Journal of Quantitative Spectroscopy and Radiative Transfer, Volume 112, Issue 5, 2011, Pages 910-912, [https://doi.org/10.1016/j.jqsrt.2010.10.002](https://doi.org/10.1016/j.jqsrt.2010.10.002)
+1. John R. Howell, M. Pinar Mengüç, "Radiative transfer configuration factor catalog: A listing of relations for common geometries", Journal of Quantitative Spectroscopy and Radiative Transfer, Volume 112, Issue 5, 2011, Pages 910-912, doi: [10.1016/j.jqsrt.2010.10.002](https://doi.org/10.1016/j.jqsrt.2010.10.002)
 2. A Catalog of Configuration Factors, 3rd Edition, [https://www.thermalradiation.net/indexCat.html](https://www.thermalradiation.net/indexCat.html)
 3. View Factor Calculator, [https://sterad.net](https://sterad.net)

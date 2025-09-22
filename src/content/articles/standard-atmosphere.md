@@ -2,7 +2,7 @@
 title: 'Standard Atmosphere (U.S. Standard Atmosphere 1976, ISA, ICAO)'
 description: 'U.S. Standard Atmosphere 1976, ISA (International Standard Atmosphere), ICAO Standard Atmosphere are well-known models that describe the variation of atmospheric properties such as temperature and pressure with altitude. This article explains the calculation methods for various atmospheric parameters based on these models.'
 pubDate: 2025-09-08
-updatedDate: 2025-09-08
+updatedDate: 2025-09-22
 heroImage: ''
 tags: ['thermal']
 ---
@@ -275,6 +275,6 @@ $$
 
 ## References
 
-1. Standard Atmosphere (identical with the ICAO and WMO Standard Atmospheres from 2 to 32 km), First Edition 1975-05-15, ISO 2533-1975
-2. U.S. Standard Atmosphere, 1976, NOAA-S/T 76-1562
-3. Manual of the ICAO Standard Atmosphere, extended to 80 kilometers (262 500 feet), 1993, Third Edition, Doc 7488/3
+1. Standard Atmosphere (identical with the ICAO and WMO Standard Atmospheres from 2 to 32 km), First Edition 1975-05-15, [ISO 2533-1975](https://www.iso.org/standard/7472.html)
+2. U.S. Standard Atmosphere, 1976, [NOAA-S/T 76-1562](https://www.ngdc.noaa.gov/stp/space-weather/online-publications/miscellaneous/us-standard-atmosphere-1976/us-standard-atmosphere_st76-1562_noaa.pdf)
+3. Manual of the ICAO Standard Atmosphere, extended to 80 kilometers (262 500 feet), 1993, Third Edition, [Doc 7488/3](https://store.icao.int/en/manual-of-the-icao-standard-atmosphere-extended-to-80-kilometres-262500-feet-doc-7488)

@@ -2,7 +2,7 @@
 title: 'Knudsen Number and Mean Free Path'
 description: 'When the interested fluid phenomenon reaches very low density region, we have to be careful whether it is still within the scope of ordinary fluid dynamics. One of the useful indicators to characterize such physical phenomena is a dimensionless quantity called Knudsen number.'
 pubDate: 2025-05-20
-updatedDate: 2025-07-30
+updatedDate: 2025-09-22
 heroImage: ''
 tags: ['fluid dynamics']
 ---
@@ -10,7 +10,7 @@ tags: ['fluid dynamics']
 When the interested fluid phenomenon reaches very low density region, we have to be careful whether it is still within the scope of ordinary fluid dynamics, or it is rather in the field of molecular dynamics or rarefied gas dynamics.
 One of the useful indicators to characterize such physical phenomena is a dimensionless quantity called Knudsen number.
 In this article, we will look into the definition of the Knudsen number, and evaluate the mean free path, which is an essential quantity to understand the Knudsen number.
-The evaluation procedure is mainly based on [[1]](#reference).
+The evaluation procedure is mainly based on [[1]](#references).
 
 ## Definition of Knudsen Number
 
@@ -424,6 +424,6 @@ $$
 \end{equation}
 $$
 
-## Reference
+## References
 
 1. G.A. Bird “Molecular Gas Dynamics and the Direct Simulation of Gas Flows”, Oxford University Press, 1994.

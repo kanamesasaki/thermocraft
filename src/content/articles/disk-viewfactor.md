@@ -2,7 +2,7 @@
 title: 'Disk View Factor from a Plate Element'
 description: 'Analytical derivation of a disk view factor from a plate element, using both area integration and line integration approaches.'
 pubDate: 2025-06-03
-updatedDate: 2025-07-25
+updatedDate: 2025-09-22
 heroImage: ''
 tags: ['thermal']
 ---
@@ -307,7 +307,8 @@ $$
 
 With this approach, we have successfully derived the view factor expression for a disk from a plate element with reduced complexity.
 
-## Reference
+## References
 
-1. A Catalog of Configuration Factors, 3rd Edition, [https://www.thermalradiation.net/indexCat.html](https://www.thermalradiation.net/indexCat.html)
-2. View Factor Calculator, [https://sterad.net](https://sterad.net)
+1. John R. Howell, M. Pinar Mengüç, "Radiative transfer configuration factor catalog: A listing of relations for common geometries", Journal of Quantitative Spectroscopy and Radiative Transfer, Volume 112, Issue 5, 2011, Pages 910-912, doi: [10.1016/j.jqsrt.2010.10.002](https://doi.org/10.1016/j.jqsrt.2010.10.002)
+2. A Catalog of Configuration Factors, 3rd Edition, [https://www.thermalradiation.net/indexCat.html](https://www.thermalradiation.net/indexCat.html)
+3. View Factor Calculator, [https://sterad.net](https://sterad.net)
