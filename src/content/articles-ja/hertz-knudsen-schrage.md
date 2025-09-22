@@ -2,7 +2,7 @@
 title: 'Hertz-Knudsen-Schrage Equationの導出'
 description: 'Liquid-Vapor Interfaceに衝突するような平均流速をMaxwell-Boltzmann分布に追加することで、Hertz-Knudsen Equationを修正することが可能です。今回は、この仮定をもとに得られる、Hertz-Knudsen-Schrage Equationを導出します。'
 pubDate: 2025-08-31
-updatedDate: 2025-09-11
+updatedDate: 2025-09-22
 heroImage: ''
 tags: ['thermal', 'statistical mechanics']
 ---
@@ -147,7 +147,7 @@ $$
 
 ## 穏やかな蒸発・凝縮の場合
 
-蒸発・凝縮が穏やかで平均流速が十分小さい場合、(11)をさらに変形して、熱流束と温度の関係を陽に表すことが出来る。まず、先ほど導出した蒸発による流量を$j_e$と表すことにする。
+蒸発・凝縮が穏やかで平均流速が十分小さい場合、(10)をさらに変形して、熱流束と温度の関係を陽に表すことが出来る。まず、先ほど導出した蒸発による流量を$j_e$と表すことにする。
 
 $$
 \begin{equation}
@@ -164,7 +164,7 @@ $$
 \end{equation}
 $$
 
-全体の質量流量$j^{LV}$と、平均流速$\overline{v}_z$との関係を(12)とおいて、$\overline{v}_z \beta$を$j_e,~ j^{LV}$を用いて書き換える。
+全体の質量流量$j^{LV}$と、平均流速$\overline{v}_z$との関係を(15)とおいて、$\overline{v}_z \beta$を$j_e,~ j^{LV}$を用いて書き換える。
 
 $$
 \begin{equation}
@@ -182,7 +182,7 @@ $$
 \end{equation}
 $$
 
-(14)、(16)を(11)に代入していく。
+(14)、(16)を(10)に代入していく。
 
 $$
 \begin{align}
@@ -200,7 +200,7 @@ $$
 \end{equation}
 $$
 
-最終的に以下の関係式(18)が得られて、これもHertz-Knudsen-Schrage Equationと呼ばれる。
+最終的に以下の関係式が得られて、これもHertz-Knudsen-Schrage Equationと呼ばれる。
 
 $$
 \begin{gather}
@@ -210,10 +210,10 @@ j^{LV} = \frac{2 \alpha}{2 - \alpha} \sqrt{\frac{m}{2\pi k_\mathrm{B}}}\left( \f
 $$
 
 今回紹介したHertz-Knudsen-Schrage Equationは、比較的簡単に蒸発・凝縮をモデル化できるツールとして、たまに本や論文で出てくる。
-実際に式(2)を見てみると、平均流速を用いてマクスウェル・ボルツマン分布を修正していることが分かる。
-確かに蒸発・凝縮が進んでいる場合は、全体としてある平均流速で質量が移動しているのは間違いないのだが、その場合の分子の速度分布を(2)の形で表してよいのか、という点については、明確な物理的根拠があるわけではない。
+実際に式(1)を見てみると、平均流速を用いてマクスウェル・ボルツマン分布を修正していることが分かる。
+確かに蒸発・凝縮が進んでいる場合は、全体としてある平均流速で質量が移動しているのは間違いないのだが、その場合の分子の速度分布を(1)の形で表してよいのか、という点については、明確な物理的根拠があるわけではない。
 あくまで簡易的に分子の速度分布を表現するための仮定であることに注意が必要である。
 
-## Reference
+## References
 
-1. Schrage, R., 1953, "A theoretical study of interphase mass transfer", Columbia University Press.
+1. Robert W. Schrage, "A theoretical study of interphase mass transfer", Columbia University Press, 1953, doi: [10.7312/schr90162](https://doi.org/10.7312/schr90162)
