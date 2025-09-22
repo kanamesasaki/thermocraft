@@ -2,7 +2,7 @@
 title: DCM・オイラー角・クォータニオン
 description: '物体の姿勢を表現する手法として一般的なものに、DCM（Direct Cosine Matrix）、オイラー角、クォータニオンがあります。これらの表現方法の概要と、姿勢の更新式について解説します。'
 pubDate: 2025-08-03
-updatedDate: 2025-08-03
+updatedDate: 2025-09-22
 heroImage: ''
 tags: ['astrodynamics']
 ---
@@ -27,7 +27,7 @@ DCMまたは座標基底そのままだとパラメタが必要以上ある（�
 一方で個人的には、座標基底をはっきりした形で操作するので、最も分かりやすい姿勢表現の方法だと思っている。
 
 さて、DCMを用いると$\mathcal{F}_\mathrm{a}$から$\mathcal{F}_\mathrm{b}$への座標回転は次のように表される。
-今回もベクトリクスを使って座標を表すので、この表記方法については[剛体の運動方程式](https://thermocraft.space/ja/articles/rigid-body/)または参考文献[[1]](#reference)を見てもらいたい。
+今回もベクトリクスを使って座標を表すので、この表記方法については[剛体の運動方程式](https://thermocraft.space/ja/articles/rigid-body/)または参考文献[[1]](#references)を見てもらいたい。
 
 $$
 \begin{equation*}
@@ -456,13 +456,13 @@ $$
 \end{equation}
 $$
 
-## Reference
+## References
 
 DCM、オイラー角、クォータニオンによる姿勢の表現と更新式について一通り確認した。
 宇宙機の姿勢表現や3Dモデリングなどの分野ではクォータニオンがよく用いられるようだが、「姿勢表現はクォータニオンでないといけない」と言うものでもない。
 それぞれの方法を理解して、目的や状況に合わせて適切な方法を使えるのが一番だ。
 
-この記事のDCMとオイラー角に関する部分は[[1]](#reference)を参考に、クォータニオンに関する部分は[[2]](#reference)を参考にしつつ書いている。どちらも宇宙機の姿勢運動に関する名著と呼ばれるものなので、より詳しく理解したい場合には参照してもらいたい。
+この記事のDCMとオイラー角に関する部分は[[1]](#references)を参考に、クォータニオンに関する部分は[[2]](#references)を参考にしつつ書いている。どちらも宇宙機の姿勢運動に関する名著と呼ばれるものなので、より詳しく理解したい場合には参照してもらいたい。
 
 1. Peter C. Hughes, "Spacecraft Attitude Dynamics", Dover Publications, 2004
-2. James R. Wertz, "Spacecraft Attitude Determination and Control", Springer, 1978
+2. James R. Wertz, "Spacecraft Attitude Determination and Control", Springer, 1978, doi: [10.1007/978-94-009-9907-7](https://doi.org/10.1007/978-94-009-9907-7)

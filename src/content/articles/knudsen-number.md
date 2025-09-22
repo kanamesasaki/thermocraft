@@ -426,4 +426,4 @@ $$
 
 ## References
 
-1. G.A. Bird “Molecular Gas Dynamics and the Direct Simulation of Gas Flows”, Oxford University Press, 1994.
+1. G.A. Bird “Molecular Gas Dynamics and the Direct Simulation of Gas Flows”, Oxford University Press, 1994, doi: [10.1093/oso/9780198561958.001.0001](https://doi.org/10.1093/oso/9780198561958.001.0001)
