@@ -2,7 +2,7 @@
 title: 'Disk View Factor from a Plate Element'
 description: 'Analytical derivation of a disk view factor from a plate element, using both area integration and line integration approaches.'
 pubDate: 2025-06-03
-updatedDate: 2025-09-22
+updatedDate: 2025-09-23
 heroImage: ''
 tags: ['thermal']
 ---
@@ -306,6 +306,89 @@ $$
 $$
 
 With this approach, we have successfully derived the view factor expression for a disk from a plate element with reduced complexity.
+
+## Disk View Factor from a Plate Element with Offset
+
+As another case of disk view factor from a plate element, let's consider the scenario where the plate element is offset from the central axis of the disk.
+As shown in Figure 4, the orientation of the plate element is parallel to the disk.
+
+![disk-viewfactor-4](../figures/disk-viewfactor-4.svg)
+_Figure 4: Plate Element to Disk in Parallel Plane. Element is Offset from the Disk Center._
+
+Assuming the origin is at the plate element, the edge of the disk can be expressed as follows.
+
+$$
+\begin{align}
+\left[ \begin{array}{c} x \\ y \\ z \end{array} \right] =
+\left[ \begin{array}{c} R \cos\alpha - a \\ R \sin\alpha \\ h \end{array} \right], \quad
+\frac{d}{d\alpha} \left[ \begin{array}{c} x \\ y \\ z \end{array} \right] =
+\left[ \begin{array}{c} -R \sin\alpha \\ R \cos\alpha \\ 0 \end{array} \right]
+\end{align}
+$$
+
+The distance $S$ from a point on the edge of the disk to the infinitesimal surface is expressed as follows.
+
+$$
+\begin{align}
+S^2 &= (R \cos \alpha - a)^2 + (R \sin \alpha)^2 + h^2 \notag \\
+&= R^2 + a^2 + h^2 -2aR \cos\alpha
+\end{align}
+$$
+
+As the orientation of the plate element is set to $(0,0,1)$, the view factor can be calculated as follows.
+
+$$
+\begin{align}
+&F_\mathrm{offset} = \int \frac{ydx - xdy}{2\pi S^2} = \int_{\pi}^{-\pi} \frac{-R^2 + aR \cos\alpha}{2\pi (R^2 + a^2 + h^2 -2aR \cos\alpha)}d\alpha \notag \\
+&= \frac{R^2}{2\pi} \int_{-\pi}^{\pi} \frac{d\alpha}{R^2 + a^2 + h^2 - 2aR \cos\alpha} - \frac{aR}{2\pi} \int_{-\pi}^{\pi} \frac{\cos\alpha ~d\alpha}{R^2 + a^2 + h^2 - 2aR \cos\alpha}
+\end{align}
+$$
+
+The first term in (27) can be calculated as follows:
+
+$$
+\begin{align}
+&\frac{R^2}{2\pi} \int_{-\pi}^{\pi} \frac{d\alpha}{R^2 + a^2 + h^2 - 2aR \cos\alpha} \notag \\
+&=\frac{R^2}{2\pi} \int_{-\infty}^{\infty} \frac{1}{R^2 + a^2 + h^2 - 2aR \frac{1-t^2}{1+t^2}} \frac{2}{1+t^2}dt \notag \\
+% &= \frac{R^2}{\pi} \int_{-\infty}^{\infty} \frac{1}{(R^2 + a^2 + h^2)(1+t^2) - 2aR(1-t^2)}dt \notag \\
+&= \frac{R^2}{\pi} \int_{-\infty}^{\infty} \frac{1}{(R^2 + a^2 + h^2 - 2aR) + (R^2 + a^2 + h^2 + 2aR)t^2}dt \notag \\
+&= \frac{R^2}{\pi(R^2 + a^2 + h^2 + 2aR)} \int_{-\infty}^{\infty} \frac{1}{A^2 + t^2}dt \notag \\
+&= \frac{R^2 A}{\pi(R^2 + a^2 + h^2 - 2aR)} \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} d\theta \notag = \frac{R^2A}{R^2 + a^2 + h^2 - 2aR} \notag \\
+&= \frac{R^2}{\sqrt{(R^2 + a^2 + h^2)^2 - 4a^2R^2}}
+\end{align}
+$$
+
+The parameter $A$ and the substitution used in the integration are presented as shown below.
+
+$$
+\begin{align}
+t = A \tan\theta, \quad dt = \frac{A~d\theta}{\cos^2\theta}, \quad A = \sqrt{\frac{R^2 + a^2 + h^2 - 2aR}{R^2 + a^2 + h^2 + 2aR}}
+\end{align}
+$$
+
+The second term in (27) can be calculated as follows:
+
+$$
+\begin{align}
+&\frac{aR}{2\pi} \int_{-\pi}^{\pi} \frac{\cos\alpha ~d\alpha}{R^2 + a^2 + h^2 - 2aR \cos\alpha} \notag \\
+&=\frac{aR}{2\pi} \int_{-\infty}^{\infty} \frac{\frac{1-t^2}{1+t^2}}{R^2 + a^2 + h^2 - 2aR \frac{1-t^2}{1+t^2}} \frac{2}{1+t^2}dt \notag \\
+% &=\frac{aR}{\pi} \int_{-\infty}^{\infty} \frac{1-t^2}{(R^2 + a^2 + h^2)(1+t^2) - 2aR(1-t^2)} \frac{1}{1+t^2}dt \notag \\
+&=\frac{aR}{\pi} \int_{-\infty}^{\infty} \frac{1-t^2}{(R^2 + a^2 + h^2 - 2aR) + (R^2 + a^2 + h^2 + 2aR)t^2} \frac{1}{1+t^2}dt \notag \\
+&=\frac{aR}{\pi(R^2 + a^2 + h^2 + 2aR)} \int_{-\infty}^{\infty} \frac{1-t^2}{(A^2 + t^2)(1+t^2)}dt \notag \\
+&=\frac{aR}{\pi(R^2 + a^2 + h^2 + 2aR)} \int_{-\infty}^{\infty} \left(\frac{1+A^2}{1-A^2} \frac{1}{t^2 + A^2} - \frac{2}{1-A^2} \frac{1}{t^2 + 1}\right) dt \notag \\
+&=\frac{aRA}{R^2 + a^2 + h^2 - 2aR} \frac{1+A^2}{1-A^2} - \frac{aR}{R^2 + a^2 + h^2 + 2aR} \frac{2}{1-A^2} \notag \\
+% &=\frac{aR}{\sqrt{(R^2 + a^2 + h^2)^2 - 4a^2R^2}} \frac{R^2+a^2+h^2}{2aR} - \frac{1}{2} \notag \\
+&=\frac{1}{2}\frac{R^2 + a^2 + h^2}{\sqrt{(R^2 + a^2 + h^2)^2 - 4a^2R^2}} - \frac{1}{2}
+\end{align}
+$$
+
+Finally, the disk view factor from a plate element with an offset is expresseed by the following equation.
+
+$$
+\begin{align}
+F_\mathrm{offset} &= \frac{1}{2} - \frac{1}{2}\frac{a^2 + h^2 - R^2}{\sqrt{(R^2 + a^2 + h^2)^2 - 4a^2R^2}}
+\end{align}
+$$
 
 ## References
 

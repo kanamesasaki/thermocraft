@@ -343,7 +343,7 @@ $$
 
 $$
 \begin{align}
-F_\mathrm{offset} &= \int \frac{ydx - xdy}{2\pi S^2} = \int_{\pi}^{-\pi} \frac{-R^2 + aR \cos\alpha}{2\pi (R^2 + a^2 + h^2 -2aR \cos\alpha)}d\alpha \notag \\
+&F_\mathrm{offset} = \int \frac{ydx - xdy}{2\pi S^2} = \int_{\pi}^{-\pi} \frac{-R^2 + aR \cos\alpha}{2\pi (R^2 + a^2 + h^2 -2aR \cos\alpha)}d\alpha \notag \\
 &= \frac{R^2}{2\pi} \int_{-\pi}^{\pi} \frac{d\alpha}{R^2 + a^2 + h^2 - 2aR \cos\alpha} - \frac{aR}{2\pi} \int_{-\pi}^{\pi} \frac{\cos\alpha ~d\alpha}{R^2 + a^2 + h^2 - 2aR \cos\alpha}
 \end{align}
 $$
