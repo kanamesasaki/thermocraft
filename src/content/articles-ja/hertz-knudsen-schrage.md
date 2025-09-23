@@ -2,13 +2,13 @@
 title: 'Hertz-Knudsen-Schrage Equationの導出'
 description: 'Liquid-Vapor Interfaceに衝突するような平均流速をMaxwell-Boltzmann分布に追加することで、Hertz-Knudsen Equationを修正することが可能です。今回は、この仮定をもとに得られる、Hertz-Knudsen-Schrage Equationを導出します。'
 pubDate: 2025-08-31
-updatedDate: 2025-09-22
+updatedDate: 2025-09-23
 heroImage: ''
 tags: ['thermal', 'statistical mechanics']
 ---
 
 以前の記事で導出した[Hertz-Knudsen Equation](https://thermocraft.space/ja/articles/hertz-knudsen/)は、蒸発・凝縮の流量を表す式にはなっていたものの凝縮係数$\sigma_c$と蒸発係数$\sigma_e$という未知パラメタが含まれているという点が不便であった。
-Schrageは蒸発・凝縮がある場合に、Liquid-Vapor Interfaceに衝突するような平均流速がある、という仮定をMaxwell-Boltzmann分布に追加することで、Hertz-Knudsen Equationを修正した[[1]](#references)。
+Schrageは蒸発・凝縮がある場合に、気相側にゼロでない平均流速がある、という仮定をMaxwell-Boltzmann分布に追加することで、Hertz-Knudsen Equationを修正した[[1]](#references)。
 今回はこの修正の手順を追って、Hertz-Knudsen-Schrage Equationを導出する。
 
 ## Hertz-Knudsen Equationの修正
@@ -59,12 +59,12 @@ $$
 ![hertz-knudsen-schrage-1](../figures/hertz-knudsen-schrage-1.svg)
 _Figure 1: Error Function._
 
-$t = \alpha t'$として置換すれば、パラメタを含んだ形に書き換えることも出来る。
+$t = a t'$として置換すれば、パラメタを含んだ形に書き換えることも出来る。
 
 $$
 \begin{equation}
 % \label{eq:erfa}
-\mathrm{erf}(x) = \frac{2 \alpha}{\sqrt{\pi}} \int^{\frac{x}{\alpha}}_0 \exp \left[ -(\alpha t')^2 \right] dt'
+\mathrm{erf}(x) = \frac{2 a}{\sqrt{\pi}} \int^{\frac{x}{a}}_0 \exp \left[ -(a t')^2 \right] dt'
 \end{equation}
 $$
 
@@ -76,19 +76,21 @@ $$
 &= - \frac{mN}{V} \sqrt{\frac{m}{2\pi k_\mathrm{B} T}} \left\{
 - \frac{k_\mathrm{B}T}{m} \exp \left[ -\frac{m \overline{v}_z^2}{2k_\mathrm{B}T} \right]
 - \frac{\overline{v}_z}{2} \sqrt{\frac{2\pi k_\mathrm{B}T}{m}}
-\left[1 - \mathrm{erf} \left( \overline{v}_z \sqrt{\frac{m}{2k_\mathrm{B}T}} \right) \right] \right\} \notag  \\
+\left[1 - \mathrm{erf} \left( \overline{v}_z \sqrt{\frac{m}{2k_\mathrm{B}T}} \right) \right] \right\} \notag \\
 &= \frac{N k_\mathrm{B}T}{V}
 \sqrt{\frac{m}{2\pi k_\mathrm{B} T}} \exp \left[ -\frac{m \overline{v}_z^2}{2k_\mathrm{B}T} \right] - \frac{\overline{v}_z mN}{2V}
-\left[1 - \mathrm{erf} \left( \overline{v}_z \sqrt{\frac{m}{2k_\mathrm{B}T}} \right) \right] \notag  \\
+\left[1 - \mathrm{erf} \left( \overline{v}_z \sqrt{\frac{m}{2k_\mathrm{B}T}} \right) \right] \notag \\
 &= P \frac{\beta}{\sqrt{\pi}} \exp \left[- \overline{v}_z^2 \beta^2 \right]
-- P \overline{v}_z \beta^2 \left[ 1 - \mathrm{erf}(\overline{v}_z \beta) \right] \notag  \\
-&= \frac{\beta P}{\sqrt{\pi}} \left\{ \exp \left[- \overline{v}_z^2 \beta^2 \right] - \overline{v}_z \beta \sqrt{\pi} \left[ 1 - \mathrm{erf}(\overline{v}_z \beta) \right] \right\} \notag \\
+- P \overline{v}_z \beta^2 \left[1-\mathrm{erf}(\overline{v}_z \beta) \right] \notag \\
+&= \frac{\beta P}{\sqrt{\pi}} \left\{ \exp \left[- \overline{v}_z^2 \beta^2 \right] - \overline{v}_z \beta \sqrt{\pi} \left[1-\mathrm{erf}(\overline{v}_z \beta) \right] \right\} \notag \\
 &= \frac{\beta P}{\sqrt{\pi}} ~ \Gamma \left( \overline{v}_z \beta \right)
-= \frac{\rho}{2\sqrt{\pi} \beta} ~ \Gamma \left( \overline{v}_z \beta \right)
+% = \frac{\rho}{2\sqrt{\pi} \beta} ~ \Gamma \left( \overline{v}_z \beta \right)
 \end{align}
 $$
 
 ただし、$\beta$および$\Gamma$は、それぞれ以下のように置いた。
+$m$は分子一個の重さで、アボガドロ数を$N_\mathrm{A}$として分子量$M = m N_\mathrm{A}$である。
+また、$R$はモル気体定数で$R = k_\mathrm{B} N_\mathrm{A}$である。
 
 $$
 \begin{equation}
@@ -103,22 +105,26 @@ $$
 \end{equation}
 $$
 
-$m$は分子一個の重さで、アボガドロ数を$N_\mathrm{A}$として分子量$M = m N_\mathrm{A}$である。
-気体の状態方程式についても確認しておく。$R$はモル気体定数で$R = k_\mathrm{B} N_\mathrm{A}$である。
+これにより、気相側からliquid-vapor interfaceに衝突する流量を$j_v$、液相側からliquid-vapor interfaceに衝突する流量を$j_l$とすると、それぞれ次のように整理できる。
 
 $$
 \begin{equation}
-P[\mathrm{N}\mathrm{m}^{-2}] V[\mathrm{m}^3] = n[\mathrm{mol}] R[\mathrm{J}\mathrm{K}^{-1}\mathrm{mol}^{-1}] T[\mathrm{K}]
+j_v = \frac{\beta P}{\sqrt{\pi}} \Gamma = \sqrt{\frac{m}{2\pi k_\mathrm{B}}} \frac{\Gamma P_v}{\sqrt{T_v}}
 \end{equation}
 $$
 
 $$
 \begin{equation}
-P = \frac{nmN_\mathrm{A}}{V} \frac{k_\mathrm{B}T}{m} = \rho \frac{k_\mathrm{B}T}{m}
+j_l = \sqrt{\frac{m}{2\pi k_\mathrm{B}}} \frac{P_l}{\sqrt{T_l}}
 \end{equation}
 $$
 
-よって全体の質量流量は(10)のように表され、これをHertz-Knudsen-Schrage Equationと呼ぶ。
+気相側にのみゼロでない平均流速がある、という仮定をおく理由には以下のような点が挙げられる。
+
+- 液相側は単位体積当たりの分子数が非常に大きく、気相側と比較して平均流速が十分小さいと考えられること
+- 液相側は単位体積当たりの分子数が非常に大きいため、平均自由行程が非常に小さく、気相のKnudsen層のような非平衡な領域を無視できると考えられること
+
+liquid-vapor interfaceに衝突した分子の内、実際に蒸発・凝縮する割合を（いずれの方向も同じ値になると仮定して）$\alpha$とすると、全体の質量流量は$j^{LV} = \alpha (j_l - j_v)$と表される。これを整理すると、以下のようにHertz-Knudsen-Schrage Equationが得られる。
 
 $$
 \begin{equation}
@@ -127,7 +133,7 @@ j^{LV} = \alpha \sqrt{\frac{m}{2\pi k_\mathrm{B}}}\left( \frac{P_l}{\sqrt{T_l}} 
 \end{equation}
 $$
 
-ただし、平均流速$\overline{v}_z$は、熱流束$q$をもとにおおよそ(11)ように見積もることが出来る。
+ただし、平均流速$\overline{v}_z$は、熱流束$q$をもとにおおよそ(11)のように見積もることが出来る。
 一方で、最終的に得られる質量流量$j^{LV}$と熱流束$q$の間には(12)の関係があるので、これを満たすような温度・圧力となるはずである。
 つまり、熱流束$q$が質量流量$j^{LV}$とパラメタ$\Gamma$に関係しているので、熱流束$q$から温度（あるいはその逆）を陽に求めることは出来ない。
 
@@ -187,7 +193,7 @@ $$
 $$
 \begin{align}
 j^{LV} &= \alpha \sqrt{\frac{m}{2\pi k_\mathrm{B}}}\left\{ \frac{P_l}{\sqrt{T_l}} - \frac{P_v}{\sqrt{T_v}} \left( 1 - \overline{v}_z \beta_v \sqrt{\pi} \right) \right\} \notag \\
-&= \alpha \sqrt{\frac{m}{2\pi k_\mathrm{B}}}\left\{ \frac{P_l}{\sqrt{T_l}} - \frac{P_v}{\sqrt{T_v}} \left( 1 - \frac{1}{2} \frac{j^{LV}}{j_l} \frac{\sqrt{T_v}}{\sqrt{T_l}} \frac{P_l}{P_v}  \right) \right\} \notag \\
+&= \alpha \sqrt{\frac{m}{2\pi k_\mathrm{B}}}\left\{ \frac{P_l}{\sqrt{T_l}} - \frac{P_v}{\sqrt{T_v}} \left( 1 - \frac{1}{2} \frac{j^{LV}}{j_l} \frac{\sqrt{T_v}}{\sqrt{T_l}} \frac{P_l}{P_v} \right) \right\} \notag \\
 &= \alpha \sqrt{\frac{m}{2\pi k_\mathrm{B}}}\left( \frac{P_l}{\sqrt{T_l}} - \frac{P_v}{\sqrt{T_v}} \right) + \alpha \sqrt{\frac{m}{2\pi k_\mathrm{B}}} \frac{P_v}{\sqrt{T_v}} \times \frac{1}{2} \frac{j^{LV}}{j_l} \frac{\sqrt{T_v}}{\sqrt{T_l}} \frac{P_l}{P_v} \notag \\
 &= \alpha \sqrt{\frac{m}{2\pi k_\mathrm{B}}}\left( \frac{P_l}{\sqrt{T_l}} - \frac{P_v}{\sqrt{T_v}} \right) + \frac{\sqrt{\frac{m}{2\pi k_\mathrm{B}}} \frac{P_v}{\sqrt{T_v}}}{\sqrt{\frac{m}{2\pi k_\mathrm{B}}} \frac{P_l}{\sqrt{T_l}}} \times \frac{\alpha}{2} j^{LV} \frac{\sqrt{T_v}}{\sqrt{T_l}} \frac{P_l}{P_v} \notag \\
 &= \alpha \sqrt{\frac{m}{2\pi k_\mathrm{B}}}\left( \frac{P_l}{\sqrt{T_l}} - \frac{P_v}{\sqrt{T_v}} \right) + \frac{\alpha}{2} j^{LV}

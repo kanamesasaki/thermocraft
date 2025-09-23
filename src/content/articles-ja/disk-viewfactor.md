@@ -2,7 +2,7 @@
 title: '微小表面から円板への形態係数（View Factor）'
 description: '微小表面から円板への形態係数（View Factor）の解析解を、面積分による方法と線積分による方法の、２つのアプローチで導出します。'
 pubDate: 2025-07-21
-updatedDate: 2025-09-22
+updatedDate: 2025-09-23
 heroImage: ''
 tags: ['thermal']
 ---
