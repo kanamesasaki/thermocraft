@@ -2,7 +2,7 @@
 title: 'Hertz-Knudsen-Schrage Equationの導出'
 description: 'Liquid-Vapor Interfaceに衝突するような平均流速をMaxwell-Boltzmann分布に追加することで、Hertz-Knudsen Equationを修正することが可能です。今回は、この仮定をもとに得られる、Hertz-Knudsen-Schrage Equationを導出します。'
 pubDate: 2025-08-31
-updatedDate: 2025-09-23
+updatedDate: 2025-09-24
 heroImage: ''
 tags: ['thermal', 'statistical mechanics']
 ---
@@ -134,34 +134,20 @@ j^{LV} = \alpha \sqrt{\frac{m}{2\pi k_\mathrm{B}}}\left( \frac{P_l}{\sqrt{T_l}} 
 \end{equation}
 $$
 
-ただし、平均流速$\overline{v}_z$は、熱流束$q$をもとにおおよそ(11)のように見積もることが出来る。
-一方で、最終的に得られる質量流量$j^{LV}$と熱流束$q$の間には(12)の関係があるので、これを満たすような温度・圧力となるはずである。
-つまり、熱流束$q$が質量流量$j^{LV}$とパラメタ$\Gamma$に関係しているので、熱流束$q$から温度（あるいはその逆）を陽に求めることは出来ない。
+一方で、質量流速$j^{LV}$と平均流速$\overline{v}_z$の間には、次のような関係も同時に成り立つはずである。
 
 $$
 \begin{equation}
-% \label{eq:vz}
-\overline{v}_z \rho_v h_\mathrm{fg} = q
+% \label{eq:Schrage1953_3.1-14}
+j^{LV} = \rho_v \overline{v}_z
 \end{equation}
 $$
 
-$$
-\begin{equation}
-% \label{eq:qhfg}
-q = j^{LV} h_\mathrm{fg}
-\end{equation}
-$$
+$\Gamma(\overline{v}_z \beta)$は、(7)のように$\overline{v}_z$に関する非線形な関数であるため、液相・気相の温度・圧力が与えられても、質量流速$j^{LV}$を陽に求めることは出来ない。
 
 ## 穏やかな蒸発・凝縮の場合
 
-蒸発・凝縮が穏やかで平均流速が十分小さい場合、(10)をさらに変形して、熱流束と温度の関係を陽に表すことが出来る。まず、先ほど導出した蒸発による流量を$j_e$と表すことにする。
-
-$$
-\begin{equation}
-j_e = \sqrt{\frac{m}{2\pi k_\mathrm{B}}} \frac{P_l}{\sqrt{T_l}}
-\end{equation}
-$$
-
+蒸発・凝縮が穏やかで平均流速が十分小さい場合、(10)をさらに変形して、熱流束と温度の関係を陽に表すことが出来る。
 $\overline{v}_z \beta_v$が十分小さい場合には$\Gamma$を以下のように近似できる。
 
 $$
@@ -171,25 +157,29 @@ $$
 \end{equation}
 $$
 
-全体の質量流量$j^{LV}$と、平均流速$\overline{v}_z$との関係を(15)とおいて、$\overline{v}_z \beta$を$j_e,~ j^{LV}$を用いて書き換える。
-
-$$
-\begin{equation}
-% \label{eq:Schrage1953_3.1-14}
-j^{LV} = \rho_v \overline{v}_z
-\end{equation}
-$$
+この式にある$\overline{v}_z \beta_v$は、以下のように変形することが出来る。
 
 $$
 \begin{equation}
 % \label{eq:Schrage1953_3.1-15}
 \overline{v}_z \beta_v
-= \frac{\rho_v \overline{v}_z}{2 \sqrt{\pi}} \frac{2\sqrt{\pi} \beta_l}{\rho_l} \left( \frac{\beta_v}{\beta_l} \right) \left( \frac{\rho_l}{\rho_v} \right)
 = \frac{1}{2 \sqrt{\pi}} \frac{j^{LV}}{j_l} \frac{\sqrt{T_v}}{\sqrt{T_l}} \frac{P_l}{P_v}
 \end{equation}
 $$
 
-(14)、(16)を(10)に代入していく。
+(13)が成り立っていることは、以下のように確認できる。
+
+$$
+\begin{align}
+&\frac{1}{2 \sqrt{\pi}} \frac{j^{LV}}{j_l} \frac{\sqrt{T_v}}{\sqrt{T_l}} \frac{P_l}{P_v}
+= \frac{1}{2 \sqrt{\pi}} \frac{\rho_v \overline{v}_z}{\sqrt{\frac{m}{2\pi k_\mathrm{B}}} \frac{P_l}{\sqrt{T_l}}} \frac{\sqrt{T_v}}{\sqrt{T_l}} \frac{P_l}{P_v} \notag \\
+&= \frac{1}{2 \sqrt{\pi}} \frac{\frac{m P_v}{k_\mathrm{B}T_v} \overline{v}_z}{\sqrt{\frac{m}{2\pi k_\mathrm{B}}} \frac{P_l}{\sqrt{T_l}}} \frac{\sqrt{T_v}}{\sqrt{T_l}} \frac{P_l}{P_v}
+= \overline{v}_z \sqrt{\frac{m}{2 k_\mathrm{B} T_v}}
+= \overline{v}_z \beta_v
+\end{align}
+$$
+
+(12)、(13)を(10)に代入していくと、$j^{LV}$を次のように書き換えることが出来る。
 
 $$
 \begin{align}
