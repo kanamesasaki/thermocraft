@@ -2,9 +2,9 @@
 title: 'Knudsen Number and Mean Free Path'
 description: 'When the interested fluid phenomenon reaches very low density region, we have to be careful whether it is still within the scope of ordinary fluid dynamics. One of the useful indicators to characterize such physical phenomena is a dimensionless quantity called Knudsen number.'
 pubDate: 2025-05-20
-updatedDate: 2025-09-22
+updatedDate: 2025-09-24
 heroImage: ''
-tags: ['fluid dynamics']
+tags: ['fluid dynamics', 'statistical mechanics']
 ---
 
 When the interested fluid phenomenon reaches very low density region, we have to be careful whether it is still within the scope of ordinary fluid dynamics, or it is rather in the field of molecular dynamics or rarefied gas dynamics.
