@@ -1,6 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
-import { getLangFromUrl, useTranslations, getCollectionName, getLocalizedPath } from '../utils/i18n';
+import {
+  getLangFromUrl,
+  useTranslations,
+  getCollectionName,
+  getLocalizedPath,
+} from '../utils/i18n';
 
 interface Props {
   currentSlug: string;
@@ -17,11 +22,20 @@ const allArticles = await getCollection(getCollectionName(lang));
 // Find related articles based on shared tags
 const relatedArticles = allArticles
   .filter(article => article.slug !== currentSlug)
-  .filter(article => {
-    if (!currentTags.length || !article.data.tags) return false;
-    return article.data.tags.some(tag => currentTags.includes(tag));
+  .map(article => {
+    const tags: string[] = Array.isArray(article.data.tags) ? article.data.tags : [];
+    const sharedCount = currentTags.length
+      ? tags.filter(tag => currentTags.includes(tag)).length
+      : 0;
+    return { article, sharedCount };
   })
-  .slice(0, 3); // Show up to 3 related articles
+  .filter(item => item.sharedCount > 0)
+  .sort((a, b) => {
+    if (b.sharedCount !== a.sharedCount) return b.sharedCount - a.sharedCount;
+    return b.article.data.pubDate.getTime() - a.article.data.pubDate.getTime();
+  })
+  .slice(0, 3)
+  .map(item => item.article);
 
 // If no related articles by tags, show recent articles
 const recentArticles =
