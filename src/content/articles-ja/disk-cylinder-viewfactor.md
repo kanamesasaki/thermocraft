@@ -2,9 +2,9 @@
 title: '円板と円筒に関する形態係数（View Factor）'
 description: '微小表面から円板への形態係数（View Factor）の解析解をもとに、有限の面積を持った円板と円筒に関する様々な形態係数を導出します。'
 pubDate: 2025-08-10
-updatedDate: 2025-09-22
+updatedDate: 2025-09-25
 heroImage: ''
-tags: ['thermal']
+tags: ['thermal', 'radiation']
 ---
 
 以前の記事で、[微小表面から円板への形態係数（View Factor）の解析解](https://thermocraft.space/ja/articles/disk-viewfactor/)を導出した。

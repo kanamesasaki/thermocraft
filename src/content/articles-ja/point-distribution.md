@@ -2,9 +2,9 @@
 title: 'いろいろな形状の表面に点を一様分布させる'
 description: '輻射熱伝達をレイトレーシングによって評価する場合、物体表面から一様に光線を発生させる必要があります。今回は、長方形・三角形・円板・球面・円柱・円錐・放物面などの基本的な表面形状について、0–1の範囲のランダム値からどうやって一様分布を発生させるかを解説します。'
 pubDate: 2025-07-25
-updatedDate: 2025-07-29
+updatedDate: 2025-09-25
 heroImage: ''
-tags: ['thermal', 'numerical analysis']
+tags: ['thermal', 'radiation', 'numerical analysis']
 ---
 
 輻射による熱のやり取りを評価する場合，レイトレースすることで物体間のRadiative Coupling（または形態係数）を求めることが出来る．

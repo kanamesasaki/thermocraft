@@ -2,9 +2,9 @@
 title: 'View Factors for Disks and Cylinder Walls'
 description: 'We will derive various view factors for disks and cylinder walls with finite area, based on the analytical view factor from a plate element to a disk.'
 pubDate: 2025-08-11
-updatedDate: 2025-09-22
+updatedDate: 2025-09-25
 heroImage: ''
-tags: ['thermal']
+tags: ['thermal', 'radiation']
 ---
 
 In a previous article, we derived the analytical solution for the [disk view factor from a plate element](https://thermocraft.space/articles/disk-viewfactor/).
