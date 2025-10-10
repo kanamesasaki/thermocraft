@@ -1,14 +1,11 @@
 ---
-title: '標準大気モデル（U.S. Standard Atmosphere 1976、ISA、ICAO）'
+title: '標準大気（U.S. Standard Atmosphere 1976、ISA、ICAO）'
 description: '地球大気の温度、圧力等の高度による変化を表すモデルとしてよく知られている、U.S. Standard Atmosphere 1976、ISA（国際標準大気）、ICAO Standard Atmosphereを紹介し、各種パラメタの計算方法について解説します。'
 pubDate: 2025-09-08
-updatedDate: 2025-09-22
+updatedDate: 2025-10-08
 heroImage: ''
 tags: ['thermal']
 ---
-
-<!-- Using the following tool, you can calculate the temperature and pressure at a given altitude based on the U.S. Standard Atmosphere 1976 model.
-The model accepts altitude ranges from sea level to 86 km. -->
 
 以下のツールを用いると、U.S. Standard Atmosphere 1976に基づいて、指定した高度における温度、圧力をはじめとした各種パラメタを計算することが出来ます。
 
@@ -27,20 +24,14 @@ The model accepts altitude ranges from sea level to 86 km. -->
 
 ## 大気モデルの種類
 
-<!-- The Standard Atmosphere is a model that describes the variation of atmospheric properties such as temperature, pressure, and density with altitude.
-The following standards are the commonly used in various fields: -->
-
-標準大気モデルは、温度、圧力などの大気の性質が高度によってどのように変化するかを表すもので、
-いくつかの代表的なモデルが存在する。
+標準大気とは、温度、圧力などの大気の性質が高度によってどのように変化するかを表すモデルで、
+以下のようにいくつかの代表的なモデルが存在する。
 
 - **International Standard Atmosphere (ISA)** [[1]](#references)
 - **U.S. Standard Atmosphere 1976** [[2]](#references)
 - **ICAO STANDARD ATMOSPHERE** [[3]](#references)
 
-<!-- The temperature variation with respect to altitude is basically the same among these standards.
-The atmosphere is divided into several layers, and the temperature variation is represented by a liner function or a constant value in each layer. -->
-
-ISA（国際標準大気）、ICAO Standard Atmosphereはそれぞれ、ISO（International Organization for Standardization）およびICAO（International Civil Aviation Organization）によって定められた標準大気モデルで、おおよそ地表から高度80kmまでの範囲での大気の性質を定義している。
+ISA（国際標準大気）、ICAO Standard Atmosphereはそれぞれ、ISO（International Organization for Standardization）およびICAO（International Civil Aviation Organization）によって定められたモデルで、おおよそ地表から高度80kmまでの範囲での大気の性質を定義している。
 U.S. Standard Atmosphere 1976は、NOAA（National Oceanic and Atmospheric Administration）、NASA（National Aeronautics and Space Administration）、USAF（United States Air Force）によって定められたもので、地表から高度1000kmまでの範囲での大気の性質を定義しており、
 特に地表から86kmまでの範囲では、U.S. Standard Atmosphere 1976の定義はISAおよびICAO Standard Atmosphereとほぼ同じである。
 
