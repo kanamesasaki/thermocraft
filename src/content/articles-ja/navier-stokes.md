@@ -13,152 +13,14 @@ tags: ['fluid dynamics']
 - 物質の物理的特性（応力と変位・速度の関係）を表す構成則をどう仮定するか
 
 によって、異なる物理考察が生まれてくる。このことを意識しつつナビエ・ストークス方程式（Navier-Stokes Equations）を導出するところまでを見ていこう。
-
-## Reynoldsの輸送定理
-
-運動方程式について考える前に、準備としてReynoldsの輸送定理を導出しておこう。
-Reynoldsの輸送定理は、相加的な物理量に関するラグランジュ微分の公式で、具体的に質量、運動量、エネルギーなどに適用することで、それぞれの保存則を導出することができる。
-
-ある時刻$t$、位置$(x_1, x_2, x_3)$におけるある物理量が$g(x_1, x_2, x_3, t)$で表されるとする。
-この物理量を領域$V(t)$で積分したものを次のように表すことにする。
-
-$$
-\begin{equation}
-f = \int_{V(t)} g(x_1, x_2, x_3, t) dV
-\end{equation}
-$$
-
-この物理量$f$のLagrange（物質）微分は次のように表すことが出来る。
-$V_0$は基準時刻$t_0$において、注目する物質が占めている領域で、ヤコビアン$J$は微小領域の体積変化率を表す。
+今回の記事では、レイノルズの輸送定理(1)と連続の式(2)は既知として利用するので、詳細については以前の記事（[レイノルズの輸送定理と連続の式](https://thermocraft.space/ja/articles/reynolds-transport/)）を参照してほしい。
 
 $$
 \begin{align}
-\frac{Df}{Dt} &= \frac{D}{Dt} \left( \int_{V(t)} g(x_1, x_2, x_3, t) dV \right) = \frac{D}{Dt} \left( \int_{V_0} g J dV_0 \right) \notag \\
-&= \int_{V_0} \left( \frac{Dg}{Dt} J + g \frac{DJ}{Dt} \right) dV_0
+&\frac{Df}{Dt} = \int_{V(t)} \left( \frac{\partial g}{\partial t} + \nabla \cdot (g \bm{v}) \right) dV \\
+&\text{where} \quad f = \int_{V(t)} g(x_1, x_2, x_3, t) dV \notag
 \end{align}
 $$
-
-ここで用いたヤコビアン$J$に対応するヤコビ行列は、(3)のように表され、連続体力学の分野では変形勾配テンソル（deformation gradient tensor）$\boldsymbol{F}$と呼ばれる。
-
-$$
-\begin{equation}
-\bm{F} = F_{ij} \bm{e}_i \otimes \bm{e}_j = \frac{\partial x_i}{\partial X_j} \bm{e}_i \otimes \bm{e}_j
-\end{equation}
-$$
-
-<!-- 基準時刻$t_0$における物質の位置$\bm{X}$が、時刻$t$における物質の位置$\bm{x}$に移動するとき、
-変形勾配テンソルを用いると、$\bm{X}$の近傍のベクトル$d\bm{X}$は、$d\bm{x}$に次のように変換される。
-
-$$
-\begin{equation*}
-d\bm{x} = \bm{F} \cdot d\bm{X}
-\end{equation*}
-$$ -->
-
-この変形勾配テンソル（ヤコビ行列）の行列式がヤコビアン$J = \det(\boldsymbol{F})$で、変形前後の微小体積の変化率を表す。
-このヤコビアンの時間微分には、以下の関係が成り立つ。
-
-$$
-\begin{equation}
-\frac{DJ}{Dt} = J \left( \frac{\partial v_1}{\partial x_1} +  \frac{\partial v_2}{\partial x_2} +  \frac{\partial v_3}{\partial x_3} \right)
-\end{equation}
-$$
-
-この関係を証明するために、いったん気合で3×3の行列式を展開して微分してしまおう。
-3次元の場合、ヤコビアンは以下のように展開できる。
-
-$$
-\begin{align}
-J = F_{11} (F_{22} F_{33} - F_{23} F_{32}) - F_{12} (F_{21} F_{33} - F_{23} F_{31}) + F_{13} (F_{21} F_{32} - F_{22} F_{31})
-\end{align}
-$$
-
-これを時間微分すると、次のように整理できる。
-
-$$
-\begin{align}
-\frac{DJ}{Dt} &= \dot{F}_{11} (F_{22} F_{33} - F_{23} F_{32}) - \dot{F}_{12} (F_{21} F_{33} - F_{23} F_{31}) + \dot{F}_{13} (F_{21} F_{32} - F_{22} F_{31}) \notag \\
-&+ \dot{F}_{21} (F_{12} F_{33} - F_{13} F_{32}) - \dot{F}_{22} (F_{11} F_{33} - F_{13} F_{31}) + \dot{F}_{23} (F_{11} F_{32} - F_{12} F_{31}) \notag \\
-&+ \dot{F}_{31} (F_{12} F_{23} - F_{13} F_{22}) - \dot{F}_{32} (F_{11} F_{23} - F_{13} F_{21}) + \dot{F}_{33} (F_{11} F_{22} - F_{12} F_{21})
-\end{align}
-$$
-
-当たり前と言えば当たり前なのだが、(6)のように時間微分したパラメタごとにまとめると、係数部分がそのパラメタに関する余因子（cofactor）になっていることがわかる。
-なので、余因子行列（adjugate matrix）$\mathrm{adj}~ F$を用いて、次のように簡潔に表すことができる。
-
-$$
-\begin{align}
-\frac{DJ}{Dt} =& (\mathrm{adj}~ F)_{ji} \dot{F}_{ij}
-\end{align}
-$$
-
-上式では、パラメタの総和として表したが、行列の演算として表すと、次のようになる。
-これはヤコビの公式と呼ばれn次の正方行列に対して成り立つ。
-
-$$
-\begin{equation}
-\frac{D}{Dt} \mathrm{det}~ \bm{F} = \mathrm{tr} \left( (\mathrm{adj}~ \bm{F})^{\mathrm{T}} \dot{\bm{F}} \right) = \mathrm{det}~ \bm{F} \cdot \mathrm{tr} \left( \bm{F}^{-1} \dot{\bm{F}} \right)
-\end{equation}
-$$
-
-次に、$F_{ij}$の時間微分について確認しておく。
-
-$$
-\begin{align}
-\dot{F}_{ij} &= \frac{D}{Dt} \left( \frac{\partial x_i}{\partial X_j} \right)
-= \frac{\partial v_i}{\partial X_j}
-= \frac{\partial v_i}{\partial x_k} \frac{\partial x_k}{\partial X_j}
-= (\nabla v_i)_k F_{kj}
-\end{align}
-$$
-
-行列の形で表すと、次のようになる。
-
-$$
-\begin{equation}
-\dot{\bm{F}} = (\nabla \boldsymbol{v}) \bm{F}
-= \left[ \begin{array}{ccc}
-\frac{\partial v_1}{\partial x_1} & \frac{\partial v_1}{\partial x_2} & \frac{\partial v_1}{\partial x_3} \\
-\frac{\partial v_2}{\partial x_1} & \frac{\partial v_2}{\partial x_2} & \frac{\partial v_2}{\partial x_3} \\
-\frac{\partial v_3}{\partial x_1} & \frac{\partial v_3}{\partial x_2} & \frac{\partial v_3}{\partial x_3}
-\end{array} \right]
-\left[ \begin{array}{ccc}
-\frac{\partial x_1}{\partial X_1} & \frac{\partial x_1}{\partial X_2} & \frac{\partial x_1}{\partial X_3} \\
-\frac{\partial x_2}{\partial X_1} & \frac{\partial x_2}{\partial X_2} & \frac{\partial x_2}{\partial X_3} \\
-\frac{\partial x_3}{\partial X_1} & \frac{\partial x_3}{\partial X_2} & \frac{\partial x_3}{\partial X_3}
-\end{array} \right]
-\end{equation}
-$$
-
-これを先ほどのヤコビの公式に代入すると、以下のようになる。
-ただし、正方行列のトレースについて、$\mathrm{tr}(AB) = \mathrm{tr}(BA)$が成り立つことを利用した。
-
-$$
-\begin{align}
-\frac{DJ}{Dt} &= J \cdot \mathrm{tr} \left( \bm{F}^{-1} (\nabla \boldsymbol{v}) \bm{F} \right) = J \cdot \mathrm{tr} (\nabla \boldsymbol{v}) = J \left( \frac{\partial v_1}{\partial x_1} +  \frac{\partial v_2}{\partial x_2} +  \frac{\partial v_3}{\partial x_3} \right)
-\end{align}
-$$
-
-ヤコビアンの時間微分、および物理量$g$のラグランジュ微分をオイラー微分を用いて表すと、Reynoldsの輸送定理が得られる。
-
-$$
-\begin{align}
-\frac{Df}{Dt} &= \int_{V_0} \left( \frac{Dg}{Dt} J + g J (\nabla \cdot \bm{v}) \right) dV_0 \notag \\
-&= \int_{V_0} \left( \frac{\partial g}{\partial t} + (\bm{v} \cdot \nabla) g + g (\nabla \cdot \bm{v}) \right) J dV_0 \notag \\
-&= \int_{V(t)} \left( \frac{\partial g}{\partial t} + \nabla \cdot (g \bm{v}) \right) dV
-\end{align}
-$$
-
-ここで、Reynoldsの輸送定理の具体的な適用例として、質量保存の式を導出してみよう。
-物質の密度$\rho$の積分を、ラグランジュ微分することを考えると、質量変化がゼロであることから、以下の関係が成り立つ。
-
-$$
-\begin{align}
-\int_{V(t)} \left( \frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \bm{v}) \right) dV = 0
-\end{align}
-$$
-
-この関係は、任意の領域$V(t)$について成り立つので、微小領域についても以下の関係が成り立つ。
 
 $$
 \begin{equation}
@@ -168,7 +30,8 @@ $$
 
 ## コーシーの第一運動法則
 
-物体に作用する力として物体力$\rho \boldsymbol{f}$と表面力$\boldsymbol{t}$を考慮して、運動量の式を立てる。
+まず、物質に作用する力として物体力$\rho \boldsymbol{f}$と表面力$\boldsymbol{t}$を考慮して、運動量の式を立てよう。
+左辺は、運動量を注目する物質内で積分し、その値のラグランジュ微分を取ったものである。右辺は、物体力を物質内で、表面力を物質の表面で積分したものである。
 
 $$
 \begin{equation}
@@ -177,7 +40,7 @@ $$
 \end{equation}
 $$
 
-運動量のラグランジュ微分を、Reynoldsの輸送定理および質量保存の式を用いて以下のように書き直す。
+運動量のラグランジュ微分を、Reynoldsの輸送定理(1)および質量保存の式(2)を用いて以下のように書き直す。
 
 $$
 \begin{align}
@@ -204,7 +67,7 @@ $$
 \end{equation}
 $$
 
-これが物体の任意の一部分について成り立つので、Cauchy's First Law of Motionが(19)のように得られる。
+これが物体の任意の一部分について成り立つので、Cauchy's First Law of Motionが(7)のように得られる。
 この式は、ラグランジュ微分を用いた弾性力学のための運動方程式であり、注目する物質の変形を追いかけていく形で表されている。
 
 $$
@@ -297,7 +160,7 @@ $$
 
 ## ナビエ・ストークス方程式
 
-オイラー微分を使った運動方程式(20)に、圧縮性を考慮したNewton流体の構成式(26)適用すると、Navier-Stokes方程式が得られる。
+オイラー微分を使った運動方程式(8)に、圧縮性を考慮したNewton流体の構成式(14)適用すると、Navier-Stokes方程式が得られる。
 
 $$
 \begin{equation}
