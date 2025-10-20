@@ -2,7 +2,7 @@
 title: 'ナビエ・ストークス方程式の導出'
 description: '流体力学の基礎となるナビエ・ストークス方程式（Navier-Stokes Equations）の導出過程を解説します。連続体の運動方程式を起点に、どのような構成則を設定することで、粘性と圧縮性が導入されるかを考察します。'
 pubDate: 2025-10-15
-updatedDate: 2025-10-15
+updatedDate: 2025-10-20
 heroImage: ''
 tags: ['fluid dynamics']
 ---
@@ -143,7 +143,7 @@ $$
 \end{equation}
 $$
 
-ここで$\kappa$は体積粘性率（bulk viscosity, bulk modulus or modulus of compression）、$\mu$せん断粘性率（shear viscosity, shear modulus or modulus of rigidity）と呼ばれる。流体は等方で、応力テンソルの対角項は圧力$p$と圧縮方向の粘性$\kappa (\mathrm{tr}~\boldsymbol{D})$によって表される。$- \frac{2}{3} \mu (\mathrm{tr}~\boldsymbol{D}) \boldsymbol{I}$の項は$2\mu \boldsymbol{D}$によって生じる対角項を打ち消すために挿入されている。非圧縮性を仮定すると、応力テンソルは次のように簡略化される。
+ここで$\kappa$は体積粘性率（bulk viscosity）、$\mu$せん断粘性率（shear viscosity）と呼ばれる。流体は等方で、応力テンソルの対角項は圧力$p$と圧縮方向の粘性$\kappa (\mathrm{tr}~\boldsymbol{D})$によって表される。$- \frac{2}{3} \mu (\mathrm{tr}~\boldsymbol{D}) \boldsymbol{I}$の項は$2\mu \boldsymbol{D}$によって生じる対角項を打ち消すために挿入されている。非圧縮性を仮定すると、応力テンソルは次のように簡略化される。
 
 $$
 \begin{equation}
