@@ -2,7 +2,7 @@
 title: 'ナビエ・ストークス方程式の導出'
 description: '流体力学の基礎となるナビエ・ストークス方程式（Navier-Stokes Equations）の導出過程を解説します。連続体の運動方程式を起点に、どのような構成則を設定することで、粘性と圧縮性が導入されるかを考察します。'
 pubDate: 2025-10-15
-updatedDate: 2025-10-20
+updatedDate: 2025-10-21
 heroImage: ''
 tags: ['fluid dynamics']
 ---
@@ -77,7 +77,7 @@ $$
 \end{equation}
 $$
 
-一方で、先ほど出てきたオイラー微分の形を用いると、ある領域に注目した、流体力学における運動方程式が得られる。
+一方で、(4)で出てきたオイラー微分の形を用いると、ある領域に注目した、流体力学における運動方程式が得られる。
 
 $$
 \begin{equation}
@@ -89,7 +89,7 @@ $$
 ## 構成則
 
 次に重要なのが物質の物理特性を表す構成則をどう仮定するかだ。これによって応力がどう発生するか、つまり具体的な$T$の形が決まる。
-オイラー方程式（Equation of Motion for Ideal Fluid）を求める際には、表面力を発生させる場として圧力のスカラー場を考える。この場合、微小表面には面に対して垂直な方向にのみ表面力が働く。
+オイラー方程式（Equation of Motion for Ideal Fluid）を求める際には、応力を発生させる要因として圧力のみを考慮する。この場合、微小表面には面に対して垂直な方向にのみ表面力が働く。
 このため、オイラー方程式では流体の圧縮は考慮されるが、流体内の剪断応力に由来する粘性の影響は考慮されない。
 ここでは、剪断も含めた表面力を発生させる場として、応力テンソルによって表されるテンソル場を考える。Cauchy応力テンソル$\boldsymbol{T}$は慣性デカルト座標系で以下のように表す。
 
@@ -130,7 +130,7 @@ $$
 $$
 \begin{equation}
 % \label{Hisada1992_5.119}
-\boldsymbol{T} = p \boldsymbol{I} + \boldsymbol{f} (\boldsymbol{D})
+\boldsymbol{T} = -p \boldsymbol{I} + \boldsymbol{f} (\boldsymbol{D})
 \end{equation}
 $$
 
@@ -158,9 +158,29 @@ $$
 \end{equation}
 $$
 
+## オイラー方程式
+
+ナビエ・ストークス方程式を導出する前に、より簡単な場合のオイラー方程式を確認しておこう。
+オイラー方程式は、非粘性流体を仮定した場合の運動方程式で、応力テンソル$\boldsymbol{T}$を圧力$p$のみを用いて、以下のように仮定する。
+
+$$
+\begin{equation}
+\boldsymbol{T} = - p \boldsymbol{I}
+\end{equation}
+$$
+
+これを、オイラー微分を用いた運動方程式(8)に代入すると、オイラー方程式が得られる。
+
+$$
+\begin{equation}
+% \label{eq:Euler}
+\rho \frac{\partial \boldsymbol{v}}{\partial t} + \rho \boldsymbol{v} \cdot \nabla \boldsymbol{v} = - \nabla p + \rho \boldsymbol{f}
+\end{equation}
+$$
+
 ## ナビエ・ストークス方程式
 
-オイラー微分を使った運動方程式(8)に、圧縮性を考慮したNewton流体の構成式(14)適用すると、Navier-Stokes方程式が得られる。
+運動方程式(8)に、圧縮性を考慮したNewton流体の構成式(14)適用すると、Navier-Stokes方程式が得られる。
 
 $$
 \begin{equation}
@@ -178,7 +198,7 @@ $$
 \end{equation}
 $$
 
-ただし、応力テンソルのdivergenceは次のように整理した。
+ただし、応力テンソルの発散$\nabla \cdot \bm{T}$は次のように整理した（粘性係数$\mu$と体積粘性率$\kappa$を一定と仮定する）。
 
 $$
 \begin{align*}
