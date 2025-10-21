@@ -1,19 +1,20 @@
 ---
-title: '円筒座標・極座標のナブラとラプラシアン'
-description: '円筒座標系や極座標系におけるナブラ（Nabla）とラプラシアン（Laplacian）を、一般座標系におけるナブラの表現をもとに導出します。'
-pubDate: 2025-10-16
+title: 'Nabla and Laplacian in Cylindrical and Spherical Coordinate Systems'
+description: 'This article derives the expressions for Nabla and Laplacian in cylindrical and spherical coordinate systems using the general representation of Nabla in curvilinear coordinate systems.'
+pubDate: 2025-10-21
 updatedDate: 2025-10-21
 heroImage: ''
 tags: ['mathematics', 'fluid dynamics']
 ---
 
-流体力学の議論では円筒座標系や極座標系を用いることも多いので、各座標系でのナブラとラプラシアンを求めておこう。
-いくつか手法はあるが、連鎖律（Chain Rule）からガリガリ計算するのは心が折れるので、一般座標系におけるナブラの表現を用いる方法で導出してみよう。
+In the context of fluid dynamics, it is often useful to employ cylindrical and spherical coordinate systems.
+Thus, let's derive the expressions for Nabla and Laplacian in these coordinate systems.
+There are several approaches to derive Nabla and Laplacian in different coordinate systems, but to avoid tedious calculations using the chain rule, we will use the general representation of Nabla in curvilinear coordinate systems.
 
-## 一般座標系でのナブラ
+## Nabla in Curvilinear Coordinate Systems
 
-まず、3次元正規直交座標系（Cartesian Coordinate System）におけるナブラは次のように表される。
-ここでは表記上の区別のため、3次元正規直交座標系のパラメタを$\tilde{x}_i$と表すことにする。
+First of all, the Nabla operator in a Cartesian Coordinate system is expressed as shown in Eq. (1).
+For clarity in notation, we denote the parameters of the Cartesian Coordinate system as $\tilde{x}_i$.
 
 $$
 \begin{equation}
@@ -21,8 +22,7 @@ $$
 \end{equation}
 $$
 
-これを一般座標系でも適用できるように一般化して表すと、(2)のようになる。
-最低限、(2)--(4)の関係式を受け入れてしまえば、あとは円筒座標系や極座標系の位置ベクトルをパラメタで偏微分することで、各座標系でのナブラが求められる。
+This expression can be generalized as shown in Eq. (2) to be applicable in curvilinear coordinate systems.
 
 $$
 \begin{equation}
@@ -30,8 +30,9 @@ $$
 \end{equation}
 $$
 
-ここで$\boldsymbol{g}_i$は共変基底ベクトル（Covariant Basis Vector）で、$\boldsymbol{g}^i$は反変基底ベクトル（Contravariant Basis Vector）である。
-共変基底ベクトルは位置ベクトル$\boldsymbol{r}$をある座標系のパラメタで偏微分したもので、パラメタが微小に変化したときに、位置ベクトルの変化する方向を表す。
+In Eq. (2), $\boldsymbol{g}^i$ is a contravariant basis vector, which is related to a covariant basis vector $\boldsymbol{g}_i$ as defined in Eq. (3).
+A covariant basis vector is a partial derivative of the position vector $\boldsymbol{r}$ with respect to a parameter of a curvilinear coordinate system.
+This vector indicates the direction of the position vector's change when the parameter slightly changes.
 
 $$
 \begin{equation}
@@ -39,7 +40,7 @@ $$
 \end{equation}
 $$
 
-反変基底ベクトルは、共変基底ベクトルと以下のような関係を満たすように定義される。
+A contravariant basis vector is defined to satisfy the following relationship.
 
 $$
 \begin{equation}
@@ -47,16 +48,16 @@ $$
 \end{equation}
 $$
 
-(2)の表現が(1)の一般化になっていることは、基底ベクトルの変換をすることで確認できる。
-ある共変基底ベクトルから、ほかの共変基底ベクトルに変換する場合、次の関係が成り立つ。
+We can confirm that the expression in Eq. (2) is a generalization of Eq. (1) by transforming the basis vectors.
+When transforming from one set of covariant basis vectors to another, the following relationship holds.
 
 $$
 \begin{equation}
-\boldsymbol{g}_i = \frac{\partial \bm{r}}{\partial x^i} = \frac{\partial \bar{x}^j}{\partial x^i} \frac{\partial \bm{r}}{\partial \bar{x}^j} = \frac{\partial \bar{x}^j}{\partial x^i} \bar{\bm{g}}_j
+\boldsymbol{g}_i = \frac{\partial \boldsymbol{r}}{\partial x^i} = \frac{\partial \bar{x}^j}{\partial x^i} \frac{\partial \boldsymbol{r}}{\partial \bar{x}^j} = \frac{\partial \bar{x}^j}{\partial x^i} \bar{\boldsymbol{g}}_j
 \end{equation}
 $$
 
-この関係を用いると、反変基底ベクトルに関する変換式も導出できる。
+Based on this relationship, we can also derive the transformation formula for contravariant basis vectors.
 
 $$
 \begin{equation}
@@ -64,7 +65,8 @@ $$
 \end{equation}
 $$
 
-この関係を用いて、一般座標系のナブラを3次元正規直交座標系の基底に変換すると、よく知られている(1)の表現と一致していることが分かる。
+Using this relationship, we can transform the Nabla operator in curvilinear coordinate systems to the basis of the Cartesian Coordinate system.
+The resulting expression matches the well-known representation in Eq. (1).
 
 $$
 \begin{equation}
@@ -72,9 +74,9 @@ $$
 \end{equation}
 $$
 
-## 円筒座標系 / Cylindrical Coordinate System
+## Cylindrical Coordinate System
 
-デカルト座標系パラメタは円筒座標系のパラメタを用いると以下のように表される。
+The position vector in Cartesian coordinates can be described using the parameters of cylindrical coordinates as follows.
 
 $$
 \begin{equation}
@@ -83,8 +85,8 @@ $$
 \end{equation}
 $$
 
-これより共変基底ベクトルを求めると以下のとおり。
-これらのベクトルは必ずしも直交しないが、今回は円筒座標系を用いるので、互いに直交する3つのベクトルが得られる。
+From this expression, we can derive the covariant basis vectors as shown in Eqs. (9)--(11).
+Covariant basis vectors are generally not orthogonal, but in the cylindrical coordinate system, the obtained three vectors are orthogonal to each other.
 
 $$
 \begin{align}
@@ -94,8 +96,8 @@ $$
 \end{align}
 $$
 
-得られた共変基底ベクトルが互いに直交しているので、反変基底ベクトル$(\boldsymbol{g}^r, \boldsymbol{g}^\theta, \boldsymbol{g}^z)$はそれぞれの共変基底ベクトルと同じ方向を向き、長さが逆数になったものになる。
-共変基底ベクトルを正規化したものを改めて$(\boldsymbol{e}_r, \boldsymbol{e}_\theta, \boldsymbol{e}_z)$とおくと、次のように円筒座標系での$\nabla$が得られる。
+Since the obtained covariant basis vectors are orthogonal to each other, the contravariant basis vectors $(\boldsymbol{g}^r, \boldsymbol{g}^\theta, \boldsymbol{g}^z)$ are in the same directions as their respective covariant basis vectors, but with lengths that are the reciprocals.
+We obtain the Nabla operator in the cylindrical coordinate system as shown in Eq. (12), where we denote the normalized covariant basis vectors as $(\boldsymbol{e}_r, \boldsymbol{e}_\theta, \boldsymbol{e}_z)$.
 
 $$
 \begin{equation}
@@ -104,7 +106,7 @@ $$
 \end{equation}
 $$
 
-円筒座標基底の偏微分を求めて、ナブラの内積を計算すると円筒座標系でのラプラシアンが求められる。
+Laplacian in the cylindrical coordinate system can be derived by calculating the inner product of Nabla.
 
 $$
 \begin{equation}
@@ -133,9 +135,9 @@ $$
 \end{align}
 $$
 
-## 極座標系 / Spherical Coordinate System
+## Spherical Coordinate System
 
-デカルト座標系パラメタは極座標系のパラメタを用いると以下のように表される。
+The position vector in Cartesian coordinates can be described using the parameters of spherical coordinates as follows.
 
 $$
 \begin{equation}
@@ -144,7 +146,7 @@ $$
 \end{equation}
 $$
 
-これより共変基底ベクトルを求めると以下のとおり。
+Based on this expression, we can derive the covariant basis vectors as shown below.
 
 $$
 \begin{align}
@@ -154,8 +156,9 @@ $$
 \end{align}
 $$
 
-今回も得られた共変基底ベクトルが互いに直交しているので、反変基底ベクトル$(\boldsymbol{g}^r, \boldsymbol{g}^\theta, \boldsymbol{g}^\phi)$はそれぞれの共変基底ベクトルと同じ方向を向き、長さが逆数になったものになる。
-共変基底ベクトルを正規化したものを改めて$(\boldsymbol{e}_r, \boldsymbol{e}_{\theta}, \boldsymbol{e}_{\phi})$とおくと、次のように極座標系での$\nabla$が得られる。
+Same as the cylindrical coordinate system, the obtained covariant basis vectors are orthogonal to each other.
+Thus, the corresponding contravariant basis vectors $(\boldsymbol{g}^r, \boldsymbol{g}^\theta, \boldsymbol{g}^\phi)$ are in the same directions as the covariant basis vectors, but with lengths that are the reciprocals.
+Denoting the normalized covariant basis vectors as $(\boldsymbol{e}_r, \boldsymbol{e}_{\theta}, \boldsymbol{e}_{\phi})$, we obtain the Nabla operator in the spherical coordinate system as shown in Eq. (19).
 
 $$
 \begin{equation}
@@ -164,7 +167,7 @@ $$
 \end{equation}
 $$
 
-極座標基底の偏微分を求めて、ナブラの内積を計算すると円筒座標系でのラプラシアンが求められる。
+Laplacian in the spherical coordinate system can be derived by calculating the inner product of Nabla.
 
 $$
 \begin{align}
