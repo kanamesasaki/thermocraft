@@ -1,6 +1,7 @@
 ---
 import Layout from './Layout.astro';
 import RelatedArticles from '../components/RelatedArticles.astro';
+import ShareButtons from '../components/ShareButtons.astro';
 import { formatDate } from '../utils/date';
 
 interface Props {
@@ -61,6 +62,8 @@ const structuredData = {
         )
       }
     </div>
+    <!-- Share buttons (top) -->
+    <ShareButtons title={title} />
     <div class="prose prose-slate dark:prose-invert lg:prose-lg max-w-none">
       <slot />
     </div>
