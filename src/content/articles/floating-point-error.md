@@ -1,8 +1,8 @@
 ---
-title: 'Tracking the Floating Point Error'
+title: 'Floating Point Error Analysis: Rounding Error and its Propagation'
 description: 'Rounding errors are inevitable in floating-point arithmetic. In particular, after multiple operations, how errors propagate is not immediately obvious. In this article, we will look into the floating point definition in IEEE 754-2019 and discuss a basic methodology for the error estimation.'
 pubDate: 2025-05-18
-updatedDate: 2025-08-01
+updatedDate: 2025-10-23
 heroImage: ''
 tags: ['programming', 'numerical analysis']
 ---
