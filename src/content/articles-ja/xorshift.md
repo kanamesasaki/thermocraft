@@ -1,8 +1,8 @@
 ---
 title: 'Xorshiftによる擬似乱数生成'
 description: 'Xorshiftはシンプルで高速な擬似乱数生成器（RNG）アルゴリズムです。本記事では、Xorshiftの基本的なコンセプトについて解説し、有効なXorshiftパラメータを見つけるためのRustコードを実装します。'
-pubDate: 2025-07-24
-updatedDate: 2025-11-11
+pubDate: 2025-12-13
+updatedDate: 2025-12-13
 heroImage: ''
 tags: ['programming', 'numerical analysis']
 ---
