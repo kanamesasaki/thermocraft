@@ -1,15 +1,16 @@
 ---
 title: 'ECEF座標から測地（geodetic）座標への変換'
-description: 'ECEF座標から測地座標への変換は測地学における古典的な問題です。現実的な変換行うには地球を回転楕円体で近似する必要があり、この場合の変換は簡単ではありません。この記事では、ECEF座標から測地座標への変換の基礎と、Vermeilleによる解析的な手法について紹介します。'
-pubDate: 2025-07-22
-updatedDate: 2025-07-22
+description: 'ECEF座標から測地座標への変換は測地学における古典的な問題です。この記事では、ECEF座標から測地座標への変換の基礎と、PROJにも採用されているBowringによる手法、およびVermeilleによる解析的な手法について紹介します。'
+pubDate: 2025-12-13
+updatedDate: 2025-12-13
 heroImage: ''
 tags: ['astrodynamics']
 ---
 
-XYZ座標の形で表された人工衛星の位置を、緯度・経度・高度に変換したいとき、ざっくりでよければ地球を球体と仮定してarctanを使って求めることはできる。
-ただ、もう少しきちんと求める場合には、地球を回転楕円体として考えるべきで、この場合の変換はそれほど簡単ではない。
-ECEF（Earth Centered Earth Fixed）座標から測地（geodetic）座標への効率的な変換方法の開発は、多くの研究者の興味を集めてきたトピックで、何十年も前から最近まで多くの論文が発表されている。
+人工衛星の軌道やGNSSログなど、XYZの形で表された座標データを、緯度・経度・高度の形に変換する方法について考えてみよう。
+一見すると簡単な幾何学の問題に思えるが、地球を「球」ではなく「回転楕円体」として扱おうとすると、途端に話はややこしくなる。
+ECEF（Earth Centered Earth Fixed）座標から測地（geodetic）座標への変換は、実は解析的に解くのが難しく、古くから多くの研究者が効率的な解法を競ってきたトピックだ。
+今回は、測地座標への変換の基礎と、PROJの実装にも採用されているBowringの手法、そしてVermeilleによる解析的なアプローチについて紹介していきたい。
 
 ## ECEF座標と測地（geodetic）座標の関係
 
@@ -246,12 +247,13 @@ def latitude_equation(x: np.ndarray, *args) -> np.ndarray:
 ```
 
 これでECEF座標からgeodeticなパラメタへの変換の基本は理解できた。
-ただこの方法で解を探すと、データ量が増えるにつれてかなりの計算量が必要になってしまうので、できればより効率的な方法が欲しくなってくる。
+ただこの方法で解を探すと、データ量が増えるにつれて膨大な計算量が必要になってしまうので、より効率的な方法が欲しくなってくる。
 
 ## Vermeilleの解析的な変換手法
 
-より効率的な変換手法で、論文としてもよく引用されているものに、Vermeilleの手法がある[[2]](#reference)。
-この方法では、かなりアクロバットな変数の置き換えをすることで、解析的に解を求めることができる。
+先ほどは、導出した式の複雑さから、解析解を求めることは早々に諦めてしまったが、
+実は４次の代数方程式に帰着させることで、Geodetic latitudeと高度を解析的に求めることが出来る。
+ここではVermeilleによって提案された、解析的な変換手法について見てみよう[[2]](#reference)。
 
 まず、次のような変数$k$を定義する。これは常に$k>0$となる。
 
@@ -425,7 +427,7 @@ $$
 
 $$
 \begin{equation}
-h_\mathrm{ellp} = \frac{k+e_\oplus^2-1}{k}, \quad
+h_\mathrm{ellp} = \frac{k+e_\oplus^2-1}{k} \sqrt{D^2 + z^2}, \quad
 \varphi_\mathrm{gd} = 2 \arctan \frac{z}{D+\sqrt{D^2+z^2}}
 \end{equation}
 $$
@@ -469,7 +471,89 @@ def geodetic_vermeille(x, y, z):
     return lat, lon, h
 ```
 
+## Bowringの反復的な変換手法
+
+解析解は理論的には美しいものの、コンピュータ上で計算する以上、結局のところ浮動小数点誤差の影響は避けられない。
+数値解であったとしても、十分な精度でかつより少ない計算量で解けるならば、実用上はそちらの方が望ましい場合も多い。
+実際、PROJ v9.7.0ではBowringによる手法が採用されている[[3]](#reference)。
+
+再度、(23)を出発点に式変形を行ってみよう。
+
+$$
+\begin{equation}
+\sqrt{x^2 + y^2} \tan \varphi_\mathrm{gd} = z + e_\oplus^2 C_\oplus \sin \varphi_\mathrm{gd}
+\end{equation}
+$$
+
+(8)および(11)を用いて、$\varphi_\mathrm{gd}$を$\varphi_\mathrm{rd}$に書き換えると、次のように表される。
+ただし、$1 - e_\oplus^2 = \frac{b_\oplus^2}{R_\oplus^2}$である。
+
+$$
+\begin{equation}
+\sqrt{x^2 + y^2} \frac{R_\oplus}{b_\oplus} \tan \varphi_\mathrm{rd} = z + e_\oplus^2 C_\oplus \frac{R_\oplus}{S_\oplus} \sqrt{1 - e_\oplus^2} \sin \varphi_\mathrm{rd}
+\end{equation}
+$$
+
+$$
+\begin{align}
+\tan \varphi_\mathrm{rd} &= \frac{z b_\oplus}{R_\oplus\sqrt{x^2 + y^2}} + \frac{e_\oplus^2}{1 - e_\oplus^2} \frac{1}{\sqrt{x^2 + y^2}} \frac{b_\oplus^2}{R_\oplus} \sin \varphi_\mathrm{rd} \notag \\
+&= (1 - e_\oplus^2) \frac{z R_\oplus}{b_\oplus\sqrt{x^2 + y^2}} + \frac{e_\oplus^2 R_\oplus}{\sqrt{x^2 + y^2}} \sin \varphi_\mathrm{rd}
+\end{align}
+$$
+
+ここで、$\tan\theta = \frac{z R_\oplus}{b_\oplus \sqrt{x^2 + y^2}}$とおくと、以下の関係式が得られる。
+
+$$
+\begin{equation}
+\tan \varphi_\mathrm{rd} - (1 - e_\oplus^2) \tan\theta - \frac{e_\oplus^2 R_\oplus}{\sqrt{x^2 + y^2}} \sin \varphi_\mathrm{rd} = 0
+\end{equation}
+$$
+
+この式を満たすような$\tan \varphi_\mathrm{rd}$を数値的に求めればよいのだが、
+Bowringの方法によると、初期値を$\tan\theta$として、1ステップNewton-Raphson法で解を更新するだけで（地球のflatteningを前提として）高精度な解が得られる。
+解の更新式、および関数$f(t)$とその導関数$f'(t)$は以下のように表される。
+
+$$
+\begin{equation}
+t_{n+1} = t_n - \Delta t, \quad f(t_n) = f'(t_n) \Delta t
+\end{equation}
+$$
+
+$$
+\begin{equation}
+f(t) = t - (1 - e_\oplus^2) \tan\theta - \frac{e_\oplus^2 R_\oplus}{\sqrt{x^2 + y^2}} \frac{t}{\sqrt{1 + t^2}}
+\end{equation}
+$$
+
+$$
+\begin{align}
+f'(t) &= 1 - \frac{e_\oplus^2 R_\oplus}{\sqrt{x^2 + y^2}} \left( (1 + t^2)^{-\frac{1}{2}} - t^2 (1 + t^2)^{-\frac{3}{2}} \right) \notag \\
+&=1 - \frac{e_\oplus^2 R_\oplus}{\sqrt{x^2 + y^2}} \frac{1}{(1 + t^2)^{\frac{3}{2}}}
+\end{align}
+$$
+
+これより具体的な推定式は次のように表される。
+
+$$
+\begin{align}
+\tan \varphi_\mathrm{rd} &\approx \tan\theta - \frac{f(\tan\theta)}{f'(\tan\theta)} \notag \\
+&= \tan\theta - \frac{e_\oplus^2 \tan\theta - \frac{e_\oplus^2 R_\oplus}{\sqrt{x^2 + y^2}} \sin\theta}{1 - \frac{e_\oplus^2 R_\oplus}{\sqrt{x^2 + y^2}} \cos^3\theta} \notag \\
+&= \tan\theta - \frac{e_\oplus^2 \tan\theta \sqrt{x^2 + y^2} - e_\oplus^2 R_\oplus \sin\theta}{\sqrt{x^2 + y^2} - e_\oplus^2 R_\oplus \cos^3\theta} \notag \\
+&= \frac{(1 - e_\oplus^2) \tan\theta \sqrt{x^2 + y^2} - e_\oplus^2 R_\oplus \cos^2\theta\sin\theta + e_\oplus^2 R_\oplus \sin\theta}{\sqrt{x^2 + y^2} - e_\oplus^2 R_\oplus \cos^3\theta} \notag \\
+&= \frac{\frac{b_\oplus}{R_\oplus}z + e_\oplus^2 R_\oplus \sin^3\theta}{\sqrt{x^2 + y^2} - e_\oplus^2 R_\oplus \cos^3\theta}
+\end{align}
+$$
+
+求めたreduced latitude $\varphi_\mathrm{rd}$を用いて、最終的なgeodetic latitude $\varphi_\mathrm{gd}$は次のように求められる。
+
+$$
+\begin{gather}
+\varphi_\mathrm{gd} = \arctan \left(\frac{R_\oplus}{b_\oplus} \tan \varphi_\mathrm{rd}\right)
+\end{gather}
+$$
+
 ## Reference
 
 1. David A. Vallado, Fundamentals of Astrodynamics and Applications Fourth Edition, 2013, Microsoft Press
 2. H. Vermeille, “Direct transformation from geocentric to geodetic coordinates”, 2002, Journal of Geodesy, 76:451-454, doi: [10.1007/s00190-002-0273-6](https://doi.org/10.1007/s00190-002-0273-6).
+3. Bowring, B. R. (1976). TRANSFORMATION FROM SPATIAL TO GEOGRAPHICAL COORDINATES. Survey Review, 23(181), 323–327. doi: [10.1179/sre.1976.23.181.323](https://doi.org/10.1179/sre.1976.23.181.323)
