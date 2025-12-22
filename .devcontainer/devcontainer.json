@@ -1,5 +1,5 @@
 {
-  "name": "craftbook",
+  "name": "thermocraft",
   "build": {
     "dockerfile": "../Dockerfile",
     "context": ".."
@@ -16,7 +16,8 @@
         "esbenp.prettier-vscode",
         "github.copilot",
         "davidanson.vscode-markdownlint",
-        "streetsidesoftware.code-spell-checker"
+        "streetsidesoftware.code-spell-checker",
+        "rust-lang.rust-analyzer"
       ],
       "settings": {
         "editor.formatOnSave": true,
@@ -25,7 +26,24 @@
         "files.associations": {
           "*.mdx": "markdown"
         },
-        "typescript.tsdk": "node_modules/typescript/lib"
+        "typescript.tsdk": "node_modules/typescript/lib",
+        "rust-analyzer.server.path": "/root/.cargo/bin/rust-analyzer",
+        "rust-analyzer.linkedProjects": [
+          "./src/rust-examples/faer-basics/Cargo.toml",
+          "src/rust-examples/faer-arithmetic/Cargo.toml",
+          "./src/rust-examples/floating-point-error/Cargo.toml",
+          "./src/rust-examples/hertz-knudsen-schrage/Cargo.toml",
+          "./src/rust-examples/honeycomb-conductivity/Cargo.toml",
+          "./src/rust-examples/xorshift/Cargo.toml"
+        ],
+        "rust-analyzer.files.excludeDirs": [
+          "node_modules",
+          "public",
+          ".astro",
+          "dist",
+          "build"
+        ],
+        "rust-analyzer.cargo.buildScripts.enable": false
       }
     }
   },

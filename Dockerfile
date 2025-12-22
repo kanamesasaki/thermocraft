@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
 ENV PATH="/root/.cargo/bin:$PATH"
 # Install Rust and its components
 RUN curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y \
-    && rustup component add rustfmt clippy
+    && rustup component add rustfmt clippy rust-analyzer
 
 # Ensure app directory exists with proper permissions
 # The node:alpine image already has a node user/group
