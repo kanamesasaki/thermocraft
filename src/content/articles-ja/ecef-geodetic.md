@@ -2,10 +2,16 @@
 title: 'ECEF座標から測地（geodetic）座標への変換'
 description: 'ECEF座標から測地座標への変換は測地学における古典的な問題です。この記事では、ECEF座標から測地座標への変換の基礎と、PROJにも採用されているBowringによる手法、およびVermeilleによる解析的な手法について紹介します。'
 pubDate: 2025-12-13
-updatedDate: 2025-12-13
+updatedDate: 2025-12-23
 heroImage: ''
 tags: ['astrodynamics']
 ---
+
+<div style="background: linear-gradient(135deg, #8b0000 0%, #c41e3a 100%); padding: 0.5rem; border-radius: 8px; margin: 2rem 0;">
+  <p style="color: white; margin: 0; text-align: left; font-size: 1.1rem;">
+    🎄 <a href="https://qiita.com/advent-calendar/2025/foss4g" style="color: white; text-decoration: underline; font-weight: bold;">FOSS4G Advent Calendar 2025</a> 13日目 🎄
+  </p>
+</div>
 
 人工衛星の軌道やGNSSログなど、XYZの形で表された座標データを、緯度・経度・高度の形に変換する方法について考えてみよう。
 一見すると簡単な幾何学の問題に思えるが、地球を「球」ではなく「回転楕円体」として扱おうとすると、途端に話はややこしくなる。

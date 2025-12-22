@@ -7,6 +7,12 @@ heroImage: ''
 tags: ['programming', 'numerical analysis', 'mathematics']
 ---
 
+<div style="background: linear-gradient(135deg, #8b0000 0%, #c41e3a 100%); padding: 0.5rem; border-radius: 8px; margin: 2rem 0;">
+  <p style="color: white; margin: 0; text-align: left; font-size: 1.1rem;">
+    🎄 <a href="https://qiita.com/advent-calendar/2025/rust" style="color: white; text-decoration: underline; font-weight: bold;">Rust Advent Calendar 2025</a> 24日目 🎄
+  </p>
+</div>
+
 前回の記事「[Pure Rust 線形代数ライブラリfaer入門①](https://thermocraft.space/ja/articles/faer-basics/)」で、faerの基本的なデータ型であるMat（所有）とMatRef（ビュー）の内部構造について解説した。
 これらは行列データを効率的かつ安全に管理するための仕組みだったが、今回はそれらを使って行う基礎的な演算に焦点を当てる。
 とくにfaerが提供する行列演算APIを、「書きやすさ」と「性能」の観点から比較し、用途に応じた使い分けを紹介する。

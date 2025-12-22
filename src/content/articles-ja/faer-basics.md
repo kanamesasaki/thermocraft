@@ -7,6 +7,12 @@ heroImage: ''
 tags: ['programming', 'numerical analysis', 'mathematics']
 ---
 
+<div style="background: linear-gradient(135deg, #8b0000 0%, #c41e3a 100%); padding: 0.5rem; border-radius: 8px; margin: 2rem 0;">
+  <p style="color: white; margin: 0; text-align: left; font-size: 1.1rem;">
+    🎄 <a href="https://qiita.com/advent-calendar/2025/rust" style="color: white; text-decoration: underline; font-weight: bold;">Rust Advent Calendar 2025</a> 17日目 🎄
+  </p>
+</div>
+
 Rustで科学計算、特に線形代数の計算を行う場合、ndarrayやnalgebraといった行列計算ライブラリがよく知られているが、最近新たにfaerという線形代数ライブラリが注目され始めている。それぞれの特徴を簡単に比較すると以下のようになる。
 
 - ndarray: PythonのNumPyに近い汎用的な多次元配列ライブラリ。データの保持や基本操作はRustのみで完結するが、高速な行列積や高度な線形代数演算を行うには、OpenBLASやIntel MKLといった外部のライブラリに依存する必要がある。
