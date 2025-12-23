@@ -72,6 +72,8 @@ fn main() {
 足し算、引き算、スカラー倍などの、要素ごとの演算については、faerは`zip`関数を提供している。
 これを用いると、中間結果を保持せずに複数の行列を一度に演算できる。
 
+ここでは、最も基本的な例として、3つの行列の和`D = A + B + C`を、演算子を用いた方法と、`zip!`マクロを用いた方法で比較してみよう。
+
 ```rust
 use faer::{zip, unzip, Mat};
 use std::time::Instant;
@@ -88,12 +90,12 @@ fn main() {
     // ==========================================
     println!("--- Case 1: D = A + B + C ---");
 
-    // [Bad Pattern] 演算子
+    // 1. operators
     let start = Instant::now();
     let d_op = &a + &b + &c;
     println!("Operators: {:.2?}", start.elapsed());
 
-    // [Good Pattern] zip!
+    // 2. zip!
     let start = Instant::now();
     let mut d_zip = Mat::zeros(n, n);
     zip!(&mut d_zip, &a, &b, &c).for_each(|unzip!(d, a, b, c)| {
@@ -102,8 +104,8 @@ fn main() {
     println!("zip!: {:.2?}", start.elapsed());
 
     // --- Case 1: D = A + B + C ---
-    // Operators : 3.01ms
-    // zip!      : 1.94ms
+    // 1. operators : 3.01ms
+    // 2. zip!      : 1.94ms
 }
 ```
 
@@ -257,7 +259,7 @@ fn main() {
 テストコード内で50回ループを回して平均をとっているのは、あくまで計測の安定化を図るためであり、`A * B * C * D * E`の速度計測を行うことが目的である。
 なので、Ping-Pong Bufferingの場合も、ループ内で2回バッファを確保している。
 実行時間を比較すると、Ping-Pong Bufferingの方がわずかに高速であることがわかる。
-メモリ確保のコストは、行列積のコストと比較して小さいため、劇的な改善にはならないが、パフォーマンスにシビアな計算を行う場合には考慮する価値がある。
+メモリ確保のコストは、行列積のコストと比較して小さいため、劇的な改善にはならないが、パフォーマンスにシビアな計算を行う場合には試してみる価値がある。
 
 ## まとめ
 
