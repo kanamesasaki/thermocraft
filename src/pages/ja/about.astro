@@ -3,9 +3,23 @@ import Layout from '../../layouts/Layout.astro';
 import { useTranslations } from '../../utils/i18n';
 
 const t = useTranslations('ja');
+
+// Structured data for author/person
+const authorStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Kaname Sasaki',
+  url: 'https://thermocraft.space/about',
+  sameAs: [
+    'https://orcid.org/0000-0003-0365-4539',
+    'https://www.scopus.com/authid/detail.uri?authorId=57194701244',
+    'https://scholar.google.com/citations?hl=en&user=FskpbFEAAAAJ',
+  ],
+};
 ---
 
 <Layout title={`${t('about.title')} | ${t('site.title')}`} description={t('site.description')}>
+  <script type="application/ld+json" set:html={JSON.stringify(authorStructuredData)} />
   <h1 class="text-3xl font-bold mb-6">{t('about.title')}</h1>
 
   <div class="prose prose-slate dark:prose-invert lg:prose-lg max-w-none">

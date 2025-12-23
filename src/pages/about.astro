@@ -3,9 +3,23 @@ import Layout from '../layouts/Layout.astro';
 import { useTranslations } from '../utils/i18n';
 
 const t = useTranslations('en');
+
+// Structured data for author/person
+const authorStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Kaname Sasaki',
+  url: 'https://thermocraft.space/about',
+  sameAs: [
+    'https://orcid.org/0000-0003-0365-4539',
+    'https://www.scopus.com/authid/detail.uri?authorId=57194701244',
+    'https://scholar.google.com/citations?hl=en&user=FskpbFEAAAAJ',
+  ],
+};
 ---
 
 <Layout title={`${t('about.title')} | ${t('site.title')}`} description={t('site.description')}>
+  <script type="application/ld+json" set:html={JSON.stringify(authorStructuredData)} />
   <h1 class="text-3xl font-bold mb-6">{t('about.title')}</h1>
 
   <div class="prose prose-slate dark:prose-invert lg:prose-lg max-w-none">
@@ -19,6 +33,149 @@ const t = useTranslations('en');
       strive for accuracy, please verify calculations and methods independently for your specific
       applications.
     </p>
+
+    <h2>About Author</h2>
+    <p>
+      <b>Kaname Sasaki</b>: M-Eng in Aerospace Engineering, specialized in spacecraft thermal design
+      and analysis. Experienced in thermal control system development and numerical simulation
+      methods for space missions.
+    </p>
+    <p>
+      <a
+        href="https://scholar.google.com/citations?hl=en&user=FskpbFEAAAAJ"
+        target="_blank"
+        rel="noopener noreferrer">Google Scholar Profile</a
+      >
+      &nbsp; ORCID: <a
+        href="https://orcid.org/0000-0003-0365-4539"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        0000-0003-0365-4539
+      </a>
+      &nbsp; Scopus ID: <a
+        href="https://www.scopus.com/authid/detail.uri?authorId=57194701244"
+        target="_blank"
+        rel="noopener noreferrer">57194701244</a
+      >
+    </p>
+
+    <h3>Publications</h3>
+    <h4>Journal Publications as a First Author</h4>
+    <ul>
+      <li>
+        K. Sasaki, "Perspective Projection of an Ellipse and an Ellipsoid for Analytical View Factor
+        Evaluation", Heat Transfer, 55: 44-55, 2026, DOI:&nbsp;<a
+          href="https://doi.org/10.1002/htj.23405">10.1002/htj.23405</a
+        >
+      </li>
+      <li>
+        K. Sasaki, "Simplified Earth infrared and albedo coefficient models for spacecraft thermal
+        analysis based on the CERES data products", Advances in Space Research 75 (2), 1597-1615,
+        2025, DOI:&nbsp;<a href="https://doi.org/10.1016/j.asr.2024.11.024"
+          >10.1016/j.asr.2024.11.024</a
+        >
+      </li>
+      <li>
+        K. Sasaki, "View factor of a spheroid and an ellipse from a plate element", Journal of
+        Quantitative Spectroscopy and Radiative Transfer 326, 109102, 2023, DOI:&nbsp;<a
+          href="https://doi.org/10.1016/j.jqsrt.2024.109102">10.1016/j.jqsrt.2024.109102</a
+        >
+      </li>
+      <li>
+        K. Sasaki, M. Sznajder, "Analytical view factor solutions of a spherical cap from an
+        infinitesimal surface", International Journal of Heat and Mass Transfer 163, 120477, 2020,
+        DOI:&nbsp;<a href="https://doi.org/10.1016/j.ijheatmasstransfer.2020.120477"
+          >10.1016/j.ijheatmasstransfer.2020.120477</a
+        >
+      </li>
+    </ul>
+    <h4>Conference Publications as a First Author</h4>
+    <ul>
+      <li>
+        K. Sasaki, et al., "THE QUALIFICATION OF A SELF-RESETABLE 4.5 KN HOLD-DOWN AND RELEASE
+        MECHANISM", ECSSMET 2024, 2024
+      </li>
+      <li>
+        K. Sasaki, et al., "Optimal Appendage Articulation Control of BepiColombo for Efficient
+        Thruster Operation during Mercury Orbit Insertion Phase", AIAA Guidance, Navigation, and
+        Control (GNC) Conference, 4873, 2013, DOI:&nbsp;<a
+          href="https://doi.org/10.2514/6.2013-4873">10.2514/6.2013-4873</a
+        >
+      </li>
+    </ul>
+    <h4>Journal Publications as a Co-Author</h4>
+    <ul>
+      <li>
+        TM Ho, et al., "The MASCOT lander aboard Hayabusa2: The in-situ exploration of NEA (162173)
+        Ryugu", Planetary and Space Science 200, 105200, 2021, DOI:&nbsp;<a
+          href="https://doi.org/10.1016/j.pss.2021.105200"
+          >10.1016/j.pss.2021.105200
+        </a>
+      </li>
+      <li>
+        P Spietz, et al., "Paths not taken–The GOSSAMER roadmap’s other options", Advances in Space
+        Research 67 (9), 2912-2956, 2021, DOI:&nbsp;<a
+          href="https://doi.org/10.1016/j.asr.2021.01.044">10.1016/j.asr.2021.01.044</a
+        >
+      </li>
+      <li>
+        CD Grimm, et al., "The MASCOT separation mechanism: A reliable, low-mass deployment system
+        for nano-spacecraft", CEAS Space Journal 12 (3), 343-365, 2020, DOI:&nbsp;<a
+          href="https://doi.org/10.1007/s12567-020-00302-y">10.1007/s12567-020-00302-y</a
+        >
+      </li>
+      <li>
+        U Banik, et al., "Enhancing passive radiative cooling properties of flexible CIGS solar
+        cells for space applications using single layer silicon oxycarbonitride films", Solar Energy
+        Materials and Solar Cells 209, 110456, 2020, DOI:&nbsp;<a
+          href="https://doi.org/10.1016/j.solmat.2020.110456">10.1016/j.solmat.2020.110456</a
+        >
+      </li>
+      <li>
+        V Baturkin, et al., "Regulative Characteristic of Methanol–Copper Heat Pipes for Asteroid
+        Lander “MASCOT”", Journal of Heat Transfer 142 (5), 051801, 2020, DOI:&nbsp;<a
+          href="https://doi.org/10.1115/1.4046443">10.1115/1.4046443</a
+        >
+      </li>
+      <li>
+        D Hercik, et al., "Magnetic properties of asteroid (162173) Ryugu", Journal of Geophysical
+        Research: Planets 125 (1), e2019JE006035, 2020, DOI:&nbsp;<a
+          href="https://doi.org/10.1029/2019JE006035">10.1029/2019JE006035</a
+        >
+      </li>
+      <li>
+        T Sproewitz, et al., "Concept for a Gossamer solar power array using thin-film
+        photovoltaics", CEAS space journal 12 (1), 125-135, 2020. DOI:&nbsp;<a
+          href="https://doi.org/10.1007/s12567-019-00276-6">10.1007/s12567-019-00276-6</a
+        >
+      </li>
+      <li>
+        S Reershemius, et al., "Structure development of the HP3 instrument support system for the
+        Mars mission InSight", Acta Astronautica 164, 9-22, 2019. DOI:&nbsp;<a
+          href="https://doi.org/10.1016/j.actaastro.2019.06.035">10.1016/j.actaastro.2019.06.035</a
+        >
+      </li>
+      <li>
+        R Jaumann, et al., "Images from the surface of asteroid Ryugu show rocks similar to
+        carbonaceous chondrite meteorites", Science 365 (6455), 817-820, 2019, DOI:&nbsp;<a
+          href="https://doi.org/10.1126/science.aaw8627">10.1126/science.aaw8627</a
+        >
+      </li>
+      <li>
+        JT Grundmann, et al., "Capabilities of Gossamer-1 derived small spacecraft solar sails
+        carrying Mascot-derived nanolanders for in-situ surveying of NEAs", Acta Astronautica 156,
+        330-362, 2019, DOI:&nbsp;<a href="https://doi.org/10.1016/j.actaastro.2018.03.019"
+          >10.1016/j.actaastro.2018.03.019</a
+        >
+      </li>
+      <li>
+        TM Ho, et al., "MASCOT—the mobile asteroid surface scout onboard the Hayabusa2 mission",
+        Space Science Reviews 208 (1), 339-374, 2017, DOI:&nbsp;<a
+          href="https://doi.org/10.1007/s11214-016-0251-6">10.1007/s11214-016-0251-6</a
+        >
+      </li>
+    </ul>
 
     <h2>Related Tools & Services</h2>
     <p>Explore our other engineering tools and resources:</p>
